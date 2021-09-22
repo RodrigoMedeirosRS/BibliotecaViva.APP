@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://CTRL/TabConsultarRegistroCTRL.cs" type="Script" id=2]
 
 [node name="TabConsultarRegistro" type="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
 margin_right = -187.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -37,4 +39,73 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pesquisa" type="Control" parent="."]
+margin_left = 136.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="LineEdit" parent="Pesquisa"]
+margin_left = 11.3667
+margin_top = 3.0406
+margin_right = 227.367
+margin_bottom = 27.0406
+placeholder_text = "Nome"
+
+[node name="Idioma" type="OptionButton" parent="Pesquisa"]
+margin_left = 236.367
+margin_top = 3.0406
+margin_right = 452.367
+margin_bottom = 27.0406
+
+[node name="Pesquisar" type="Button" parent="Pesquisa"]
+margin_left = 464.287
+margin_top = 4.62731
+margin_right = 538.287
+margin_bottom = 24.6273
+text = "Pesquisar"
+
+[node name="Dados" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resultados" type="ScrollContainer" parent="Dados"]
+margin_left = 16.0
+margin_top = 83.0
+margin_right = 818.0
+margin_bottom = 544.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dados/Resultados"]
+margin_right = 802.0
+rect_min_size = Vector2( 802, 0 )
+
+[node name="Erro" type="Label" parent="Dados"]
+modulate = Color( 0.941176, 0.133333, 0.133333, 1 )
+margin_left = 18.0
+margin_top = 39.0
+margin_right = 815.0
+margin_bottom = 72.0
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="ColorRect" type="ColorRect" parent="Dados"]
+margin_left = 16.0
+margin_top = 82.0
+margin_right = 818.0
+margin_bottom = 544.0
+color = Color( 0.172549, 0.164706, 0.196078, 0.729412 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="Pesquisa/Pesquisar" to="." method="_on_Pesquisar_button_up"]
