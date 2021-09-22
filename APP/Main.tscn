@@ -1,3 +1,74 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CTRL/MainCTRL.cs" type="Script" id=1]
+[ext_resource path="res://Tab.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 190.0
+margin_right = 1027.0
+margin_bottom = 604.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tab" parent="TabContainer" instance=ExtResource( 2 )]
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Control" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SideBar" type="ColorRect" parent="Control"]
+margin_right = 189.0
+margin_bottom = 604.0
+color = Color( 0.161166, 0.152756, 0.183594, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = -0.091
+anchor_right = -0.091
+margin_left = 18.0
+margin_right = 171.0
+margin_bottom = 582.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CadastrarPessoa" type="Button" parent="VBoxContainer"]
+margin_top = 245.0
+margin_right = 153.0
+margin_bottom = 265.0
+text = "Cadastrar Pessoa"
+
+[node name="CadatrarRegistro" type="Button" parent="VBoxContainer"]
+margin_top = 269.0
+margin_right = 153.0
+margin_bottom = 289.0
+text = "Cadastrar Pessoa"
+
+[node name="ConsultarPessoa" type="Button" parent="VBoxContainer"]
+margin_top = 293.0
+margin_right = 153.0
+margin_bottom = 313.0
+text = "Consultar Pessoa"
+
+[node name="ConsultarRegistro" type="Button" parent="VBoxContainer"]
+margin_top = 317.0
+margin_right = 153.0
+margin_bottom = 337.0
+text = "Consultar Pessoa"
+
+[connection signal="button_up" from="VBoxContainer/CadastrarPessoa" to="." method="_on_CadastrarPessoa_button_up"]
+[connection signal="button_up" from="VBoxContainer/CadatrarRegistro" to="." method="_on_CadatrarRegistro_button_up"]
+[connection signal="button_down" from="VBoxContainer/ConsultarPessoa" to="." method="_on_ConsultarPessoa_button_down"]
+[connection signal="button_down" from="VBoxContainer/ConsultarRegistro" to="." method="_on_ConsultarRegistro_button_down"]

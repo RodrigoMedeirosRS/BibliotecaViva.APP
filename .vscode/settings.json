@@ -9,6 +9,8 @@
     ".vscode": true,
     "SAL/bin/Debug/netstandard2.0": true,
     "SAL/bin/Debug": true,
-    "SAL/bin": true
+    "SAL/bin": true,
+    "APP/.import": true,
+    "APP/.mono": true
   }
 }
