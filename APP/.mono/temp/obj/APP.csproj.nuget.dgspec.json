@@ -1,0 +1,240 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/rmlehnemann/Projetos/PrototipoFuncional/APP/APP.csproj": {}
+  },
+  "projects": {
+    "/home/rmlehnemann/Projetos/PrototipoFuncional/APP/APP.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/rmlehnemann/Projetos/PrototipoFuncional/APP/APP.csproj",
+        "projectName": "APP",
+        "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/APP/APP.csproj",
+        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
+        "outputPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "/home/rmlehnemann/Projetos/PrototipoFuncional/BLL/BLL.csproj": {
+                "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/BLL/BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/rmlehnemann/Projetos/PrototipoFuncional/BLL/BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/rmlehnemann/Projetos/PrototipoFuncional/BLL/BLL.csproj",
+        "projectName": "BLL",
+        "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/BLL/BLL.csproj",
+        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
+        "outputPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/BLL/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/SAL.csproj": {
+                "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/SAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/rmlehnemann/Projetos/PrototipoFuncional/DTO/DTO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/rmlehnemann/Projetos/PrototipoFuncional/DTO/DTO.csproj",
+        "projectName": "DTO",
+        "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/DTO/DTO.csproj",
+        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
+        "outputPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/DTO/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/SAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/SAL.csproj",
+        "projectName": "SAL",
+        "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/SAL.csproj",
+        "packagesPath": "/home/rmlehnemann/.nuget/packages/",
+        "outputPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/rmlehnemann/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "/home/rmlehnemann/Projetos/PrototipoFuncional/DTO/DTO.csproj": {
+                "projectPath": "/home/rmlehnemann/Projetos/PrototipoFuncional/DTO/DTO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

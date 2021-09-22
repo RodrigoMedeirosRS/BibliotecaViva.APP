@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ORz3rxkqG+V5zKHK3OOc0XPJYaxEmSpl4tweA5htH6O6GdM040QRwuZJQqFb1Ig6BXXBojOi0p+n9hhsmgczOw==",
+  "success": true,
+  "projectFilePath": "/home/rmlehnemann/Projetos/PrototipoFuncional/SAL/SAL.csproj",
+  "expectedPackageFiles": [
+    "/home/rmlehnemann/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/rmlehnemann/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

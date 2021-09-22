@@ -1,0 +1,17 @@
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/APP.dll
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/APP.pdb
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.AssemblyInfoInputs.cache
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.AssemblyInfo.cs
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.csproj.CoreCompileInputs.cache
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.dll
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.pdb
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/APP.deps.json
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.csproj.AssemblyReference.cache
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.GeneratedMSBuildEditorConfig.editorconfig
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/BLL.dll
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/DTO.dll
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/SAL.dll
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/BLL.pdb
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/DTO.pdb
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/bin/Debug/SAL.pdb
+/home/rmlehnemann/Projetos/PrototipoFuncional/APP/.mono/temp/obj/Debug/APP.csproj.CopyComplete
