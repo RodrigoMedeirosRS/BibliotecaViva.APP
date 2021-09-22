@@ -1,30 +1,32 @@
 using Godot;
 using System;
 
+using BLL;
+
 namespace CTRL
 {
 	public class MainCTRL : Node2D
 	{
-		private TabContainer Container { get ; set; }
+		private MainBLL BLL { get ; set; }
 		public override void _Ready()
 		{
-			Container = GetNode<TabContainer>("./TabContainer");
+			BLL = new MainBLL(GetNode<TabContainer>("./TabContainer"));
 		}
 		private void _on_CadastrarPessoa_button_up()
 		{
-			// Replace with function body.
+			BLL.IntanciarTab("Cadastrar Pessoa", "res://TabCadastrarPessoa.tscn");
 		}
 		private void _on_CadatrarRegistro_button_up()
 		{
-			// Replace with function body.
+			BLL.IntanciarTab("Cadastrar Registro", "res://TabCadastrarRegistro.tscn");
 		}
 		private void _on_ConsultarPessoa_button_down()
 		{
-			// Replace with function body.
+			BLL.IntanciarTab("Consultar Pessoa", "res://TabConsultarPessoa.tscn");
 		}
 		private void _on_ConsultarRegistro_button_down()
 		{
-			// Replace with function body.
+			BLL.IntanciarTab("Consultar Registro", "res://TabConsultarRegistro.tscn");
 		}
 	}
 }

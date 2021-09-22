@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+
+[node name="TabConsultarPessoa" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 28.0
+margin_right = -187.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controladores" type="Control" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Controladores"]
+margin_left = -3.0
+margin_top = -8.0
+margin_right = 834.0
+margin_bottom = 572.0
+color = Color( 1, 1, 1, 0.0823529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Controladores"]
+margin_left = 808.045
+margin_top = -1.7818
+margin_right = 828.045
+margin_bottom = 18.2182
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
