@@ -90,7 +90,7 @@ margin_left = 1.0
 margin_top = 118.0
 margin_right = 364.0
 margin_bottom = 142.0
-placeholder_text = "Genero"
+placeholder_text = "Gênero"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -99,7 +99,7 @@ __meta__ = {
 margin_top = -18.0
 margin_right = 43.0
 margin_bottom = -4.0
-text = "Sobrenome:"
+text = "Gênero:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -137,7 +137,7 @@ __meta__ = {
 margin_top = -18.0
 margin_right = 43.0
 margin_bottom = -4.0
-text = "GeoLocalizacao"
+text = "GeoLocalização:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -157,7 +157,7 @@ margin_left = 385.0
 margin_top = -2.0
 margin_right = 446.0
 margin_bottom = 12.0
-text = "Relacões:"
+text = "Relações:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,8 +178,6 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Inputs/ScrollContainer"]
-margin_right = 408.0
-margin_bottom = 2000.0
 
 [node name="SalvarAlteracoes" type="Button" parent="Inputs"]
 margin_left = 126.014
@@ -197,7 +195,6 @@ margin_top = 384.0
 margin_right = 386.0
 margin_bottom = 527.0
 custom_colors/font_color = Color( 0.941176, 0.133333, 0.133333, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
 autowrap = true

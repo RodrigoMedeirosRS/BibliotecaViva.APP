@@ -1,9 +1,11 @@
 using Godot;
 using BLL.Utils;
 
+using BLL.Interface;
+
 namespace BLL
 {
-    public class MainBLL
+    public class MainBLL : IMainBLL
     {
         private TabContainer Container { get; set; }
         public MainBLL(TabContainer container)
