@@ -1,2 +1,2 @@
-﻿33113
-/usr/local/myapps/Godot/Godot.3.64
+﻿64223
+C:/Users/edmundo/Documents/Rodrigo/Programas/GodotEngine/Godot_v3.3.3-stable_mono_win64.exe
