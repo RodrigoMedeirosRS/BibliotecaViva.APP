@@ -1,12 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://RES/Mapa.png" type="Texture" id=2]
+[ext_resource path="res://CTRL/TabRastrosCTRL.cs" type="Script" id=3]
 
 [node name="TabRastros" type="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
 margin_right = -187.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,14 +30,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Controladores"]
+[node name="AreaDoMapa" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -7.0
+margin_right = -5.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mapa" type="Sprite" parent="AreaDoMapa"]
+modulate = Color( 1, 1, 1, 0.792157 )
+show_behind_parent = true
+position = Vector2( 438.453, 287.284 )
+texture = ExtResource( 2 )
+
+[node name="Pontos" type="Node2D" parent="AreaDoMapa/Mapa"]
+
+[node name="Button" type="Button" parent="."]
+process_priority = 1
 margin_left = 808.045
-margin_top = -1.7818
+margin_top = -1.0
 margin_right = 828.045
-margin_bottom = 18.2182
+margin_bottom = 19.0
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="Button" to="Controladores" method="_on_Button_button_up"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://Emissao.tscn" type="PackedScene" id=2]
 
 [node name="TabSonar" type="Tabs"]
 anchor_right = 1.0
@@ -27,7 +28,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Controladores"]
+[node name="AreaSonar" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -7.0
+margin_right = -5.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Posicionamento" type="Node2D" parent="AreaSonar"]
+position = Vector2( 209.54, 143.469 )
+
+[node name="Emissao" parent="AreaSonar/Posicionamento" instance=ExtResource( 2 )]
+position = Vector2( 208.652, 145.469 )
+scale = Vector2( 0.55, 0.55 )
+
+[node name="Button" type="Button" parent="."]
 margin_left = 808.045
 margin_top = -1.7818
 margin_right = 828.045
@@ -37,4 +56,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="Button" to="Controladores" method="_on_Button_button_up"]
