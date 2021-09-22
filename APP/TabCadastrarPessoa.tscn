@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://CTRL/TabCadastrarPessoaCTRL.cs" type="Script" id=2]
 
 [node name="TabCadastrarPessoa" type="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
 margin_right = -187.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -37,4 +39,172 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Inputs" type="Control" parent="."]
+margin_left = 19.0
+margin_top = 29.0
+margin_right = 19.0
+margin_bottom = 29.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="LineEdit" parent="Inputs"]
+margin_top = 18.0
+margin_right = 363.0
+margin_bottom = 42.0
+placeholder_text = "Nome"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblNome" type="Label" parent="Inputs/Nome"]
+margin_top = -18.0
+margin_right = 43.0
+margin_bottom = -4.0
+text = "Nome:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sobrenome" type="LineEdit" parent="Inputs"]
+margin_left = 1.0
+margin_top = 69.0
+margin_right = 364.0
+margin_bottom = 93.0
+placeholder_text = "Sobrenome"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblSobrenome" type="Label" parent="Inputs/Sobrenome"]
+margin_top = -18.0
+margin_right = 43.0
+margin_bottom = -4.0
+text = "Sobrenome:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Genero" type="LineEdit" parent="Inputs"]
+margin_left = 1.0
+margin_top = 118.0
+margin_right = 364.0
+margin_bottom = 142.0
+placeholder_text = "Genero"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblGenero" type="Label" parent="Inputs/Genero"]
+margin_top = -18.0
+margin_right = 43.0
+margin_bottom = -4.0
+text = "Sobrenome:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Apelido" type="LineEdit" parent="Inputs"]
+margin_left = 1.0
+margin_top = 166.0
+margin_right = 364.0
+margin_bottom = 190.0
+placeholder_text = "Apelido"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblApelido" type="Label" parent="Inputs/Apelido"]
+margin_top = -18.0
+margin_right = 43.0
+margin_bottom = -4.0
+text = "Apelido:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Latitude" type="LineEdit" parent="Inputs"]
+margin_left = 1.0
+margin_top = 217.0
+margin_right = 175.0
+margin_bottom = 241.0
+placeholder_text = "Latitude"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblGeoLocalizacao" type="Label" parent="Inputs/Latitude"]
+margin_top = -18.0
+margin_right = 43.0
+margin_bottom = -4.0
+text = "GeoLocalizacao"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Longitude" type="LineEdit" parent="Inputs"]
+margin_left = 184.0
+margin_top = 217.0
+margin_right = 362.0
+margin_bottom = 241.0
+placeholder_text = "Longitude"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Inputs"]
+margin_left = 385.0
+margin_top = -2.0
+margin_right = 446.0
+margin_bottom = 12.0
+text = "Relacões:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Inputs/Label"]
+margin_top = 24.0
+margin_right = 408.0
+margin_bottom = 503.0
+color = Color( 0.172549, 0.164706, 0.196078, 0.729412 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Inputs"]
+margin_left = 384.0
+margin_top = 21.0
+margin_right = 792.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inputs/ScrollContainer"]
+margin_right = 408.0
+margin_bottom = 2000.0
+
+[node name="SalvarAlteracoes" type="Button" parent="Inputs"]
+margin_left = 126.014
+margin_top = 305.308
+margin_right = 247.014
+margin_bottom = 331.308
+text = "Salvar Alterações"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Erro" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 384.0
+margin_right = 386.0
+margin_bottom = 527.0
+custom_colors/font_color = Color( 0.941176, 0.133333, 0.133333, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="Inputs/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
