@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    ".gitignore": true,
+    "SAL/obj": true,
+    "DTO/obj": true,
+    "DTO/bin": true,
+    "BLL/obj": true,
+    "BLL/bin": true,
+    ".vscode": true,
+    "SAL/bin/Debug/netstandard2.0": true,
+    "SAL/bin/Debug": true,
+    "SAL/bin": true
+  }
+}
