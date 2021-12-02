@@ -4,7 +4,7 @@
     </ItemGroup>
     <ItemGroup>
         <Reference Include="GodotSharp">
-            <HintPath>../APP/.mono/assemblies/Release/GodotSharp.dll</HintPath>
+            <HintPath>../APP/.mono/assemblies/Debug/GodotSharp.dll</HintPath>
         </Reference>
     </ItemGroup>
     <PropertyGroup>
