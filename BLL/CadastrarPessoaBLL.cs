@@ -1,9 +1,10 @@
+using System;
 using BLL.Interface;
 using BibliotecaViva.DTO;
 
 namespace BLL
 {
-    public class CadastrarPessoaBLL : ICadastrarPessoaBLL
+    public class CadastrarPessoaBLL : ICadastrarPessoaBLL, IDisposable
     {
         public string ValidarPreenchimento(string nome, string sobrenome, string genero, string latitude, string longitude)
         {
@@ -24,6 +25,10 @@ namespace BLL
                     return "Por favor preencher um valor de Latitude e Longitude com valores válidos.";
                 }
             return string.Empty;
+        }
+        public void Dispose()
+        {
+            
         }
     }
 }
