@@ -22,15 +22,32 @@ namespace BLL
             URLCadastroRegistro = Apontamentos.URLApi + "/Registro/Cadastrar";
             SAL = new Requisicao();
         }
-        public string ValidarPreenchimento(string nome, string latlong, string descricao, string conteudo)
+        public string ValidarPreenchimento(string nome, string latlong, string descricao, string conteudo, TipoDTO tipoSelecionado)
         {
             if (string.IsNullOrEmpty(nome))
             	return "Por favor preencher o Nome.";
             if (string.IsNullOrEmpty(descricao))
             	return "Por favor preencher o Descrição.";
-            if (string.IsNullOrEmpty(conteudo))
-            	return "Por favor preencher o Conteúdo.";
+            if (tipoSelecionado.Binario)
+            {
+                try
+                {
+                    if (string.IsNullOrEmpty(conteudo))
+                        throw new Exception("Por favor selecione um arquivo para envio");
+                    ValidarConteudoBinario(conteudo, tipoSelecionado.Extensao);
+                }
+                catch(Exception ex)
+                {
+                    return ex.Message;
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(conteudo))
+            	    return "Por favor preencher o Conteúdo.";
+            }    
             if (!string.IsNullOrEmpty(latlong))
+            {
                 try
                 {
                     var coordenadas = TratadorUtil.ProcessarLatLong(latlong);
@@ -39,11 +56,17 @@ namespace BLL
                 {
                     return "Por favor preencher um valor de Latitude e Longitude com valores válidos.";
                 }
+            }
             return string.Empty;
         }
-        public RegistroDTO PopularRegistro(string nome, string apelido, string latlong, string descricao, string conteudo, OptionButton tipoDropdown, OptionButton idiomaDropdown)
+        public void ValidarConteudoBinario(string caminhoConteudo, string extensao)
         {
-            ValidarPreenchimento(nome, latlong, descricao, conteudo);
+            if(!string.IsNullOrEmpty(caminhoConteudo) && !caminhoConteudo.Contains(extensao))
+                throw new Exception("Arquivo inválido! Por favor selecione um arquivo do tipo " + extensao);
+        }
+        public RegistroDTO PopularRegistro(string nome, string apelido, string latlong, string descricao, string conteudo, TipoDTO tipoSelecionado, OptionButton idiomaDropdown)
+        {
+            ValidarPreenchimento(nome, latlong, descricao, conteudo, tipoSelecionado);
 
             var registro = new RegistroDTO()
             {
@@ -51,7 +74,7 @@ namespace BLL
                 Descricao = descricao,
                 Conteudo = conteudo,
                 Apelido = apelido,
-                Tipo = tipoDropdown.GetItemText(tipoDropdown.Selected),
+                Tipo = tipoSelecionado.Nome,
                 Idioma = idiomaDropdown.GetItemText(idiomaDropdown.Selected)
             };
 

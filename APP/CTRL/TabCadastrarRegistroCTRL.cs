@@ -1,9 +1,13 @@
 using Godot;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 using BLL;
 using BLL.Interface;
 using CTRL.Interface;
+using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Uteis;
 
 namespace CTRL
 {
@@ -18,8 +22,13 @@ namespace CTRL
 		private Label Sucesso { get; set; }
 		private OptionButton Idioma { get ; set; }
 		private OptionButton Tipo { get; set; }
+		private List<TipoDTO> Tipos { get; set; }
+		private TipoDTO TipoSelecionado { get; set; }
 		private TextEdit Descricao { get; set; }
-		private TextEdit Conteudo { get; set; }
+		private TextEdit ConteudoASCII { get; set; }
+		private Button ConteudoBIN { get; set; }
+		private LineEdit CaminhoBIN { get; set; }
+		private FileDialog ModalDeBusca { get; set; }
 		public override void _Ready()
 		{
 			RealizarInjecaoDeDependencias();
@@ -47,13 +56,16 @@ namespace CTRL
 			Erro = GetNode<Label>("./Inputs/Erro");
 			Sucesso = GetNode<Label>("./Inputs/Sucesso");
 			Descricao = GetNode<TextEdit>("./Inputs/Descricao");
-			Conteudo = GetNode<TextEdit>("./Inputs/Conteudo");
+			ConteudoASCII = GetNode<TextEdit>("./Inputs/Conteudo/ConteudoASCII");
+			ConteudoBIN = GetNode<Button>("./Inputs/Conteudo/ConteudoBIN");
+			CaminhoBIN = GetNode<LineEdit>("./Inputs/Conteudo/ConteudoBIN/CaminhoBIN");
+			ModalDeBusca = GetNode<FileDialog>("./ModalDeBusca");
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
 			try
 			{
-				var registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, Conteudo.Text, Tipo, Idioma);
+				var registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma);
 				LimparPreenchimento();
 				Feedback(BLL.CadastrarRegistro(registro), true);
 			}
@@ -70,7 +82,22 @@ namespace CTRL
 		public void PopularDropDowns()
 		{
 			BLLTipo.PopularDropDownIdioma(Idioma);
-			BLLTipo.PopularDropDownTipo(Tipo);
+			Tipos = BLLTipo.PopularDropDownTipo(Tipo);
+			ObterDadosExtensao(Tipo.GetItemText(0));
+		}
+		private void _on_Tipo_item_selected(int index)
+		{
+			ObterDadosExtensao(Tipo.GetItemText(index));
+			AlternarVisibulidadeCampoConteudo();
+		}
+		private void ObterDadosExtensao(string nomeTipo)
+		{
+			TipoSelecionado = (from tipo in Tipos where tipo.Nome == nomeTipo select tipo).FirstOrDefault();
+		}
+		private void AlternarVisibulidadeCampoConteudo()
+		{
+			ConteudoBIN.Visible = TipoSelecionado.Binario;
+			ConteudoASCII.Visible = !TipoSelecionado.Binario;
 		}
 		private void LimparPreenchimento()
 		{
@@ -78,19 +105,51 @@ namespace CTRL
 			Apelido.Text = string.Empty; 
 			LatLong.Text = string.Empty; 
 			Descricao.Text = string.Empty; 
-			Conteudo.Text = string.Empty;
+			ConteudoASCII.Text = string.Empty;
+			CaminhoBIN.Text = string.Empty;
+		}
+		private void _on_CaminhoBIN_text_changed(String new_text)
+		{
+			ValidarArquivoBinario(new_text);
+		}
+		private void _on_ModalDeBusca_file_selected(String path)
+		{
+			CaminhoBIN.Text = path;
+		}
+		private void ValidarArquivoBinario(string new_text)
+		{
+			try
+			{
+				BLL.ValidarConteudoBinario(new_text, TipoSelecionado.Extensao);
+				Erro.Text = string.Empty;
+			}
+			catch (Exception ex)
+			{
+				Feedback(ex.Message, false);
+			}
+		}
+		private void _on_ConteudoBIN_button_up()
+		{
+			ModalDeBusca.Popup_();
 		}
 		public void FecharCTRL()
 		{
 			BLL.Dispose();
+			BLLTipo.Dispose();
+			TipoSelecionado.Dispose();
 			Nome.QueueFree();
 			Apelido.QueueFree();
 			LatLong.QueueFree();
 			Idioma.QueueFree();
 			Tipo.QueueFree();
 			Erro.QueueFree();
+			Sucesso.QueueFree();
 			Descricao.QueueFree();
-			Conteudo.QueueFree();
+			ConteudoASCII.QueueFree();
+			ConteudoBIN.QueueFree();
+			CaminhoBIN.QueueFree();
+			ModalDeBusca.QueueFree();
+			Desalocador.DesalocarLista<TipoDTO>(Tipos);
 			QueueFree();
 		}
 	}

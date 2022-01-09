@@ -36,22 +36,29 @@ namespace BLL
         {
             return SAL.ExecutarPost<string, List<IdiomaDTO>>(URLConsultarIdioma, "Consultar");
         }
-        public void PopularDropDownTipo(OptionButton dropdown)
+        public List<TipoDTO> PopularDropDownTipo(OptionButton dropdown)
         {
-            PopularDropdown<TipoDTO>(ConsultarTipos(), dropdown);
+            var tipos = ConsultarTipos();
+            PopularDropdown<TipoDTO>(tipos, dropdown);
+            return tipos;
         }
-        public void PopularDropDownTipoRelacao(OptionButton dropdown)
+        public List<TipoRelacaoDTO> PopularDropDownTipoRelacao(OptionButton dropdown)
         {
-            PopularDropdown<TipoRelacaoDTO>(ConsultarTiposRelacao(), dropdown);
+            var tiposRelacao = ConsultarTiposRelacao();
+            PopularDropdown<TipoRelacaoDTO>(tiposRelacao, dropdown);
+            return tiposRelacao;
         }
-        public void PopularDropDownIdioma(OptionButton dropdown)
+        public List<IdiomaDTO> PopularDropDownIdioma(OptionButton dropdown)
         {
-            PopularDropdown<IdiomaDTO>(ConsultarIdiomas(), dropdown); 
+            var idiomas = ConsultarIdiomas();
+            PopularDropdown<IdiomaDTO>(idiomas, dropdown);
+            return idiomas;
         }
         private void PopularDropdown<T>(List<T> itens, OptionButton dropdown) where T : INomeado
         {
             foreach(var item in itens)
                 dropdown.AddItem(item.Nome);
+            dropdown.Selected = 0;
         }
 
         public void Dispose()

@@ -153,7 +153,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lblConteudo" type="Label" parent="Inputs"]
+[node name="Conteudo" type="Control" parent="Inputs"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblConteudo" type="Label" parent="Inputs/Conteudo"]
 margin_left = 386.0
 margin_top = -1.11224
 margin_right = 453.0
@@ -166,7 +171,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conteudo" type="TextEdit" parent="Inputs"]
+[node name="ConteudoASCII" type="TextEdit" parent="Inputs/Conteudo"]
+visible = false
 margin_left = 386.0
 margin_top = 17.0
 margin_right = 792.0
@@ -176,6 +182,22 @@ wrap_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ConteudoBIN" type="Button" parent="Inputs/Conteudo"]
+margin_left = 664.0
+margin_top = 18.0
+margin_right = 782.0
+margin_bottom = 42.0
+text = "Procurar Arquivo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CaminhoBIN" type="LineEdit" parent="Inputs/Conteudo/ConteudoBIN"]
+margin_left = -278.0
+margin_right = -4.0
+margin_bottom = 24.0
+placeholder_text = "Caminho do Arquivo"
 
 [node name="Label" type="Label" parent="Inputs"]
 margin_left = 385.0
@@ -241,5 +263,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ModalDeBusca" type="FileDialog" parent="."]
+margin_left = 446.0
+margin_top = 36.0
+margin_right = 771.0
+margin_bottom = 404.0
+window_title = "Abrir um Arquivo"
+mode = 0
+access = 2
+current_dir = "/Users/edmundo/Documents/Rodrigo/Projetos/BibliotecaViva.APP/APP"
+current_path = "/Users/edmundo/Documents/Rodrigo/Projetos/BibliotecaViva.APP/APP/"
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="item_selected" from="Inputs/Tipo" to="." method="_on_Tipo_item_selected"]
+[connection signal="button_up" from="Inputs/Conteudo/ConteudoBIN" to="." method="_on_ConteudoBIN_button_up"]
+[connection signal="text_changed" from="Inputs/Conteudo/ConteudoBIN/CaminhoBIN" to="." method="_on_CaminhoBIN_text_changed"]
 [connection signal="button_up" from="Inputs/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
+[connection signal="file_selected" from="ModalDeBusca" to="." method="_on_ModalDeBusca_file_selected"]

@@ -11,9 +11,9 @@ namespace BLL.Interface
         List<TipoDTO> ConsultarTipos();
         List<TipoRelacaoDTO> ConsultarTiposRelacao();
         List<IdiomaDTO> ConsultarIdiomas();
-        void PopularDropDownTipo(OptionButton dropdown);
-        void PopularDropDownTipoRelacao(OptionButton dropdown);
-        void PopularDropDownIdioma(OptionButton dropdown);
+        List<TipoDTO> PopularDropDownTipo(OptionButton dropdown);
+        List<TipoRelacaoDTO> PopularDropDownTipoRelacao(OptionButton dropdown);
+        List<IdiomaDTO> PopularDropDownIdioma(OptionButton dropdown);
 
         void Dispose();
     }
