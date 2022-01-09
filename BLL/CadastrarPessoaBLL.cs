@@ -39,18 +39,24 @@ namespace BLL
         public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong)
         {
             ValidarPreenchimento(nome, sobrenome, genero, latlong);
-            var coordenadas = TratadorUtil.ProcessarLatLong(latlong);
 
-            return new PessoaDTO()
+            var pessoa = new PessoaDTO()
             {
                 Nome = nome,
                 Sobrenome = sobrenome,
                 Apelido = apelido,
                 NomeSocial = string.Empty,
-                Genero = genero,
-                Latitude = coordenadas[0],
-                Longitude = coordenadas[1]
+                Genero = genero
             };
+
+            return string.IsNullOrEmpty(latlong) ? pessoa : PopularCoordenadas(pessoa, latlong);
+        }
+        private PessoaDTO PopularCoordenadas(PessoaDTO pessoa, string latlong)
+        {
+            var coordenadas = TratadorUtil.ProcessarLatLong(latlong);
+            pessoa.Latitude = coordenadas[0];
+            pessoa.Longitude = coordenadas[1];
+            return pessoa;
         }
         public string CadastrarPessoa(PessoaDTO pessoa)
         {    
