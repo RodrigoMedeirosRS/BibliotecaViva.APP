@@ -66,6 +66,5 @@ namespace CTRL
 			BLL.Dispose();
 			QueueFree();
 		}
-
 	}
 }

@@ -13,6 +13,14 @@
     "APP/.mono": true,
     "APP\\mono_crash.21acb2c4bb.1.json": true,
     "APP\\mono_crash.21acb2c4bb.0.json": true,
-    "APP\\MSBuild_Logs": true
+    "APP\\MSBuild_Logs": true,
+    "BibliotecaViva.LIB\\SAL\\bin\\Debug\\netstandard2.0": true,
+    "BibliotecaViva.LIB\\SAL\\bin": true,
+    "BibliotecaViva.LIB\\SAL\\obj": true,
+    "BibliotecaViva.LIB\\DTO\\bin": true,
+    "BibliotecaViva.LIB\\DTO\\obj": true,
+    "BibliotecaViva.LIB\\.vscode": true,
+    "BibliotecaViva.LIB\\BLL\\bin": true,
+    "BibliotecaViva.LIB\\BLL\\obj": true
   }
 }
