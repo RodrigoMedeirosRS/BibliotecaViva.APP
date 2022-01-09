@@ -15,6 +15,7 @@ namespace CTRL
 		private LineEdit Apelido { get; set; }
 		private LineEdit LatLong { get ; set; }
 		private Label Erro { get; set; }
+		private Label Sucesso { get; set; }
 		private OptionButton Idioma { get ; set; }
 		private OptionButton Tipo { get; set; }
 		private TextEdit Descricao { get; set; }
@@ -39,22 +40,45 @@ namespace CTRL
 		private void PopularNodes()
 		{
 			Nome = GetNode<LineEdit>("./Inputs/Nome");
-			Apelido = GetNode<LineEdit>("./Inputs/Nome");
+			Apelido = GetNode<LineEdit>("./Inputs/Apelido");
 			LatLong = GetNode<LineEdit>("./Inputs/LatLong");
 			Idioma = GetNode<OptionButton>("./Inputs/Idioma");
 			Tipo = GetNode<OptionButton>("./Inputs/Tipo");
 			Erro = GetNode<Label>("./Inputs/Erro");
+			Sucesso = GetNode<Label>("./Inputs/Sucesso");
 			Descricao = GetNode<TextEdit>("./Inputs/Descricao");
 			Conteudo = GetNode<TextEdit>("./Inputs/Conteudo");
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
-			Erro.Text = BLL.ValidarPreenchimento(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, Conteudo.Text);
+			try
+			{
+				var registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, Conteudo.Text, Tipo, Idioma);
+				LimparPreenchimento();
+				Feedback(BLL.CadastrarRegistro(registro), true);
+			}
+			catch(Exception ex)
+			{
+				Feedback(ex.Message, false);
+			}
+		}
+		private void Feedback(string mensagem, bool sucesso)
+		{
+			Sucesso.Text = sucesso ? mensagem : string.Empty;
+			Erro.Text = sucesso ? string.Empty : mensagem;
 		}
 		public void PopularDropDowns()
 		{
 			BLLTipo.PopularDropDownIdioma(Idioma);
 			BLLTipo.PopularDropDownTipo(Tipo);
+		}
+		private void LimparPreenchimento()
+		{
+			Nome.Text = string.Empty;
+			Apelido.Text = string.Empty; 
+			LatLong.Text = string.Empty; 
+			Descricao.Text = string.Empty; 
+			Conteudo.Text = string.Empty;
 		}
 		public void FecharCTRL()
 		{

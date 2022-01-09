@@ -224,6 +224,22 @@ align = 1
 valign = 1
 autowrap = true
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sucesso" type="Label" parent="Inputs"]
+margin_top = 397.0
+margin_right = 359.0
+margin_bottom = 508.0
+custom_colors/font_color = Color( 0.137255, 0.764706, 0.129412, 1 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="button_up" from="Inputs/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
