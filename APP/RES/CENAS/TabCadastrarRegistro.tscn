@@ -115,31 +115,21 @@ margin_right = 49.0
 margin_bottom = -6.0
 text = "Tipo:"
 
-[node name="Latitude" type="LineEdit" parent="Inputs"]
+[node name="LatLong" type="LineEdit" parent="Inputs"]
 margin_left = 1.0
 margin_top = 169.0
-margin_right = 175.0
+margin_right = 364.0
 margin_bottom = 193.0
-placeholder_text = "Latitude"
+placeholder_text = "Latitude, Longitude"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lblGeoLocalizacao" type="Label" parent="Inputs/Latitude"]
+[node name="lblGeoLocalizacao" type="Label" parent="Inputs/LatLong"]
 margin_top = -18.0
 margin_right = 43.0
 margin_bottom = -4.0
-text = "GeoLocalizacao:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Longitude" type="LineEdit" parent="Inputs"]
-margin_left = 184.0
-margin_top = 169.0
-margin_right = 362.0
-margin_bottom = 193.0
-placeholder_text = "Longitude"
+text = "GeoLocalização:"
 __meta__ = {
 "_edit_use_anchors_": false
 }

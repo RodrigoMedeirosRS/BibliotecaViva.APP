@@ -6,7 +6,7 @@ using BibliotecaViva.DTO;
 
 namespace BLL.Interface
 {
-    public interface IConsultarTipo
+    public interface IConsultarTipoBLL
     {
         List<TipoDTO> ConsultarTipos();
         List<TipoRelacaoDTO> ConsultarTiposRelacao();

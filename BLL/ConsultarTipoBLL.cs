@@ -11,13 +11,13 @@ using BibliotecaViva.SAL.Interface;
 
 namespace BLL
 {
-    public class ConsultarTipo : IConsultarTipo, IDisposable
+    public class ConsultarTipoBLL : IConsultarTipoBLL, IDisposable
     {
         private IRequisicao SAL { get; set; }
         private string URLConsultarIdioma { get; set; }
         private string URLConsultarTipo { get; set; }
         private string URLConsultarTipoRelacao { get; set; }
-        public ConsultarTipo()
+        public ConsultarTipoBLL()
         {
             SAL = new Requisicao();
             URLConsultarIdioma = Apontamentos.URLApi + "/Tipo/ConsultarIdiomas";

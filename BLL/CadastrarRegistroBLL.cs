@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using BLL.Interface;
+using BibliotecaViva.BLL.Utils;
 
 namespace BLL
 {
     public class CadastrarRegistroBLL : ICadastrarRegistroBLL, IDisposable
     {
-        public string ValidarPreenchimento(string nome, string apelido, string latitude, string longitude, string descricao, string conteudo)
+        public string ValidarPreenchimento(string nome, string apelido, string latlong, string descricao, string conteudo)
         {
             if (string.IsNullOrEmpty(nome))
             	return "Por favor preencher o Nome.";
@@ -19,11 +20,10 @@ namespace BLL
             	return "Por favor preencher o Descrição.";
             if (string.IsNullOrEmpty(conteudo))
             	return "Por favor preencher o Conteúdo.";
-            if (!string.IsNullOrEmpty(latitude) || !string.IsNullOrEmpty(longitude))
+            if (!string.IsNullOrEmpty(latlong))
                 try
                 {
-                    var lat = double.Parse(latitude);
-                    var lon = double.Parse(longitude);
+                    var coordenadas = TratadorUtil.ProcessarLatLong(latlong);
                 }
                 catch
                 {
