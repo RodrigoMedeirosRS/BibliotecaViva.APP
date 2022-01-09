@@ -1,10 +1,11 @@
 using Godot;
+using System;
 
 using BLL.Interface;
 
 namespace BLL
 {
-    public class MapaBLL : IMapaBLL
+    public class MapaBLL : IMapaBLL, IDisposable
     {
         public void VerificarMouseParado(Vector2 mouseMovementAtual, Vector2 mouseMovementAnterior)
         {
@@ -39,5 +40,10 @@ namespace BLL
 				mapa.MoveLocalY(mouseMovement.y);
 			}
 		}
+		
+		public void Dispose()
+        {
+            
+        }
     }
 }

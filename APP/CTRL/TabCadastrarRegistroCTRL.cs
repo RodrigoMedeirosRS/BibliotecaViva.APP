@@ -3,10 +3,11 @@ using System;
 
 using BLL;
 using BLL.Interface;
+using CTRL.Interface;
 
 namespace CTRL
 {
-	public class TabCadastrarRegistroCTRL : Tabs
+	public class TabCadastrarRegistroCTRL : Tabs, IDisposableCTRL
 	{
 		private ICadastrarRegistroBLL BLL { get; set; }
 		private LineEdit Nome { get; set; }
@@ -22,11 +23,17 @@ namespace CTRL
 		{
 			RealizarInjecaoDeDependencias();
 			PopularNodes();
+			DesativarFuncoesDeAltoProcessamento();
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
 			BLL = new CadastrarRegistroBLL();
 		}
+		private void DesativarFuncoesDeAltoProcessamento()
+		{
+			SetPhysicsProcess(false);
+			SetProcess(false);
+		}		
 		private void PopularNodes()
 		{
 			Nome = GetNode<LineEdit>("./Inputs/Nome");
@@ -43,6 +50,19 @@ namespace CTRL
 		{
 			Erro.Text = BLL.ValidarPreenchimento(Nome.Text, Apelido.Text, Latitude.Text, Longitude.Text, Descricao.Text, Conteudo.Text);
 		}
-
+		public void FecharCTRL()
+		{
+			BLL.Dispose();
+			Nome.QueueFree();
+			Apelido.QueueFree();
+			Latitude.QueueFree();
+			Longitude.QueueFree();
+			Idioma.QueueFree();
+			Tipo.QueueFree();
+			Erro.QueueFree();
+			Descricao.QueueFree();
+			Conteudo.QueueFree();
+			QueueFree();
+		}
 	}
 }

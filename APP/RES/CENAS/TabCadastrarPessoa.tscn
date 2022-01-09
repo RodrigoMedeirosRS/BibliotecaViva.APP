@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
-[ext_resource path="res://CTRL/TabCadastrarPessoaCTRL.cs" type="Script" id=2]
+[ext_resource path="res://CTRL/TabCadastrarPessoaCTRL.cs" type="Script" id=1]
+[ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
 
 [node name="TabCadastrarPessoa" type="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
 margin_right = -187.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,9 +126,9 @@ __meta__ = {
 [node name="Latitude" type="LineEdit" parent="Inputs"]
 margin_left = 1.0
 margin_top = 217.0
-margin_right = 175.0
+margin_right = 364.0
 margin_bottom = 241.0
-placeholder_text = "Latitude"
+placeholder_text = "Latitude, Longitude"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -138,16 +138,6 @@ margin_top = -18.0
 margin_right = 43.0
 margin_bottom = -4.0
 text = "GeoLocalização:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Longitude" type="LineEdit" parent="Inputs"]
-margin_left = 184.0
-margin_top = 217.0
-margin_right = 362.0
-margin_bottom = 241.0
-placeholder_text = "Longitude"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -185,6 +175,20 @@ margin_top = 305.308
 margin_right = 247.014
 margin_bottom = 331.308
 text = "Salvar Alterações"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sucesso" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 384.0
+margin_right = 386.0
+margin_bottom = 527.0
+custom_colors/font_color = Color( 0.141176, 0.941176, 0.133333, 1 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

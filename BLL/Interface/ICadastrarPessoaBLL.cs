@@ -1,7 +1,12 @@
+using BibliotecaViva.DTO;
+
 namespace BLL.Interface
 {
     public interface ICadastrarPessoaBLL
     {
-        string ValidarPreenchimento(string nome, string sobrenome, string genero, string latitude, string longitude);
+        PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong);
+        string CadastrarPessoa(PessoaDTO pessoa);
+        
+        void Dispose();
     }
 }

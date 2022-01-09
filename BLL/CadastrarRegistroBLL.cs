@@ -7,7 +7,7 @@ using BLL.Interface;
 
 namespace BLL
 {
-    public class CadastrarRegistroBLL : ICadastrarRegistroBLL
+    public class CadastrarRegistroBLL : ICadastrarRegistroBLL, IDisposable
     {
         public string ValidarPreenchimento(string nome, string apelido, string latitude, string longitude, string descricao, string conteudo)
         {
@@ -30,6 +30,10 @@ namespace BLL
                     return "Por favor preencher um valor de Latitude e Longitude com valores válidos.";
                 }
             return string.Empty;
+        }
+        public void Dispose()
+        {
+            
         }
     }
 }
