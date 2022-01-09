@@ -1,0 +1,3 @@
+[submodule "BibliotecaViva.LIB"]
+	path = BibliotecaViva.LIB
+	url = https://github.com/RodrigoMedeirosRS/BibliotecaViva.LIB.git

@@ -4,10 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APP", "APP.csproj", "{8C4C4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "..\BLL\BLL.csproj", "{143369AD-B9C4-4AAF-8C55-29C1CD8717EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "..\DTO\DTO.csproj", "{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAL", "..\SAL\SAL.csproj", "{89BA54FA-D3F4-4236-AE01-7B2025289D99}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,17 +23,5 @@ Global
 		{143369AD-B9C4-4AAF-8C55-29C1CD8717EF}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
 		{143369AD-B9C4-4AAF-8C55-29C1CD8717EF}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
 		{143369AD-B9C4-4AAF-8C55-29C1CD8717EF}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
-		{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
-		{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
-		{55E7647C-FEE3-46F4-B689-C3A8D4BE52E7}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
-		{89BA54FA-D3F4-4236-AE01-7B2025289D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89BA54FA-D3F4-4236-AE01-7B2025289D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89BA54FA-D3F4-4236-AE01-7B2025289D99}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89BA54FA-D3F4-4236-AE01-7B2025289D99}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
-		{89BA54FA-D3F4-4236-AE01-7B2025289D99}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
-		{89BA54FA-D3F4-4236-AE01-7B2025289D99}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

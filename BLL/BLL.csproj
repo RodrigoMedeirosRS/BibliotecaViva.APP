@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
-        <ProjectReference Include="..\SAL\SAL.csproj"/>
+        <ProjectReference Include="..\SAL\SAL.csproj" />
+        <ProjectReference Include="..\BibliotecaViva.LIB\DTO\BibliotecaViva.DTO.csproj" />
+        <ProjectReference Include="..\BibliotecaViva.LIB\SAL\BibliotecaViva.SAL.csproj" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="GodotSharp">
