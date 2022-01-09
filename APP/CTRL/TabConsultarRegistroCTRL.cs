@@ -13,21 +13,21 @@ namespace CTRL
 		private OptionButton Idioma { get; set; }
 		private Label Erro { get ; set; }
 		public override void _Ready()
-        {
+		{
 			RealizarInjecaoDeDependencias();
-            PopularNodes();
-        }
+			PopularNodes();
+		}
 		private void RealizarInjecaoDeDependencias()
 		{
 			BLL = new ConsultarRegistroBLL();
 		}
-        private void PopularNodes()
-        {
-            Nome = GetNode<LineEdit>("./Pesquisa/Nome");
-            Erro = GetNode<Label>("./Dados/Erro");
-        }
+		private void PopularNodes()
+		{
+			Nome = GetNode<LineEdit>("./Pesquisa/Nome");
+			Erro = GetNode<Label>("./Dados/Erro");
+		}
 
-        private void _on_Pesquisar_button_up()
+		private void _on_Pesquisar_button_up()
 		{
 			Erro.Text = BLL.ValidarPreenchimento(Nome.Text, Nome.Text);
 		}

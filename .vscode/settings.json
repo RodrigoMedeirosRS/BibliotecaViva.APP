@@ -10,6 +10,9 @@
     "SAL/bin/Debug": true,
     "SAL/bin": true,
     "APP/.import": true,
-    "APP/.mono": true
+    "APP/.mono": true,
+    "APP\\mono_crash.21acb2c4bb.1.json": true,
+    "APP\\mono_crash.21acb2c4bb.0.json": true,
+    "APP\\MSBuild_Logs": true
   }
 }
