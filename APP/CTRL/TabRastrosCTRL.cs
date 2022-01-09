@@ -3,10 +3,11 @@ using System;
 
 using BLL;
 using BLL.Interface;
+using CTRL.Interface;
 
 namespace CTRL
 {
-	public class TabRastrosCTRL : Tabs
+	public class TabRastrosCTRL : Tabs, IDisposableCTRL
 	{
 		private Sprite Mapa { get ; set; }
 		private IMapaBLL BLL { get; set; }
@@ -16,6 +17,11 @@ namespace CTRL
 		{
 			PopularNodes();
 			RealizarInjecaoDeDependencias();
+		}
+		private void DesativarFuncoesDeAltoProcessamento()
+		{
+			SetPhysicsProcess(false);
+			SetProcess(false);
 		}
 		public void PopularNodes()
 		{
@@ -29,13 +35,26 @@ namespace CTRL
 		}
 		public override void _Process(float delta)
 		{
-			BLL.VerificarMouseParado(MouseMovementAtual, MouseMovementAnterior);
-			BLL.ControlarJanela(Mapa, MouseMovementAtual, delta);
+			try
+			{
+				BLL.VerificarMouseParado(MouseMovementAtual, MouseMovementAnterior);
+				BLL.ControlarJanela(Mapa, MouseMovementAtual, delta);
+			}
+			catch(Exception ex)
+			{
+				GD.Print(ex.Message);
+			}
 		}
 		public override void _Input(InputEvent @event)
 		{
 			if (@event.GetType().ToString() == "Godot.InputEventMouseMotion")
 				MouseMovementAtual = (@event as InputEventMouseMotion).Relative;
+		}
+		public void FecharCTRL()
+		{
+			BLL.Dispose();
+			Mapa.QueueFree();
+			QueueFree();
 		}
 	}
 }

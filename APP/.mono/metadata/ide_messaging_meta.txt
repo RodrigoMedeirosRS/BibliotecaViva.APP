@@ -1,2 +1,2 @@
-﻿60120
+﻿50672
 C:/godot/godot.exe

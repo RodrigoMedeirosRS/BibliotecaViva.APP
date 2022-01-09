@@ -1,12 +1,12 @@
 using Godot;
-using System;
 
 using BLL;
 using BLL.Interface;
+using CTRL.Interface;
 
 namespace CTRL
 {
-	public class TabConsultarPessoaCTRL : Tabs
+	public class TabConsultarPessoaCTRL : Tabs, IDisposableCTRL
 	{
 		private IConsultarPessoaBLL BLL { get; set; }
 		private LineEdit Nome { get; set; }
@@ -16,11 +16,16 @@ namespace CTRL
 		{
 			RealizarInjecaoDeDependencias();
 			PopularNodes();
+			DesativarFuncoesDeAltoProcessamento();
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
-			BLL = new ConsultarPessoaBLL();
-			
+			BLL = new ConsultarPessoaBLL();	
+		}
+		private void DesativarFuncoesDeAltoProcessamento()
+		{
+			SetPhysicsProcess(false);
+			SetProcess(false);
 		}
 		private void PopularNodes()
 		{
@@ -31,6 +36,14 @@ namespace CTRL
 		private void _on_Pesquisar_button_up()
 		{
 			Erro.Text = BLL.ValidarPreenchimento(Nome.Text, Sobrenome.Text);
+		}
+		public void FecharCTRL()
+		{
+			BLL.Dispose();
+			Nome.QueueFree();
+			Sobrenome.QueueFree();
+			Erro.QueueFree();
+			QueueFree();
 		}
 	}
 }

@@ -22,13 +22,17 @@ namespace CTRL
 		{
 			RealizarInjecaoDeDependencias();
 			PopularNodes();
+			DesativarFuncoesDeAltoProcessamento();
 		}
-
 		private void RealizarInjecaoDeDependencias()
 		{
 			BLL = new CadastrarPessoaBLL();
 		}
-
+		private void DesativarFuncoesDeAltoProcessamento()
+		{
+			SetPhysicsProcess(false);
+			SetProcess(false);
+		}
 		private void PopularNodes()
 		{
 			Nome = GetNode<LineEdit>("./Inputs/Nome");
@@ -39,10 +43,21 @@ namespace CTRL
 			Longitude = GetNode<LineEdit>("./Inputs/Longitude");
 			Erro = GetNode<Label>("./Erro");
 		}
-
 		private void _on_SalvarAlteracoes_button_up()
 		{
 			Erro.Text = BLL.ValidarPreenchimento(Nome.Text, Sobrenome.Text, Genero.Text, Latitude.Text, Longitude.Text);
+		}
+		public void FecharCTRL()
+		{
+			BLL.Dispose();
+			Nome.QueueFree();
+			Sobrenome.QueueFree();
+			Genero.QueueFree();
+			Apelido.QueueFree();
+			Latitude.QueueFree();
+			Longitude.QueueFree();
+			Erro.QueueFree();
+			QueueFree();
 		}
 	}
 }
