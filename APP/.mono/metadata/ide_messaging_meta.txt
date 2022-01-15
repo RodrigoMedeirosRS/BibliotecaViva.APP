@@ -1,2 +1,2 @@
-﻿63216
-C:/godot/godot.exe
+﻿36657
+/usr/local/myapps/Godot/Godot.3.64
