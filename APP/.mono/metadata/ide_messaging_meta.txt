@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 ﻿36657
+=======
+﻿36863
+>>>>>>> develop
 /usr/local/myapps/Godot/Godot.3.64
