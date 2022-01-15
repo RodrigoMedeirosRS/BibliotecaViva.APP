@@ -1,4 +1,4 @@
-namespace BLL
+namespace BibliotecaViva.BLL.Interface
 {
     public interface IConsultarRegistroBLL
     {

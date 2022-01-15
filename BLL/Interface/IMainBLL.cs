@@ -1,4 +1,4 @@
-namespace BLL.Interface
+namespace BibliotecaViva.BLL.Interface
 {
     public interface IMainBLL
     {

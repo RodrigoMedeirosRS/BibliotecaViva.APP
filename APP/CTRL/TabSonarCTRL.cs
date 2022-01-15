@@ -1,10 +1,11 @@
 using Godot;
+using System;
 
 using BibliotecaViva.CTRL.Interface;
 
-namespace BibliotecaViva.CTRL
+namespace CTRL
 {
-	public class ControladorTabCTRL : Control
+	public class TabSonarCTRL : Tabs, IDisposableCTRL
 	{
 		public override void _Ready()
 		{
@@ -15,10 +16,9 @@ namespace BibliotecaViva.CTRL
 			SetPhysicsProcess(false);
 			SetProcess(false);
 		}
-		private void _on_Button_button_up()
+		public void FecharCTRL()
 		{
-			(GetParent() as IDisposableCTRL).FecharCTRL();
 			QueueFree();
 		}
-	}  
+	}
 }

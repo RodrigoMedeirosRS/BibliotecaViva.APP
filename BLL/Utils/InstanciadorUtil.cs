@@ -1,6 +1,6 @@
 using Godot;
 
-namespace BLL.Utils
+namespace BibliotecaViva.BLL.Utils
 {
     public static class InstanciadorUtil
     {
@@ -28,18 +28,22 @@ namespace BLL.Utils
         public static void InstanciarTab(TabContainer container, string nomeTab, string caminhoTab, bool permitirDuplicada)
         {
             var cena = InstanciadorUtil.CarregarCena(caminhoTab);
-            if (!VerificarTabDuplicada(container, nomeTab) || permitirDuplicada)
+            if (!VerificarTabDuplicada(container, nomeTab, permitirDuplicada) || permitirDuplicada)
             {
                 var tab = InstanciadorUtil.InstanciarObjeto(container, cena, null);
                 tab.Name = nomeTab;
                 container.CurrentTab = container.GetChildCount() -1;   
             }             
         }
-        private static bool VerificarTabDuplicada(Node container, string nomeTab)
+        private static bool VerificarTabDuplicada(TabContainer container, string nomeTab, bool permitirDuplicada)
         {
-            foreach(var node in container.GetChildren())
-                if ((node as Node).Name == nomeTab)
+            for(int i = 0; i < container.GetChildCount(); i++)
+                if ((container.GetChildren()[i] as Node).Name == nomeTab)
+                {
+                    if(!permitirDuplicada)
+                        container.CurrentTab = i;
                     return true;
+                }
             return false;
         }
     }

@@ -1,7 +1,7 @@
 using System;
-using BLL.Interface;
+using BibliotecaViva.BLL.Interface;
 
-namespace BLL
+namespace BibliotecaViva.BLL
 {
     public class ConsultarPessoaBLL : IConsultarPessoaBLL, IDisposable
     {

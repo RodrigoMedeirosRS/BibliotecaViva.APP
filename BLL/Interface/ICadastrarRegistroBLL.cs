@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
 
-namespace BLL.Interface
+namespace BibliotecaViva.BLL.Interface
 {
     public interface ICadastrarRegistroBLL
     {
