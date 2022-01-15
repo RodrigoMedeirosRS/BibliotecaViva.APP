@@ -7,7 +7,8 @@ using BLL;
 using BLL.Interface;
 using CTRL.Interface;
 using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Uteis;
+using BibliotecaViva.DTO.Utils;
+using BibliotecaViva.BLL.Utils;
 
 namespace CTRL
 {
