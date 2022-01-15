@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using BLL.Utils;
-using BLL.Interface;
+using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.DTO;
 using BibliotecaViva.SAL;
-using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.SAL.Interface;
 
-namespace BLL
+namespace BibliotecaViva.BLL
 {
     public class CadastrarRegistroBLL : ICadastrarRegistroBLL, IDisposable
     {

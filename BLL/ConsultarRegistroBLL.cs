@@ -1,5 +1,8 @@
 using System;
-namespace BLL
+
+using BibliotecaViva.BLL.Interface;
+
+namespace BibliotecaViva.BLL
 {
     public class ConsultarRegistroBLL : IConsultarRegistroBLL, IDisposable
     {

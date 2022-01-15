@@ -1,4 +1,4 @@
-namespace CTRL.Interface
+namespace BibliotecaViva.CTRL.Interface
 {
     public interface IDisposableCTRL
     {

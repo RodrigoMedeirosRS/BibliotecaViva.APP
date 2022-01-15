@@ -1,7 +1,11 @@
 using Godot;
 using System;
 
-namespace CTRL
+using BibliotecaViva.DTO;
+using BibliotecaViva.BLL;
+using BibliotecaViva.BLL.Interface;
+
+namespace BibliotecaViva.CTRL
 {
 	public class PesquisaCTRL : Control
 	{

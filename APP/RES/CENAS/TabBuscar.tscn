@@ -146,7 +146,7 @@ clip_text = true
 
 [node name="ColorRect" type="ColorRect" parent="Dados"]
 margin_left = 16.0
-margin_top = 82.0
+margin_top = 62.0
 margin_right = 818.0
 margin_bottom = 544.0
 color = Color( 0.172549, 0.164706, 0.196078, 0.729412 )

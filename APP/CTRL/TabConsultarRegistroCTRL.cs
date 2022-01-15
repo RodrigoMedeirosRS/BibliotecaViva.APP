@@ -1,8 +1,8 @@
 using Godot;
 
-using BLL;
-using BLL.Interface;
-using CTRL.Interface;
+using BibliotecaViva.BLL;
+using BibliotecaViva.BLL.Interface;
+using BibliotecaViva.CTRL.Interface;
 
 namespace CTRL
 {

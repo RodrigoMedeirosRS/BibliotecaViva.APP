@@ -2,11 +2,11 @@ using Godot;
 using System;
 using System.Linq;
 
-using BLL;
-using BLL.Interface;
+using BibliotecaViva.BLL;
+using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.DTO;
 
-namespace CTRL
+namespace BibliotecaViva.CTRL
 {
 	public class TabCadastrarPessoaCTRL : Tabs
 	{

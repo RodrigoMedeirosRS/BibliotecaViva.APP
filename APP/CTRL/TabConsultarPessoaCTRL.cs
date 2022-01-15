@@ -1,10 +1,10 @@
 using Godot;
 
-using BLL;
-using BLL.Interface;
-using CTRL.Interface;
+using BibliotecaViva.BLL;
+using BibliotecaViva.BLL.Interface;
+using BibliotecaViva.CTRL.Interface;
 
-namespace CTRL
+namespace BibliotecaViva.CTRL
 {
 	public class TabConsultarPessoaCTRL : Tabs, IDisposableCTRL
 	{

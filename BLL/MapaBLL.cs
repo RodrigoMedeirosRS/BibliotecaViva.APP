@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-using BLL.Interface;
+using BibliotecaViva.BLL.Interface;
 
-namespace BLL
+namespace BibliotecaViva.BLL
 {
     public class MapaBLL : IMapaBLL, IDisposable
     {

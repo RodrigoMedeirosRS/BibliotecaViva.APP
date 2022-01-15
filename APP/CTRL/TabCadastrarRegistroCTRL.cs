@@ -3,14 +3,14 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-using BLL;
-using BLL.Interface;
-using CTRL.Interface;
+using BibliotecaViva.BLL;
+using BibliotecaViva.BLL.Interface;
+using BibliotecaViva.CTRL.Interface;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Utils;
 using BibliotecaViva.BLL.Utils;
 
-namespace CTRL
+namespace BibliotecaViva.CTRL
 {
 	public class TabCadastrarRegistroCTRL : Tabs, IDisposableCTRL
 	{

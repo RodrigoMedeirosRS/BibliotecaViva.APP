@@ -1,6 +1,6 @@
 using Godot;
 
-namespace CTRL
+namespace BibliotecaViva.CTRL
 {
 	public class ControladorTabCTRL : Control
 	{
