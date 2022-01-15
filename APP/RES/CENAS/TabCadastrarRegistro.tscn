@@ -21,9 +21,9 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="Controladores"]
 margin_left = -0.330322
-margin_top = -5.33032
+margin_top = -8.33032
 margin_right = 836.67
-margin_bottom = 574.67
+margin_bottom = 571.67
 color = Color( 1, 1, 1, 0.0823529 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,8 +271,8 @@ margin_bottom = 404.0
 window_title = "Abrir um Arquivo"
 mode = 0
 access = 2
-current_dir = "/Users/edmundo/Documents/Rodrigo/Projetos/BibliotecaViva.APP/APP"
-current_path = "/Users/edmundo/Documents/Rodrigo/Projetos/BibliotecaViva.APP/APP/"
+current_dir = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP"
+current_path = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP/"
 
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="item_selected" from="Inputs/Tipo" to="." method="_on_Tipo_item_selected"]

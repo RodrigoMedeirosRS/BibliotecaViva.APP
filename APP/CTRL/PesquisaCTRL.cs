@@ -4,19 +4,26 @@ using System;
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
 using BibliotecaViva.BLL.Interface;
+using BibliotecaViva.CTRL.Interface;
 
 namespace BibliotecaViva.CTRL
 {
-	public class PesquisaCTRL : Control
+	public class PesquisaCTRL : Control, IDisposableCTRL
 	{
+		private IConsultarTipoBLL BLL { get; set; }
 		private OptionButton Idioma { get; set; }
 		private LineEdit Sobrenome { get; set; }
 		private OptionButton Tipo { get; set; }
 		public override void _Ready()
 		{
+			RealizarInjecaoDeDependencias();
 			PopularNodes();
 			PopularDropDowns();
 			DesativarFuncoesDeAltoProcessamento();
+		}
+		private void RealizarInjecaoDeDependencias()
+		{
+			BLL = new ConsultarTipoBLL();
 		}
 		private void PopularNodes()
 		{
@@ -26,6 +33,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void PopularDropDowns()
 		{
+			BLL.PopularDropDownIdioma(Idioma);
 			PoularTipoDropDown();
 		}
 		private void PoularTipoDropDown()
@@ -48,6 +56,18 @@ namespace BibliotecaViva.CTRL
 		private void _on_Tipo_item_selected(int index)
 		{
 			AlternarOpcoesDeBusca(index);
+		}
+		public bool ConsultaPessoa()
+		{
+			return Sobrenome.Visible;
+		}
+		public void FecharCTRL()
+		{
+			BLL.Dispose();
+			Idioma = null;
+			Sobrenome = null;
+			Tipo = null;
+			QueueFree();
 		}
 	}
 }

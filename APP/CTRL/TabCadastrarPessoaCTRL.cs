@@ -2,13 +2,14 @@ using Godot;
 using System;
 using System.Linq;
 
+using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
 using BibliotecaViva.BLL.Interface;
-using BibliotecaViva.DTO;
+using BibliotecaViva.CTRL.Interface;
 
 namespace BibliotecaViva.CTRL
 {
-	public class TabCadastrarPessoaCTRL : Tabs
+	public class TabCadastrarPessoaCTRL : Tabs, IDisposableCTRL
 	{
 		private ICadastrarPessoaBLL BLL { get; set; }
 		private LineEdit Nome { get; set; }

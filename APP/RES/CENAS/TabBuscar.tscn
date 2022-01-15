@@ -112,6 +112,9 @@ margin_top = 4.62731
 margin_right = 538.287
 margin_bottom = 24.6273
 text = "Pesquisar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Dados" type="Control" parent="."]
 margin_right = 40.0
@@ -156,3 +159,4 @@ __meta__ = {
 
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="item_selected" from="Pesquisa/Tipo" to="Pesquisa" method="_on_Tipo_item_selected"]
+[connection signal="button_up" from="Pesquisa/Pesquisar" to="." method="_on_Pesquisar_button_up"]
