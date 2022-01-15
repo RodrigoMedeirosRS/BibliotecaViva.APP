@@ -41,13 +41,9 @@ namespace CTRL
 		{
 			BLL.IntanciarTab("Cadastrar Registro", "res://RES/CENAS/TabCadastrarRegistro.tscn");
 		}
-		private void _on_ConsultarPessoa_button_down()
+		private void _on_Buscar_button_up()
 		{
-			BLL.IntanciarTab("Consultar Pessoa", "res://RES/CENAS/TabConsultarPessoa.tscn");
-		}
-		private void _on_ConsultarRegistro_button_down()
-		{
-			BLL.IntanciarTab("Consultar Registro", "res://RES/CENAS/TabConsultarRegistro.tscn");
+			BLL.IntanciarTab("Buscar", "res://RES/CENAS/TabBuscar.tscn");
 		}
 		private void _on_Sonar_button_up()
 		{
