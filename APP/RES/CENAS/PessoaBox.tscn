@@ -29,11 +29,13 @@ namespace BibliotecaViva.CTRL
 }
 "
 
-[node name="PessoaBox" type="ColorRect"]
+[node name="PessoaBox" type="Panel"]
 margin_right = 400.0
 margin_bottom = 279.0
-color = Color( 0.454902, 0.454902, 0.454902, 0.0941176 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Controladores" type="Control" parent="."]
 script = SubResource( 1 )
@@ -51,6 +53,11 @@ text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="Controladores"]
+margin_right = 400.0
+margin_bottom = 279.0
+color = Color( 1, 1, 1, 0.196078 )
 
 [node name="NomeCompleto" type="Label" parent="."]
 margin_left = 16.0

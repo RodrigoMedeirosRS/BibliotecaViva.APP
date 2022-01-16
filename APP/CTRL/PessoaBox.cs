@@ -6,7 +6,7 @@ using BibliotecaViva.CTRL.Interface;
 
 namespace BibliotecaViva.CTRL
 {
-	public class PessoaBox : ColorRect, IDisposableCTRL
+	public class PessoaBox : Panel, IDisposableCTRL
 	{
 		private PessoaDTO Pessoa { get; set; }
 		private Label NomeCompleto { get; set; }

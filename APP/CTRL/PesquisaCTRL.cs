@@ -69,6 +69,7 @@ namespace BibliotecaViva.CTRL
 		{
 			BLL.Dispose();
 			Idioma.QueueFree();
+			Apelido.QueueFree();
 			Sobrenome.QueueFree();
 			Tipo.QueueFree();
 			Nome.QueueFree();

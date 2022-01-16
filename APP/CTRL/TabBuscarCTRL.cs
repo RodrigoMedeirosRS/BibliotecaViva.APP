@@ -11,20 +11,20 @@ namespace BibliotecaViva.CTRL
 {
 	public class TabBuscarCTRL : Tabs, IDisposableCTRL
 	{
-		private ConfirmationDialog PopErro { get; set; }
+		private AcceptDialog PopErro { get; set; }
 		private PesquisaCTRL Pesquisa { get; set; }
 		private IConsultarRegistroBLL RegistroBLL { get; set; }
 		private IConsultarPessoaBLL PessoaBLL { get; set; }
 		public override void _Ready()
 		{
-			DesativarFuncoesDeAltoProcessamento();
 			PoularNodes();
+			RealizarInjecaoDeDependencias();
+			DesativarFuncoesDeAltoProcessamento();
 		}
 		private void PoularNodes()
 		{
 			Pesquisa = GetNode<PesquisaCTRL>("./Pesquisa");
-			PopErro = GetNode<ConfirmationDialog>("./PopErro");
-			GD.Print(Pesquisa.Name);
+			PopErro = GetNode<AcceptDialog>("./PopErro");
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
@@ -60,12 +60,14 @@ namespace BibliotecaViva.CTRL
 		}
 		private void RealizarConsultaPessoa()
 		{
-			PessoaBLL.RealizarConsulta(new PessoaConsulta()
+			var resultado = PessoaBLL.RealizarConsulta(new PessoaConsulta()
 			{
 				Nome = Pesquisa.Nome.Text,
 				Sobrenome = Pesquisa.Sobrenome.Text,
 				Apelido = Pesquisa.Apelido.Text
 			});
+			foreach(var pessoa in resultado)
+				GD.Print(pessoa.Nome);
 		}
 		private void RealizarConsultaRegistro()
 		{
