@@ -157,6 +157,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PopErro" type="AcceptDialog" parent="."]
+margin_left = 311.0
+margin_top = 198.0
+margin_right = 524.0
+margin_bottom = 296.0
+window_title = "Alerta!"
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="item_selected" from="Pesquisa/Tipo" to="Pesquisa" method="_on_Tipo_item_selected"]
 [connection signal="button_up" from="Pesquisa/Pesquisar" to="." method="_on_Pesquisar_button_up"]

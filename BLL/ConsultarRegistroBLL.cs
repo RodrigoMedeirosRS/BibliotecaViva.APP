@@ -1,16 +1,18 @@
 using System;
 
+using BibliotecaViva.DTO.Dominio;
+
+
 using BibliotecaViva.BLL.Interface;
 
 namespace BibliotecaViva.BLL
 {
     public class ConsultarRegistroBLL : IConsultarRegistroBLL, IDisposable
     {
-        public string ValidarPreenchimento(string nome, string apelido)
+        public void ValidarPreenchimento(RegistroConsulta registroConsulta)
         {
-            if (string.IsNullOrEmpty(nome) && string.IsNullOrEmpty(apelido))
-                return "Favor inserir nome ou apelido para a consulta";
-            return string.Empty;
+            if (string.IsNullOrEmpty(registroConsulta.Nome) && string.IsNullOrEmpty(registroConsulta.Apelido))
+                throw new Exception("Favor inserir nome ou apelido para realizar a consulta");
         }
 
         public void Dispose()

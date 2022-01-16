@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using BibliotecaViva.BLL;
@@ -34,8 +35,8 @@ namespace BibliotecaViva.CTRL
 		{
 			RealizarInjecaoDeDependencias();
 			PopularNodes();
-			PopularDropDowns();
 			DesativarFuncoesDeAltoProcessamento();
+			PopularDropDowns();
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
@@ -64,16 +65,29 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
+			Task.Run(async () => await RelizarEnvioRegistro());
+		}
+		public async Task RelizarEnvioRegistro()
+		{
 			try
 			{
-				var registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma);
+				var registro = new RegistroDTO();
+				if (TipoSelecionado.Binario)
+					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma);
+				else
+					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma);
 				LimparPreenchimento();
-				Feedback(BLL.CadastrarRegistro(registro), true);
+				var retorno = BLL.CadastrarRegistro(registro);
+				CallDeferred("Feedback", retorno, true);
 			}
 			catch(Exception ex)
 			{
-				Feedback(ex.Message, false);
+				CallDeferred("Feedback", ex.Message, false);
 			}
+		}
+		private string CarregarArquivoBinario()
+		{
+			return ImportadorDeImagensUtil.ObterBase64(CaminhoBIN.Text);
 		}
 		private void Feedback(string mensagem, bool sucesso)
 		{
