@@ -26,7 +26,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void PopularNodes()
 		{
-			NomeCompleto = GetNode<Label>("./NomeCompleto");
+			NomeCompleto = GetNode<Label>("./NomeCompleto/Conteudo");
 			NomeSocial = GetNode<Label>("./VBoxContainer/NomeSocial/Conteudo");
 			Genero = GetNode<Label>("./VBoxContainer/Genero/Conteudo");
 			Apelido = GetNode<Label>("./VBoxContainer/Apelido/Conteudo");
@@ -57,6 +57,11 @@ namespace BibliotecaViva.CTRL
 		}
 		public void FecharCTRL()
 		{
+			NomeCompleto.QueueFree();
+			NomeSocial.QueueFree();
+			Genero.QueueFree();
+			Apelido.QueueFree();
+			Localizacao.QueueFree();
 			Pessoa.Dispose();
 			QueueFree();
 		}
