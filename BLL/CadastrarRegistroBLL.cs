@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using BibliotecaViva.BLL.Utils;
-using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.DTO;
 using BibliotecaViva.SAL;
+using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.SAL.Interface;
 
 namespace BibliotecaViva.BLL
@@ -15,10 +15,10 @@ namespace BibliotecaViva.BLL
     public class CadastrarRegistroBLL : ICadastrarRegistroBLL, IDisposable
     {
         private IRequisicao SAL { get; set; }
-        private string URLCadastroRegistro { get; set; }
+        private string URLCadastrarRegistro { get; set; }
         public CadastrarRegistroBLL()
         {
-            URLCadastroRegistro = Apontamentos.URLApi + "/Registro/Cadastrar";
+            URLCadastrarRegistro = Apontamentos.URLApi + "/Registro/Cadastrar";
             SAL = new Requisicao();
         }
         public string ValidarPreenchimento(string nome, string latlong, string descricao, string conteudo, TipoDTO tipoSelecionado)
@@ -88,11 +88,11 @@ namespace BibliotecaViva.BLL
         }
         public string CadastrarRegistro(RegistroDTO registro)
         {    
-            return SAL.ExecutarPost<RegistroDTO, string>(URLCadastroRegistro, registro);
+            return SAL.ExecutarPost<RegistroDTO, string>(URLCadastrarRegistro, registro);
         }
         public void Dispose()
         {
-            URLCadastroRegistro = null;
+            URLCadastrarRegistro = null;
             SAL.Dispose();
         }
     }

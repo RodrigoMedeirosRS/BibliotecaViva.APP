@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
+[ext_resource path="res://RES/ICONES/AumentarDiminuir.png" type="Texture" id=3]
 
 [node name="RegistroBox" type="Panel"]
 margin_right = 400.0
-margin_bottom = 300.0
+margin_bottom = 303.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,7 +20,7 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="Controladores"]
 margin_right = 400.0
-margin_bottom = 300.0
+margin_bottom = 303.0
 color = Color( 1, 1, 1, 0.196078 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -36,6 +37,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="ColorRect" parent="."]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 329.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 305, 36 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Nome" type="Label" parent="."]
 margin_left = 16.0
 margin_top = 15.0
@@ -44,15 +56,6 @@ margin_bottom = 51.0
 text = "Nome"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="ColorRect" parent="Nome"]
-margin_right = 313.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 305, 36 )
-color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,6 +88,16 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Apelido"]
+margin_top = 17.6667
+margin_right = 361.0
+margin_bottom = 39.6667
+rect_min_size = Vector2( 361, 14 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Conteudo" type="Label" parent="VBoxContainer/Apelido"]
 anchor_top = 0.141667
 anchor_bottom = 0.141667
@@ -96,31 +109,22 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Apelido/Conteudo"]
-margin_top = -4.0
-margin_right = 361.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 361, 14 )
-color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Descricao" type="Control" parent="VBoxContainer"]
 margin_top = 44.0
 margin_right = 361.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 361, 40 )
+margin_bottom = 200.0
+rect_min_size = Vector2( 361, 156 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="VBoxContainer/Descricao"]
-anchor_top = 0.0738095
-anchor_bottom = 0.0738095
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
 margin_right = 53.0
 margin_bottom = 14.0
-text = "Descrição"
+text = "Descrição:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": true
@@ -155,34 +159,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Botoes" type="Control" parent="."]
-margin_left = 15.0
-margin_top = 260.0
-margin_right = 376.0
-margin_bottom = 295.0
+[node name="Botoes" type="Control" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 239.0
 rect_min_size = Vector2( 0, 35 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Editar" type="Button" parent="Botoes"]
-margin_left = 40.0
+[node name="Editar" type="Button" parent="VBoxContainer/Botoes"]
+margin_left = 1.0
 margin_top = 7.0
-margin_right = 170.0
+margin_right = 131.0
 margin_bottom = 31.0
 text = "Editar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Botoes"]
-margin_left = 196.0
+[node name="Exibir" type="Button" parent="VBoxContainer/Botoes"]
+margin_left = 162.0
 margin_top = 7.0
-margin_right = 326.0
+margin_right = 292.0
 margin_bottom = 31.0
 text = "Exibir Relações"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Maximizar" type="Button" parent="VBoxContainer/Botoes"]
+margin_left = 327.0
+margin_top = 7.0
+margin_right = 359.0
+margin_bottom = 31.0
+icon = ExtResource( 3 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
+[connection signal="button_up" from="VBoxContainer/Botoes/Exibir" to="." method="_on_Exibir_button_up"]
+[connection signal="button_up" from="VBoxContainer/Botoes/Maximizar" to="." method="_on_Maximizar_button_up"]

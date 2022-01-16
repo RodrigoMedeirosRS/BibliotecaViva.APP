@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/TabBuscarCTRL.cs" type="Script" id=2]
 [ext_resource path="res://CTRL/PesquisaCTRL.cs" type="Script" id=3]
 [ext_resource path="res://RES/CENAS/PessoaBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://RES/CENAS/RegistroBox.tscn" type="PackedScene" id=5]
 
 [node name="TabBuscar" type="Tabs"]
 anchor_right = 1.0
@@ -161,10 +162,14 @@ margin_bottom = 296.0
 window_title = "Alerta!"
 
 [node name="PessoaBox" parent="." instance=ExtResource( 4 )]
-margin_left = 2133.0
+margin_left = 5000.0
 margin_top = 92.0
-margin_right = 2533.0
+margin_right = 5400.0
 margin_bottom = 371.0
+
+[node name="RegistroBox" parent="." instance=ExtResource( 5 )]
+margin_left = 5000.0
+margin_right = 5400.0
 
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="item_selected" from="Pesquisa/Tipo" to="Pesquisa" method="_on_Tipo_item_selected"]

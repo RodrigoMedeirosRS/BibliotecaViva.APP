@@ -15,6 +15,7 @@ namespace BibliotecaViva.CTRL
 	{
 		private AcceptDialog PopErro { get; set; }
 		private PessoaBoxCTRL PessoaBox { get; set; }
+		private RegistroBoxCTRL RegistroBox { get; set; }
 		private PesquisaCTRL Pesquisa { get; set; }
 		private Node Container { get; set; }
 		private IConsultarRegistroBLL RegistroBLL { get; set; }
@@ -31,6 +32,7 @@ namespace BibliotecaViva.CTRL
 			PopErro = GetNode<AcceptDialog>("./PopErro");
 			Container = GetNode<Node>("./ColorRect/Dados/Container");
 			PessoaBox = GetNode<PessoaBoxCTRL>("./PessoaBox");
+			RegistroBox = GetNode<RegistroBoxCTRL>("./RegistroBox");
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
@@ -89,11 +91,26 @@ namespace BibliotecaViva.CTRL
 		}
 		private void RealizarConsultaRegistro()
 		{
-
+			var resultado = RegistroBLL.RealizarConsulta(new RegistroConsulta()
+			{
+				Nome = Pesquisa.Nome.Text,
+				Apelido = Pesquisa.Apelido.Text,
+				Idioma = Pesquisa.Idioma.GetItemText(Pesquisa.Idioma.GetSelectedId())
+			});
+			var posicao = new Vector2(0, 0);
+			foreach (var registro in resultado)
+			{
+				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro), posicao);
+				posicao.y += 610;
+			}
 		}
-		private void InstanciarRegistroBox(List<RegistroDTO> resultado)
+		private void InstanciarRegistroBox(RegistroObject registroObjct, Vector2 posicao)
 		{
-			
+			var registroBox = RegistroBox.Duplicate();
+			RemoveChild(registroBox);
+			Container.AddChild(registroBox);
+			registroBox._Ready();
+			(registroBox as RegistroBoxCTRL).Preencher(registroObjct.Registro, posicao);
 		}
 		public void FecharCTRL()
 		{
@@ -104,6 +121,8 @@ namespace BibliotecaViva.CTRL
 			foreach(var box in Container.GetChildren())
 				(box as IDisposableCTRL).FecharCTRL();
 			Container.QueueFree();
+			RegistroBox.FecharCTRL();
+			PessoaBox.FecharCTRL();
 			QueueFree();
 		}
 	}
