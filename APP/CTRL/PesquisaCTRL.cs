@@ -11,8 +11,9 @@ namespace BibliotecaViva.CTRL
 	public class PesquisaCTRL : Control, IDisposableCTRL
 	{
 		private IConsultarTipoBLL BLL { get; set; }
-		private OptionButton Idioma { get; set; }
-		private LineEdit Sobrenome { get; set; }
+		public OptionButton Idioma { get; set; }
+		public LineEdit Nome { get; set; }
+		public LineEdit Sobrenome { get; set; }
 		private OptionButton Tipo { get; set; }
 		public override void _Ready()
 		{
@@ -28,6 +29,7 @@ namespace BibliotecaViva.CTRL
 		private void PopularNodes()
 		{
 			Idioma = GetNode<OptionButton>("./Idioma");
+			Nome = GetNode<LineEdit>("./Nome");
 			Sobrenome = GetNode<LineEdit>("./Sobrenome");
 			Tipo = GetNode<OptionButton>("./Tipo");
 		}
@@ -64,9 +66,10 @@ namespace BibliotecaViva.CTRL
 		public void FecharCTRL()
 		{
 			BLL.Dispose();
-			Idioma = null;
-			Sobrenome = null;
-			Tipo = null;
+			Idioma.QueueFree();
+			Sobrenome.QueueFree();
+			Tipo.QueueFree();
+			Nome.QueueFree();
 			QueueFree();
 		}
 	}

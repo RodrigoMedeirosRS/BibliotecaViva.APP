@@ -1,8 +1,10 @@
+using BibliotecaViva.DTO.Dominio;
+
 namespace BibliotecaViva.BLL.Interface
 {
     public interface IConsultarRegistroBLL
     {
-        string ValidarPreenchimento(string nome, string apelido);
+        void ValidarPreenchimento(RegistroConsulta registroConsulta);
         void Dispose();
     }
 }

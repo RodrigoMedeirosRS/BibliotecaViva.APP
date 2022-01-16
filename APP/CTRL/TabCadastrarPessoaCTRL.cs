@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using System.Linq;
+using System.Threading.Tasks;
 
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
@@ -46,15 +46,20 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
+			Task.Run(async () => await RelizarEnvioRegistro());
+		}
+		public async Task RelizarEnvioRegistro()
+		{
 			try
 			{
 				var pessoa = BLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.Text, Apelido.Text, LatLong.Text);
 				LimparPreenchimento();
-				Feedback(BLL.CadastrarPessoa(pessoa), true);
+				var retorno = BLL.CadastrarPessoa(pessoa);
+				CallDeferred("Feedback", retorno, true);
 			}
 			catch(Exception ex)
 			{
-				Feedback(ex.Message, false);
+				CallDeferred("Feedback", ex.Message, false);
 			}
 		}
 		private void Feedback(string mensagem, bool sucesso)

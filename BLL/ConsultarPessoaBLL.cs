@@ -1,15 +1,26 @@
 using System;
 using BibliotecaViva.BLL.Interface;
 
+using BibliotecaViva.SAL;
+using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.SAL.Interface;
+using BibliotecaViva.DTO.Dominio;
+
 namespace BibliotecaViva.BLL
 {
     public class ConsultarPessoaBLL : IConsultarPessoaBLL, IDisposable
     {
-        public string ValidarPreenchimento(string nome, string sobrenome)
+        private IRequisicao SAL { get; set; }
+        private string URLConsultarPessoa { get; set; }
+        public void ValidarPreenchimento(PessoaConsulta pessoaConsulta)
         {
-            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(sobrenome))
-                return "Favor inserir nome e sobrenome para a consulta";
-            return string.Empty;
+            if (string.IsNullOrEmpty(pessoaConsulta.Nome) && string.IsNullOrEmpty(pessoaConsulta.Sobrenome) && string.IsNullOrEmpty(pessoaConsulta.Apelido))
+                throw new Exception("Favor inserir nome, sobrenome ou apelido para realizar a consulta");
+        }
+        public ConsultarPessoaBLL()
+        {
+            SAL = new Requisicao();
+            URLConsultarPessoa = Apontamentos.URLApi + "/Pessoa/Consultar";
         }
 
         public void Dispose()
