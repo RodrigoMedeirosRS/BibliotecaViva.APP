@@ -1,3 +1,4 @@
+using Godot;
 using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
@@ -10,7 +11,8 @@ namespace BibliotecaViva.BLL.Interface
         void ValidarPreenchimento(PessoaConsulta pessoaConsulta);
         List<PessoaDTO> ValidarConsulta(List<PessoaDTO> retorno);
         List<PessoaDTO> RealizarConsulta(PessoaConsulta pessoaConsulta);
-        
+        Node InstanciarPessoaBox(Node Container, Vector2? posicao);
+
         void Dispose();
     }
 }

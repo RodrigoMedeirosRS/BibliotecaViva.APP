@@ -1,33 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://CTRL/PessoaBox.cs" type="Script" id=1]
-
-[sub_resource type="CSharpScript" id=1]
-script/source = "using Godot;
-
-using BibliotecaViva.CTRL.Interface;
-
-namespace BibliotecaViva.CTRL
-{
-	public class ControladorTabCTRL : Control
-	{
-		public override void _Ready()
-		{
-			DesativarFuncoesDeAltoProcessamento();
-		}
-		private void DesativarFuncoesDeAltoProcessamento()
-		{
-			SetPhysicsProcess(false);
-			SetProcess(false);
-		}
-		private void _on_Button_button_up()
-		{
-			(GetParent() as IDisposableCTRL).FecharCTRL();
-			QueueFree();
-		}
-	}  
-}
-"
+[ext_resource path="res://CTRL/PessoaBoxCTRL.cs" type="Script" id=1]
+[ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
 
 [node name="PessoaBox" type="Panel"]
 margin_right = 400.0
@@ -38,7 +12,15 @@ __meta__ = {
 }
 
 [node name="Controladores" type="Control" parent="."]
-script = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Controladores"]
+margin_right = 400.0
+margin_bottom = 279.0
+color = Color( 1, 1, 1, 0.196078 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,11 +35,6 @@ text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ColorRect" type="ColorRect" parent="Controladores"]
-margin_right = 400.0
-margin_bottom = 279.0
-color = Color( 1, 1, 1, 0.196078 )
 
 [node name="NomeCompleto" type="Label" parent="."]
 margin_left = 16.0

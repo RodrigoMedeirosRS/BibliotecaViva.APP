@@ -1,7 +1,6 @@
+using Godot;
 using System;
 using System.Collections.Generic;
-
-
 
 using BibliotecaViva.SAL;
 using BibliotecaViva.DTO;
@@ -37,6 +36,11 @@ namespace BibliotecaViva.BLL
             ValidarPreenchimento(pessoaConsulta);
             var retorno = SAL.ExecutarPost<PessoaConsulta, List<PessoaDTO>>(URLConsultarPessoa, pessoaConsulta);
             return ValidarConsulta(retorno);
+        }
+        public Node InstanciarPessoaBox(Node Container, Vector2? posicao)
+        {
+            var cena = InstanciadorUtil.CarregarCena("res://RES/CENAS/PessoaBox.tscn");
+            return InstanciadorUtil.InstanciarObjeto(Container, cena, posicao);
         }
 
         public void Dispose()

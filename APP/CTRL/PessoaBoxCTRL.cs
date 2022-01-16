@@ -6,7 +6,7 @@ using BibliotecaViva.CTRL.Interface;
 
 namespace BibliotecaViva.CTRL
 {
-	public class PessoaBox : Panel, IDisposableCTRL
+	public class PessoaBoxCTRL : Panel, IDisposableCTRL
 	{
 		private PessoaDTO Pessoa { get; set; }
 		private Label NomeCompleto { get; set; }
@@ -32,8 +32,9 @@ namespace BibliotecaViva.CTRL
 			Apelido = GetNode<Label>("./VBoxContainer/Apelido/Conteudo");
 			Localizacao = GetNode<Label>("./VBoxContainer/GeoLocalizacao/Conteudo");
 		}
-		private void PopularDados(PessoaDTO pessoaDTO)
+		public void Preencher(PessoaDTO pessoaDTO, Vector2 posicao)
 		{
+			RectPosition = posicao;
 			Pessoa = pessoaDTO;
 			NomeCompleto.Text = Pessoa.Nome + " " + Pessoa.Sobrenome;
 			PopularCampoOpcional(NomeSocial, Pessoa.NomeSocial);
