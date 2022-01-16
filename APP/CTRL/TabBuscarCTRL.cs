@@ -1,8 +1,9 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
-using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
+using BibliotecaViva.DTO.Dominio;
 using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.CTRL.Interface;
 
@@ -37,6 +38,10 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Pesquisar_button_up()
 		{
+			Task.Run(async () => await RealizarBusca());
+		}
+		private async Task RealizarBusca()
+		{
 			try
 			{
 				if (Pesquisa.ConsultaPessoa())
@@ -45,13 +50,22 @@ namespace BibliotecaViva.CTRL
 			}
 			catch(Exception ex)
 			{
-				PopErro.DialogText = ex.Message;
-				PopErro.Popup_();
+				CallDeferred("ExibirErro", ex.Message);
 			}
+		}
+		private void ExibirErro(string mensagem)
+		{
+			PopErro.DialogText = mensagem;
+			PopErro.Popup_();
 		}
 		private void RealizarConsultaPessoa()
 		{
-			
+			PessoaBLL.RealizarConsulta(new PessoaConsulta()
+			{
+				Nome = Pesquisa.Nome.Text,
+				Sobrenome = Pesquisa.Sobrenome.Text,
+				Apelido = Pesquisa.Apelido.Text
+			});
 		}
 		private void RealizarConsultaRegistro()
 		{
