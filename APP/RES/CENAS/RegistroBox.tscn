@@ -1,0 +1,205 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
+[ext_resource path="res://RES/ICONES/AumentarDiminuir.png" type="Texture" id=3]
+
+[node name="RegistroBox" type="Panel"]
+margin_right = 400.0
+margin_bottom = 303.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controladores" type="Control" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Controladores"]
+margin_right = 400.0
+margin_bottom = 303.0
+color = Color( 1, 1, 1, 0.196078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Controladores"]
+margin_left = 342.0
+margin_top = 18.0
+margin_right = 362.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="ColorRect" parent="."]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 329.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 305, 36 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 329.0
+margin_bottom = 51.0
+text = "Nome"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 15.0
+margin_top = 60.0
+margin_right = 376.0
+margin_bottom = 257.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Apelido" type="Control" parent="VBoxContainer"]
+margin_right = 361.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 361, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Apelido"]
+anchor_top = 0.0738095
+anchor_bottom = 0.0738095
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Apelido:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Apelido"]
+margin_top = 17.6667
+margin_right = 361.0
+margin_bottom = 39.6667
+rect_min_size = Vector2( 361, 14 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conteudo" type="Label" parent="VBoxContainer/Apelido"]
+anchor_top = 0.141667
+anchor_bottom = 0.141667
+margin_top = 16.0
+margin_right = 361.0
+margin_bottom = 30.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Descricao" type="Control" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 361.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 361, 156 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Descricao"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Descrição:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Descricao"]
+margin_top = 18.0
+margin_right = 361.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 361, 135 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Descricao"]
+margin_left = 3.0
+margin_top = 20.0
+margin_right = 360.0
+margin_bottom = 153.0
+rect_min_size = Vector2( 357, 133 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conteudo" type="RichTextLabel" parent="VBoxContainer/Descricao/ScrollContainer"]
+margin_right = 345.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 345, 0 )
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Botoes" type="Control" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 0, 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editar" type="Button" parent="VBoxContainer/Botoes"]
+margin_left = 1.0
+margin_top = 7.0
+margin_right = 131.0
+margin_bottom = 31.0
+text = "Editar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exibir" type="Button" parent="VBoxContainer/Botoes"]
+margin_left = 162.0
+margin_top = 7.0
+margin_right = 292.0
+margin_bottom = 31.0
+text = "Exibir Relações"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Maximizar" type="Button" parent="VBoxContainer/Botoes"]
+margin_left = 327.0
+margin_top = 7.0
+margin_right = 359.0
+margin_bottom = 31.0
+icon = ExtResource( 3 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
+[connection signal="button_up" from="VBoxContainer/Botoes/Exibir" to="." method="_on_Exibir_button_up"]
+[connection signal="button_up" from="VBoxContainer/Botoes/Maximizar" to="." method="_on_Maximizar_button_up"]

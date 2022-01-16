@@ -14,6 +14,7 @@ namespace BibliotecaViva.CTRL
 		public OptionButton Idioma { get; set; }
 		public LineEdit Nome { get; set; }
 		public LineEdit Sobrenome { get; set; }
+		public LineEdit Apelido { get; set; }
 		private OptionButton Tipo { get; set; }
 		public override void _Ready()
 		{
@@ -28,10 +29,11 @@ namespace BibliotecaViva.CTRL
 		}
 		private void PopularNodes()
 		{
-			Idioma = GetNode<OptionButton>("./Idioma");
 			Nome = GetNode<LineEdit>("./Nome");
-			Sobrenome = GetNode<LineEdit>("./Sobrenome");
 			Tipo = GetNode<OptionButton>("./Tipo");
+			Apelido = GetNode<LineEdit>("./Apelido");
+			Idioma = GetNode<OptionButton>("./Idioma");
+			Sobrenome = GetNode<LineEdit>("./Sobrenome");
 		}
 		private void PopularDropDowns()
 		{
@@ -67,6 +69,7 @@ namespace BibliotecaViva.CTRL
 		{
 			BLL.Dispose();
 			Idioma.QueueFree();
+			Apelido.QueueFree();
 			Sobrenome.QueueFree();
 			Tipo.QueueFree();
 			Nome.QueueFree();
