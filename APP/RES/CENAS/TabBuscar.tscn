@@ -153,6 +153,7 @@ __meta__ = {
 }
 
 [node name="Container" type="Control" parent="ColorRect/Dados"]
+rect_scale = Vector2( 0.75, 0.75 )
 
 [node name="PopErro" type="AcceptDialog" parent="."]
 margin_left = 311.0

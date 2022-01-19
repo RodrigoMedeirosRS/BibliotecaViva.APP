@@ -132,9 +132,9 @@ __meta__ = {
 
 [node name="TextureRect" type="ColorRect" parent="VBoxContainer/Descricao"]
 margin_top = 18.0
-margin_right = 361.0
+margin_right = 357.0
 margin_bottom = 156.0
-rect_min_size = Vector2( 361, 135 )
+rect_min_size = Vector2( 357, 135 )
 color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,6 +151,91 @@ __meta__ = {
 }
 
 [node name="Conteudo" type="RichTextLabel" parent="VBoxContainer/Descricao/ScrollContainer"]
+margin_right = 345.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 345, 0 )
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Imagem" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 0, 380 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Imagem"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Imagem:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Imagem"]
+margin_top = 20.0
+margin_right = 357.0
+margin_bottom = 381.0
+rect_min_size = Vector2( 357, 361 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="ColorRect" parent="VBoxContainer/Imagem"]
+margin_top = 17.0
+margin_right = 357.0
+margin_bottom = 378.0
+rect_min_size = Vector2( 357, 361 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texto" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 357, 380 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Texto"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Texto:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Texto"]
+margin_top = 20.0
+margin_right = 357.0
+margin_bottom = 365.0
+rect_min_size = Vector2( 357, 345 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Texto"]
+margin_top = 20.0
+margin_right = 357.0
+margin_bottom = 365.0
+rect_min_size = Vector2( 357, 345 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conteudo" type="RichTextLabel" parent="VBoxContainer/Texto/ScrollContainer"]
 margin_right = 345.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 345, 0 )
