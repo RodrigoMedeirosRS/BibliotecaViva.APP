@@ -159,8 +159,8 @@ namespace BibliotecaViva.CTRL
 			var audio = ImportadorDeBinariosUtil.GerarAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoAudio.Stream = audio;
 
-			RectMinSize = new Vector2(400, 206);
-			RectSize = new Vector2(400, 206);
+			RectMinSize = new Vector2(400, 200);
+			RectSize = new Vector2(400, 200);
 		}
 		private void ExibirRegistroImagem()
 		{

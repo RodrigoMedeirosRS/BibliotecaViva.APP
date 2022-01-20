@@ -13,7 +13,7 @@
 [node name="RegistroBox" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.054902 )
 margin_right = 400.0
-margin_bottom = 303.0
+margin_bottom = 207.0
 rect_min_size = Vector2( 400, 303 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
