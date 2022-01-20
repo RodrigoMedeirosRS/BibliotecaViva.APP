@@ -156,7 +156,7 @@ namespace BibliotecaViva.CTRL
 			CampoImagem.Visible = false;
 			CampoAudio.Visible = true;
 
-			var audio = ImportadorDeBinariosUtil.BuscarAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
+			var audio = ImportadorDeBinariosUtil.GerarAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoAudio.Stream = audio;
 
 			RectMinSize = new Vector2(400, 206);
@@ -216,9 +216,6 @@ namespace BibliotecaViva.CTRL
 				tipo.Dispose();
 			Tipos.Clear();	
 			Tipos = null;
-
-			if(ObterDetalhesTipo(Registro.Tipo).TipoExecucao == TipoExecucao.Audio)
-				ImportadorDeBinariosUtil.LimparArquivosTemporariosDeAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao);
 
 			Registro.Dispose();
 			ConsultarTipoBLL.Dispose();

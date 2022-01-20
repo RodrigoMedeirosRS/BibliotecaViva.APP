@@ -6,20 +6,7 @@ namespace BibliotecaViva.BLL.Utils
 {
     public static class ImportadorDeBinariosUtil
     {
-        public static Texture BuscarImagem(string nomeImagem, string formato, string caminho)
-        {
-            var imagem = new Image();
-            var texturaDaImagem = new ImageTexture();
-            var caminhoComFormato = caminho + nomeImagem + "." + formato;
-            var caminhoImport = caminhoComFormato + ".import";
-
-            imagem.Load(caminhoComFormato);
-            texturaDaImagem.CreateFromImage(imagem);
-            LimparArquivosTemporarios(caminhoComFormato, caminhoImport);
-            
-            return texturaDaImagem;
-        }
-        public static AudioStream BuscarAudio(string nomeImagem, string formato, string base64)
+        public static AudioStream GerarAudio(string nomeImagem, string formato, string base64)
         {
             var data = Convert.FromBase64String(base64);
             
@@ -49,33 +36,19 @@ namespace BibliotecaViva.BLL.Utils
             var caminho = CarregarBinario(nomeImagem, formato, base64);
             return BuscarImagem(nomeImagem, formato, caminho);
         }
-        public static AudioStream GerarAudio(string nomeAudio, string formato, string base64)
+        public static Texture BuscarImagem(string nomeImagem, string formato, string caminho)
         {
-            var caminho = CarregarBinario(nomeAudio, formato, base64);
-            return BuscarAudio(nomeAudio, formato, caminho);
-        }
-        public static void LimparArquivosTemporariosDeAudio(string nomeImagem, string formato)
-        {
-            var caminho = "./TEMP/";
+            var imagem = new Image();
+            var texturaDaImagem = new ImageTexture();
             var caminhoComFormato = caminho + nomeImagem + "." + formato;
             var caminhoImport = caminhoComFormato + ".import";
-            LimparArquivosTemporarios(caminhoComFormato, caminhoImport);
-        }
-        private static AudioStream ObterStream(string formato, string caminhoDoArquivo)
-        {
-            switch(formato)
-            {
-                case (".wav"):
-                    return new AudioStreamSample();
-                case (".mp3"):
-                    return new AudioStreamMP3();
-                case (".ogg"):
-                    return new AudioStreamOGGVorbis();
-                default:
-                    throw new Exception("Formato de áudio não suportado, por favor use .wav, .mp3 ou .ogg");
-            }
-        }
 
+            imagem.Load(caminhoComFormato);
+            texturaDaImagem.CreateFromImage(imagem);
+            LimparArquivosTemporarios(caminhoComFormato, caminhoImport);
+            
+            return texturaDaImagem;
+        }
         private static string CarregarBinario(string nomeBinario, string formato, string base64)
         {
             if(!System.IO.Directory.Exists("TEMP"))
