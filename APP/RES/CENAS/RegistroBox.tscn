@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
 [ext_resource path="res://RES/ICONES/AumentarDiminuir.png" type="Texture" id=3]
 
+[sub_resource type="StyleBoxFlat" id=1]
+
 [node name="RegistroBox" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.054902 )
 margin_right = 400.0
 margin_bottom = 303.0
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,14 +18,6 @@ __meta__ = {
 
 [node name="Controladores" type="Control" parent="."]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="Controladores"]
-margin_right = 400.0
-margin_bottom = 303.0
-color = Color( 1, 1, 1, 0.196078 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -161,9 +157,9 @@ __meta__ = {
 
 [node name="Imagem" type="Control" parent="VBoxContainer"]
 visible = false
-margin_top = 204.0
+margin_top = 44.0
 margin_right = 361.0
-margin_bottom = 584.0
+margin_bottom = 424.0
 rect_min_size = Vector2( 0, 380 )
 
 [node name="Label" type="Label" parent="VBoxContainer/Imagem"]
@@ -174,11 +170,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Imagem"]
-margin_top = 20.0
+[node name="Imagem" type="TextureRect" parent="VBoxContainer/Imagem"]
+margin_top = 17.0
 margin_right = 357.0
-margin_bottom = 381.0
-rect_min_size = Vector2( 357, 361 )
+margin_bottom = 374.0
+rect_min_size = Vector2( 357, 357 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -187,8 +183,8 @@ __meta__ = {
 [node name="TextureRect2" type="ColorRect" parent="VBoxContainer/Imagem"]
 margin_top = 17.0
 margin_right = 357.0
-margin_bottom = 378.0
-rect_min_size = Vector2( 357, 361 )
+margin_bottom = 374.0
+rect_min_size = Vector2( 357, 357 )
 color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
 __meta__ = {
 "_edit_use_anchors_": false

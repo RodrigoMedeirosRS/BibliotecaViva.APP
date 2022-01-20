@@ -1,8 +1,13 @@
 using Godot;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.BLL;
+using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.DTO.Utils;
+using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.CTRL.Interface;
 
 namespace BibliotecaViva.CTRL
@@ -14,15 +19,22 @@ namespace BibliotecaViva.CTRL
 		private Label Apelido { get; set; }
 		private RichTextLabel Descricao { get; set; }
 		private RichTextLabel ConteudoTextual { get; set; }
-		private ColorRect FundoBox { get; set; }
+		private TextureRect ConteudoImagem { get; set; }
 		private RegistroDTO Registro { get; set; }
 		private Control CampoDescricao { get; set; }
 		private Control CampoImagem { get; set; }
 		private Control CampoTextual { get; set; }
+		private List<TipoDTO> Tipos { get; set; }
+		private IConsultarTipoBLL ConsultarTipoBLL { get; set; }
 		public override void _Ready()
 		{
+			RealizarInjecaoDeDependencias();
 			PopularNodes();
 			DesativarFuncoesDeAltoProcessamento();
+		}
+		private void RealizarInjecaoDeDependencias()
+		{
+			ConsultarTipoBLL = new ConsultarTipoBLL();
 		}
 		private void PopularNodes()
 		{
@@ -31,11 +43,13 @@ namespace BibliotecaViva.CTRL
 			Apelido = GetNode<Label>("./VBoxContainer/Apelido/Conteudo");
 			Descricao = GetNode<RichTextLabel>("./VBoxContainer/Descricao/ScrollContainer/Conteudo");
 			ConteudoTextual = GetNode<RichTextLabel>("./VBoxContainer/Texto/ScrollContainer/Conteudo");
-			
-			FundoBox = GetNode<ColorRect>("./Controladores/ColorRect");
+			ConteudoImagem = GetNode<TextureRect>("./VBoxContainer/Imagem/Imagem");
+
 			CampoTextual = GetNode<Control>("./VBoxContainer/Texto");
 			CampoImagem = GetNode<Control>("./VBoxContainer/Imagem");
 			CampoDescricao = GetNode<Control>("./VBoxContainer/Descricao");
+			
+			Tipos = ConsultarTipoBLL.ConsultarTipos();
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
 		{
@@ -70,7 +84,6 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Maximizar_button_up()
 		{
-			GD.Print(TipoExecucao.Audio.ToString() + " " + Registro.Tipo);
 			if (Maximizado)
 				ExibirDescricao();
 			else
@@ -79,59 +92,78 @@ namespace BibliotecaViva.CTRL
 		}
 		private void ExibirCampo()
 		{
-			if (Registro.Tipo == TipoExecucao.Audio.ToString())
+			Maximizado = true;
+			switch(ObterDetalhesTipo(Registro.Tipo).TipoExecucao)
 			{
-				CampoTextual.Visible = false;
-				CampoDescricao.Visible = false;
-				CampoImagem.Visible = false;
-			}
-			else if (Registro.Tipo == TipoExecucao.Imagem.ToString())
-			{
-				CampoImagem.Visible = true;
-				CampoDescricao.Visible = false;
-				CampoTextual.Visible = false;
-			}
-
-			else if (Registro.Tipo == TipoExecucao.Texto.ToString())
-			{
-				
-				ExibirRegistroTextual();
-			}
-
-			else if (Registro.Tipo == TipoExecucao.Arquivo.ToString())
-			{
-				CampoDescricao.Visible = false;
-				CampoImagem.Visible = false;
-				CampoTextual.Visible = true;
-			}
-			else if (Registro.Tipo == TipoExecucao.URL.ToString())
-			{
-				CampoDescricao.Visible = false;
-				CampoImagem.Visible = false;
-				CampoTextual.Visible = true;
+				case TipoExecucao.Audio:
+					ExibirRegistroDeAudio();
+					break;
+				case TipoExecucao.Imagem:
+					ExibirRegistroImagem();
+					break;
+				case TipoExecucao.Texto:
+					ExibirRegistroTextual();
+					break;
+				case TipoExecucao.Arquivo:
+					ExibirRegistroDeArquivo();
+					break;
+				case TipoExecucao.URL:
+					ExibirRegistroURL();
+					break;
 			}
 		}
 		private void ExibirDescricao()
 		{
+			Maximizado = false;
 			CampoDescricao.Visible = true;
 			CampoImagem.Visible = false;
 			CampoTextual.Visible = false;
-			FundoBox.RectSize = new Vector2(400, 303);
 			RectSize = new Vector2(400, 303);
+		}
+		private void ExibirRegistroDeArquivo()
+		{
+			CampoDescricao.Visible = false;
+			CampoImagem.Visible = false;
+			CampoTextual.Visible = true;
 		}
 		private void ExibirRegistroTextual()
 		{
 			CampoTextual.Visible = true;
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
-			FundoBox.RectSize = new Vector2(400, 535);
 			RectSize = new Vector2(400, 535);
 			
 			ConteudoTextual.Text = Registro.Conteudo;
 		}
+		private void ExibirRegistroDeAudio()
+		{
+			CampoTextual.Visible = false;
+			CampoDescricao.Visible = false;
+			CampoImagem.Visible = false;
+		}
 		private void ExibirRegistroImagem()
 		{
-			
+			CampoImagem.Visible = true;
+			CampoDescricao.Visible = false;
+			CampoTextual.Visible = false;
+
+			var imagem = ImportadorDeImagensUtil.GerarImagem(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
+			ConteudoImagem.Texture = imagem;
+			RectSize = new Vector2(400, 530);
+		}
+		private void ExibirRegistroURL()
+		{
+			CampoDescricao.Visible = false;
+			CampoImagem.Visible = false;
+			CampoTextual.Visible = false;
+		}
+		public TipoDTO ObterDetalhesTipo(string nomeTipo)
+		{
+			return (from tipo in Tipos
+				where
+					tipo.Nome == nomeTipo
+				select 
+					tipo).FirstOrDefault();
 		}
 		public void FecharCTRL()
 		{

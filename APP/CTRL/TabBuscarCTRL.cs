@@ -30,7 +30,7 @@ namespace BibliotecaViva.CTRL
 		{
 			Pesquisa = GetNode<PesquisaCTRL>("./Pesquisa");
 			PopErro = GetNode<AcceptDialog>("./PopErro");
-			Container = GetNode<Node>("./ColorRect/Dados/Container");
+			Container = GetNode<Node>("./Dados/Container");
 			PessoaBox = GetNode<PessoaBoxCTRL>("./PessoaBox");
 			RegistroBox = GetNode<RegistroBoxCTRL>("./RegistroBox");
 		}
