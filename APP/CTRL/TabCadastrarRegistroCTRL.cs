@@ -87,7 +87,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private string CarregarArquivoBinario()
 		{
-			return ImportadorDeImagensUtil.ObterBase64(CaminhoBIN.Text);
+			return ImportadorDeBinariosUtil.ObterBase64(CaminhoBIN.Text);
 		}
 		private void Feedback(string mensagem, bool sucesso)
 		{

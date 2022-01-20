@@ -17,13 +17,18 @@ namespace BibliotecaViva.CTRL
 		private bool Maximizado { get; set; }
 		private Label Nome { get; set; }
 		private Label Apelido { get; set; }
-		private RichTextLabel Descricao { get; set; }
+		
+		private RichTextLabel ConteudoDescricao { get; set; }
 		private RichTextLabel ConteudoTextual { get; set; }
 		private TextureRect ConteudoImagem { get; set; }
-		private RegistroDTO Registro { get; set; }
+		private AudioStreamPlayer ConteudoAudio { get; set; }
+		
 		private Control CampoDescricao { get; set; }
 		private Control CampoImagem { get; set; }
 		private Control CampoTextual { get; set; }
+		private Control CampoAudio { get; set; }
+		
+		private RegistroDTO Registro { get; set; }
 		private List<TipoDTO> Tipos { get; set; }
 		private IConsultarTipoBLL ConsultarTipoBLL { get; set; }
 		public override void _Ready()
@@ -41,14 +46,17 @@ namespace BibliotecaViva.CTRL
 			Maximizado = false;
 			Nome = GetNode<Label>("./Nome");
 			Apelido = GetNode<Label>("./VBoxContainer/Apelido/Conteudo");
-			Descricao = GetNode<RichTextLabel>("./VBoxContainer/Descricao/ScrollContainer/Conteudo");
+			
+			ConteudoDescricao = GetNode<RichTextLabel>("./VBoxContainer/Descricao/ScrollContainer/Conteudo");
 			ConteudoTextual = GetNode<RichTextLabel>("./VBoxContainer/Texto/ScrollContainer/Conteudo");
 			ConteudoImagem = GetNode<TextureRect>("./VBoxContainer/Imagem/Imagem");
+			ConteudoAudio = GetNode<AudioStreamPlayer>("./VBoxContainer/Audio/AudioPlayer");
 
 			CampoTextual = GetNode<Control>("./VBoxContainer/Texto");
 			CampoImagem = GetNode<Control>("./VBoxContainer/Imagem");
 			CampoDescricao = GetNode<Control>("./VBoxContainer/Descricao");
-			
+			CampoAudio = GetNode<Control>("./VBoxContainer/Audio");
+
 			Tipos = ConsultarTipoBLL.ConsultarTipos();
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
@@ -62,7 +70,7 @@ namespace BibliotecaViva.CTRL
 			Registro = registroDTO;
 			Nome.Text = registroDTO.Nome;
 			PopularCampoOpcional(Apelido, registroDTO.Apelido);
-			PopularCampoOpcional(Descricao, registroDTO.Descricao);
+			PopularCampoOpcional(ConteudoDescricao, registroDTO.Descricao);
 		}
 		private void PopularCampoOpcional(Label campo, string conteudo)
 		{
@@ -115,9 +123,12 @@ namespace BibliotecaViva.CTRL
 		private void ExibirDescricao()
 		{
 			Maximizado = false;
+			ConteudoAudio.Stop();
 			CampoDescricao.Visible = true;
 			CampoImagem.Visible = false;
 			CampoTextual.Visible = false;
+			CampoAudio.Visible = false;
+			RectMinSize = new Vector2(400, 303);
 			RectSize = new Vector2(400, 303);
 		}
 		private void ExibirRegistroDeArquivo()
@@ -125,12 +136,15 @@ namespace BibliotecaViva.CTRL
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
 			CampoTextual.Visible = true;
+			CampoAudio.Visible = false;
 		}
 		private void ExibirRegistroTextual()
 		{
 			CampoTextual.Visible = true;
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
+			CampoAudio.Visible = false;
+			RectMinSize = new Vector2(400, 535);
 			RectSize = new Vector2(400, 535);
 			
 			ConteudoTextual.Text = Registro.Conteudo;
@@ -140,15 +154,24 @@ namespace BibliotecaViva.CTRL
 			CampoTextual.Visible = false;
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
+			CampoAudio.Visible = true;
+
+			var audio = ImportadorDeBinariosUtil.BuscarAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
+			ConteudoAudio.Stream = audio;
+
+			RectMinSize = new Vector2(400, 206);
+			RectSize = new Vector2(400, 206);
 		}
 		private void ExibirRegistroImagem()
 		{
 			CampoImagem.Visible = true;
 			CampoDescricao.Visible = false;
 			CampoTextual.Visible = false;
+			CampoAudio.Visible = false;
 
-			var imagem = ImportadorDeImagensUtil.GerarImagem(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
+			var imagem = ImportadorDeBinariosUtil.GerarImagem(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoImagem.Texture = imagem;
+			RectMinSize = new Vector2(400, 530);
 			RectSize = new Vector2(400, 530);
 		}
 		private void ExibirRegistroURL()
@@ -156,6 +179,7 @@ namespace BibliotecaViva.CTRL
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
 			CampoTextual.Visible = false;
+			CampoAudio.Visible = false;
 		}
 		public TipoDTO ObterDetalhesTipo(string nomeTipo)
 		{
@@ -165,8 +189,39 @@ namespace BibliotecaViva.CTRL
 				select 
 					tipo).FirstOrDefault();
 		}
+		private void _on_Play_button_up()
+		{
+			ConteudoAudio.Play();
+		}
+		private void _on_Stop_button_up()
+		{
+			ConteudoAudio.Stop();
+		}
 		public void FecharCTRL()
 		{
+			Nome.QueueFree();
+			Apelido.QueueFree();
+		
+			ConteudoDescricao.QueueFree();
+			ConteudoTextual.QueueFree();
+			ConteudoImagem.QueueFree();
+			ConteudoAudio.QueueFree();
+			
+			CampoDescricao.QueueFree();
+			CampoImagem.QueueFree();
+			CampoTextual.QueueFree();
+			CampoAudio.QueueFree();
+
+			foreach (var tipo in Tipos)
+				tipo.Dispose();
+			Tipos.Clear();	
+			Tipos = null;
+
+			if(ObterDetalhesTipo(Registro.Tipo).TipoExecucao == TipoExecucao.Audio)
+				ImportadorDeBinariosUtil.LimparArquivosTemporariosDeAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao);
+
+			Registro.Dispose();
+			ConsultarTipoBLL.Dispose();
 			QueueFree();
 		}
 	}
