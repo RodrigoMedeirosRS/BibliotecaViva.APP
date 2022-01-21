@@ -76,5 +76,9 @@ namespace BibliotecaViva.BLL.Utils
         {
             return System.Convert.ToBase64String(System.IO.File.ReadAllBytes(caminho));
         }
+        public static void SalvarBase64(string caminho, string base64)
+        {
+            System.IO.File.WriteAllBytes(caminho, Convert.FromBase64String(base64));
+        }
     }
 }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
@@ -22,11 +23,13 @@ namespace BibliotecaViva.CTRL
 		private RichTextLabel ConteudoTextual { get; set; }
 		private TextureRect ConteudoImagem { get; set; }
 		private AudioStreamPlayer ConteudoAudio { get; set; }
+		private FileDialog PopupDeDownload { get; set; }
 		
 		private Control CampoDescricao { get; set; }
 		private Control CampoImagem { get; set; }
 		private Control CampoTextual { get; set; }
 		private Control CampoAudio { get; set; }
+		private Control CampoDownload { get; set; }
 		
 		private RegistroDTO Registro { get; set; }
 		private List<TipoDTO> Tipos { get; set; }
@@ -51,11 +54,13 @@ namespace BibliotecaViva.CTRL
 			ConteudoTextual = GetNode<RichTextLabel>("./VBoxContainer/Texto/ScrollContainer/Conteudo");
 			ConteudoImagem = GetNode<TextureRect>("./VBoxContainer/Imagem/Imagem");
 			ConteudoAudio = GetNode<AudioStreamPlayer>("./VBoxContainer/Audio/AudioPlayer");
-
+			PopupDeDownload = GetNode<FileDialog>("./PopupDeDownload");
+			
 			CampoTextual = GetNode<Control>("./VBoxContainer/Texto");
 			CampoImagem = GetNode<Control>("./VBoxContainer/Imagem");
 			CampoDescricao = GetNode<Control>("./VBoxContainer/Descricao");
 			CampoAudio = GetNode<Control>("./VBoxContainer/Audio");
+			CampoDownload = GetNode<Control>("./VBoxContainer/Arquivo");
 
 			Tipos = ConsultarTipoBLL.ConsultarTipos();
 		}
@@ -98,6 +103,27 @@ namespace BibliotecaViva.CTRL
 				ExibirCampo();
 			
 		}
+		private void _on_Play_button_up()
+		{
+			ConteudoAudio.Play();
+		}
+		private void _on_Stop_button_up()
+		{
+			ConteudoAudio.Stop();
+		}
+		private void _on_Download_button_up()
+		{
+			PopupDeDownload.CurrentFile = Registro.Nome + ObterDetalhesTipo(Registro.Tipo).Extensao;
+			PopupDeDownload.Popup_();
+		}
+		private void _on_PopupDeDownload_file_selected(String path)
+		{
+			Task.Run(async () => await SalvarArquivo(path, Registro.Conteudo));
+		}
+		private async Task SalvarArquivo(string caminho, string base64)
+		{
+			ImportadorDeBinariosUtil.SalvarBase64(caminho, base64);
+		}
 		private void ExibirCampo()
 		{
 			Maximizado = true;
@@ -128,6 +154,7 @@ namespace BibliotecaViva.CTRL
 			CampoImagem.Visible = false;
 			CampoTextual.Visible = false;
 			CampoAudio.Visible = false;
+			CampoDownload.Visible = false;
 			RectMinSize = new Vector2(400, 303);
 			RectSize = new Vector2(400, 303);
 		}
@@ -135,8 +162,12 @@ namespace BibliotecaViva.CTRL
 		{
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
-			CampoTextual.Visible = true;
+			CampoTextual.Visible = false;
 			CampoAudio.Visible = false;
+			CampoDownload.Visible = true;
+			
+			RectMinSize = new Vector2(400, 206);
+			RectSize = new Vector2(400, 206);
 		}
 		private void ExibirRegistroTextual()
 		{
@@ -144,6 +175,7 @@ namespace BibliotecaViva.CTRL
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
 			CampoAudio.Visible = false;
+			CampoDownload.Visible = false;
 			RectMinSize = new Vector2(400, 535);
 			RectSize = new Vector2(400, 535);
 			
@@ -155,12 +187,13 @@ namespace BibliotecaViva.CTRL
 			CampoDescricao.Visible = false;
 			CampoImagem.Visible = false;
 			CampoAudio.Visible = true;
+			CampoDownload.Visible = false;
 
 			var audio = ImportadorDeBinariosUtil.GerarAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoAudio.Stream = audio;
 
-			RectMinSize = new Vector2(400, 200);
-			RectSize = new Vector2(400, 200);
+			RectMinSize = new Vector2(400, 206);
+			RectSize = new Vector2(400, 206);
 		}
 		private void ExibirRegistroImagem()
 		{
@@ -168,6 +201,7 @@ namespace BibliotecaViva.CTRL
 			CampoDescricao.Visible = false;
 			CampoTextual.Visible = false;
 			CampoAudio.Visible = false;
+			CampoDownload.Visible = false;
 
 			var imagem = ImportadorDeBinariosUtil.GerarImagem(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoImagem.Texture = imagem;
@@ -180,6 +214,7 @@ namespace BibliotecaViva.CTRL
 			CampoImagem.Visible = false;
 			CampoTextual.Visible = false;
 			CampoAudio.Visible = false;
+			CampoDownload.Visible = false;
 		}
 		public TipoDTO ObterDetalhesTipo(string nomeTipo)
 		{
@@ -188,14 +223,6 @@ namespace BibliotecaViva.CTRL
 					tipo.Nome == nomeTipo
 				select 
 					tipo).FirstOrDefault();
-		}
-		private void _on_Play_button_up()
-		{
-			ConteudoAudio.Play();
-		}
-		private void _on_Stop_button_up()
-		{
-			ConteudoAudio.Stop();
 		}
 		public void FecharCTRL()
 		{

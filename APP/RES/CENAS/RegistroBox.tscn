@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
 [ext_resource path="res://RES/ICONES/AumentarDiminuir.png" type="Texture" id=3]
 [ext_resource path="res://RES/ICONES/Play.png" type="Texture" id=4]
 [ext_resource path="res://RES/ICONES/Stop.png" type="Texture" id=5]
+[ext_resource path="res://RES/ICONES/Download.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -17,6 +18,19 @@ margin_bottom = 207.0
 rect_min_size = Vector2( 400, 303 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupDeDownload" type="FileDialog" parent="."]
+margin_left = 439.0
+margin_top = 32.0
+margin_right = 835.0
+margin_bottom = 431.0
+window_title = "Salvar um Arquivo"
+access = 2
+current_dir = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP"
+current_path = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -293,6 +307,39 @@ __meta__ = {
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="VBoxContainer/Audio"]
 stream = SubResource( 2 )
 
+[node name="Arquivo" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 44.0
+margin_right = 361.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 357, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Arquivo"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Arquivo:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Download" type="Button" parent="VBoxContainer/Arquivo"]
+margin_top = 19.0
+margin_right = 109.0
+margin_bottom = 43.0
+text = "Download"
+icon = ExtResource( 6 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Botoes" type="Control" parent="VBoxContainer"]
 margin_top = 204.0
 margin_right = 361.0
@@ -333,9 +380,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="file_selected" from="PopupDeDownload" to="." method="_on_PopupDeDownload_file_selected"]
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="button_up" from="VBoxContainer/Audio/Play" to="." method="_on_Play_button_up"]
 [connection signal="button_up" from="VBoxContainer/Audio/Stop" to="." method="_on_Stop_button_up"]
+[connection signal="button_up" from="VBoxContainer/Arquivo/Download" to="." method="_on_Download_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Exibir" to="." method="_on_Exibir_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Maximizar" to="." method="_on_Maximizar_button_up"]
