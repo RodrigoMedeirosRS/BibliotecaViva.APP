@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://RES/ICONES/Play.png" type="Texture" id=4]
 [ext_resource path="res://RES/ICONES/Stop.png" type="Texture" id=5]
 [ext_resource path="res://RES/ICONES/Download.png" type="Texture" id=6]
+[ext_resource path="res://RES/ICONES/URL.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -309,9 +310,9 @@ stream = SubResource( 2 )
 
 [node name="Arquivo" type="Control" parent="VBoxContainer"]
 visible = false
-margin_top = 44.0
+margin_top = 204.0
 margin_right = 361.0
-margin_bottom = 96.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 357, 52 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -335,6 +336,39 @@ margin_right = 109.0
 margin_bottom = 43.0
 text = "Download"
 icon = ExtResource( 6 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="URL" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 357, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/URL"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "URL:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Acessar URL" type="Button" parent="VBoxContainer/URL"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 43.0
+text = "Acessar"
+icon = ExtResource( 7 )
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -385,6 +419,7 @@ __meta__ = {
 [connection signal="button_up" from="VBoxContainer/Audio/Play" to="." method="_on_Play_button_up"]
 [connection signal="button_up" from="VBoxContainer/Audio/Stop" to="." method="_on_Stop_button_up"]
 [connection signal="button_up" from="VBoxContainer/Arquivo/Download" to="." method="_on_Download_button_up"]
+[connection signal="button_up" from="VBoxContainer/URL/Acessar URL" to="." method="_on_Acessar_URL_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Exibir" to="." method="_on_Exibir_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Maximizar" to="." method="_on_Maximizar_button_up"]
