@@ -265,7 +265,9 @@ namespace BibliotecaViva.CTRL
 			Tipos.Clear();	
 			Tipos = null;
 
-			Registro.Dispose();
+			if (Registro != null)
+				Registro.Dispose();
+				
 			ConsultarTipoBLL.Dispose();
 			QueueFree();
 		}

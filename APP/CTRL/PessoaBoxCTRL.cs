@@ -62,7 +62,8 @@ namespace BibliotecaViva.CTRL
 			Genero.QueueFree();
 			Apelido.QueueFree();
 			Localizacao.QueueFree();
-			Pessoa.Dispose();
+			if (Pessoa != null)
+				Pessoa.Dispose();
 			QueueFree();
 		}
 	}
