@@ -51,12 +51,18 @@ namespace BibliotecaViva.BLL.Utils
         }
         private static string CarregarBinario(string nomeBinario, string formato, string base64)
         {
-            if(!System.IO.Directory.Exists("TEMP"))
-                System.IO.Directory.CreateDirectory("TEMP");
-            var caminho = "./TEMP/";
+            var caminho = ObterDiretorioTemporario();
             System.IO.File.WriteAllBytes(caminho + nomeBinario + "." + formato, Convert.FromBase64String(base64));
             return caminho;
         }
+
+        private static string ObterDiretorioTemporario()
+        {
+            if (!System.IO.Directory.Exists("TEMP"))
+                System.IO.Directory.CreateDirectory("TEMP");
+            return "./TEMP/";
+        }
+
         private static void LimparArquivosTemporarios(string caminhoComFormato, string caminhoImport)
         {
             if (System.IO.File.Exists(caminhoComFormato))
@@ -78,7 +84,13 @@ namespace BibliotecaViva.BLL.Utils
         }
         public static void SalvarBase64(string caminho, string base64)
         {
+            ObterDiretorioTemporario();
             System.IO.File.WriteAllBytes(caminho, Convert.FromBase64String(base64));
+        }
+        public static void DeletarBinario(string caminho)
+        {
+            if (System.IO.File.Exists(caminho))
+                System.IO.File.Delete(caminho);
         }
     }
 }

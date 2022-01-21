@@ -129,10 +129,17 @@ namespace BibliotecaViva.CTRL
 			Descricao.Text = registro.Descricao;
 			if (!ObterDetalhesTipo(registro.Tipo).Binario)
 				ConteudoASCII.Text = registro.Conteudo;
+			else
+			{
+				var caminho = "./TEMP/" + registro.Nome + ObterDetalhesTipo(registro.Tipo).Extensao;
+				ImportadorDeBinariosUtil.SalvarBase64(caminho, registro.Conteudo);
+				CaminhoBIN.Text = caminho;				
+			}
 			Idioma.Select(BuscarOpcao(registro.Idioma, Idioma));
 
 			var tipoIndex = BuscarOpcao(registro.Tipo, Tipo);
 			Tipo.Select(tipoIndex);
+
 			AtualizarCampoPreenchimento(tipoIndex);
 		}
 		private int BuscarOpcao(string nome, OptionButton dropdown)
@@ -160,7 +167,10 @@ namespace BibliotecaViva.CTRL
 			LatLong.Text = string.Empty; 
 			Descricao.Text = string.Empty; 
 			ConteudoASCII.Text = string.Empty;
+			if (CaminhoBIN.Text.Contains("./TEMP/"))
+				ImportadorDeBinariosUtil.DeletarBinario(CaminhoBIN.Text);
 			CaminhoBIN.Text = string.Empty;
+
 		}
 		private void _on_CaminhoBIN_text_changed(String new_text)
 		{
@@ -188,6 +198,8 @@ namespace BibliotecaViva.CTRL
 		}
 		public void FecharCTRL()
 		{
+			if (CaminhoBIN.Text.Contains("./TEMP/"))
+				ImportadorDeBinariosUtil.DeletarBinario(CaminhoBIN.Text);
 			BLL.Dispose();
 			BLLTipo.Dispose();
 			TipoSelecionado.Dispose();
