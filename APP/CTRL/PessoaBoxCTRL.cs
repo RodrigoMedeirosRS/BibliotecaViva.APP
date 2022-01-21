@@ -49,7 +49,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Editar_button_up()
 		{
-			
+			MainCTRL.EditarPessoa(Pessoa);
 		}
 		private void _on_Button_button_up()
 		{

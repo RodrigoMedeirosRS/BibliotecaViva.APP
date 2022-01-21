@@ -63,7 +63,7 @@ namespace BibliotecaViva.BLL
             if(!string.IsNullOrEmpty(caminhoConteudo) && !caminhoConteudo.Contains(extensao))
                 throw new Exception("Arquivo inválido! Por favor selecione um arquivo do tipo " + extensao);
         }
-        public RegistroDTO PopularRegistro(string nome, string apelido, string latlong, string descricao, string conteudo, TipoDTO tipoSelecionado, OptionButton idiomaDropdown)
+        public RegistroDTO PopularRegistro(string nome, string apelido, string latlong, string descricao, string conteudo, TipoDTO tipoSelecionado, OptionButton idiomaDropdown, int codigoRegistro)
         {
             ValidarPreenchimento(nome, latlong, descricao, conteudo, tipoSelecionado);
 
@@ -76,6 +76,8 @@ namespace BibliotecaViva.BLL
                 Tipo = tipoSelecionado.Nome,
                 Idioma = idiomaDropdown.GetItemText(idiomaDropdown.Selected)
             };
+            if (codigoRegistro != 0)
+                registro.Codigo = codigoRegistro;
 
             return string.IsNullOrEmpty(latlong) ? registro : PopularCoordenadas(registro, latlong);
         }

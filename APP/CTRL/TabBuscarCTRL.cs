@@ -57,7 +57,8 @@ namespace BibliotecaViva.CTRL
 			{
 				if (Pesquisa.ConsultaPessoa())
 					RealizarConsultaPessoa(0);
-				RealizarConsultaRegistro(0);
+				else
+					RealizarConsultaRegistro(0);
 			}
 			catch(Exception ex)
 			{

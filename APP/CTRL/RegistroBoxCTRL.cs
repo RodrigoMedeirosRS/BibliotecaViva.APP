@@ -91,7 +91,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Editar_button_up()
 		{
-			
+			MainCTRL.EditarRegistro(Registro);
 		}
 		private void _on_Exibir_button_up()
 		{

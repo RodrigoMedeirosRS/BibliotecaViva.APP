@@ -13,9 +13,9 @@ namespace BibliotecaViva.BLL
         {
             Container = container;
         }
-        public void IntanciarTab(string nomeTab, string caminhoTab)
+        public Node IntanciarTab(string nomeTab, string caminhoTab)
         {
-            InstanciadorUtil.InstanciarTab(Container, nomeTab, caminhoTab, false);
+            return InstanciadorUtil.InstanciarTab(Container, nomeTab, caminhoTab, false);
         }
 
         public void Dispose()

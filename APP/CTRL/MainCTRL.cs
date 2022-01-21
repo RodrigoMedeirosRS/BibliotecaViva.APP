@@ -1,5 +1,6 @@
 using Godot;
 
+using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
 using BibliotecaViva.BLL.Interface;
 using BibliotecaViva.CTRL.Interface;
@@ -8,7 +9,7 @@ namespace BibliotecaViva.CTRL
 {
 	public class MainCTRL : Node2D, IDisposableCTRL
 	{
-		private IMainBLL BLL { get ; set; }
+		private static IMainBLL BLL { get ; set; }
 		public override void _Ready()
 		{
 			RealizarInjecaoDeDependencias();
@@ -32,6 +33,18 @@ namespace BibliotecaViva.CTRL
 				var window_size = OS.WindowSize;
 				OS.WindowPosition = screen_size * 0.5f - window_size * 0.5f;
 			}
+		}
+		public static void EditarRegistro(RegistroDTO registroDTO)
+		{
+			var tab = BLL.IntanciarTab(registroDTO.Nome, "res://RES/CENAS/TabCadastrarRegistro.tscn");
+			if (tab != null)
+				(tab as TabCadastrarRegistroCTRL).PopularPreenchiento(registroDTO);
+		}
+		public static void EditarPessoa(PessoaDTO pessoaDTO)
+		{
+			var tab = BLL.IntanciarTab(pessoaDTO.Nome + " " + pessoaDTO.Sobrenome, "res://RES/CENAS/TabCadastrarPessoa.tscn");
+			if (tab != null)
+				(tab as TabCadastrarPessoaCTRL).PopularPreenchiento(pessoaDTO);
 		}
 		private void _on_CadastrarPessoa_button_up()
 		{

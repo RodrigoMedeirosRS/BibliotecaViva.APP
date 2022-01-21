@@ -15,6 +15,7 @@ namespace BibliotecaViva.CTRL
 {
 	public class TabCadastrarRegistroCTRL : Tabs, IDisposableCTRL
 	{
+		public int CodigoRegistro { get; set; }
 		private IConsultarTipoBLL BLLTipo { get; set; }
 		private ICadastrarRegistroBLL BLL { get; set; }
 		private LineEdit Nome { get; set; }
@@ -62,6 +63,7 @@ namespace BibliotecaViva.CTRL
 			ConteudoBIN = GetNode<Button>("./Inputs/Conteudo/ConteudoBIN");
 			CaminhoBIN = GetNode<LineEdit>("./Inputs/Conteudo/ConteudoBIN/CaminhoBIN");
 			ModalDeBusca = GetNode<FileDialog>("./ModalDeBusca");
+			CodigoRegistro = 0;
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
@@ -73,9 +75,9 @@ namespace BibliotecaViva.CTRL
 			{
 				var registro = new RegistroDTO();
 				if (TipoSelecionado.Binario)
-					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma);
+					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma, CodigoRegistro);
 				else
-					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma);
+					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma, CodigoRegistro);
 				LimparPreenchimento();
 				var retorno = BLL.CadastrarRegistro(registro);
 				CallDeferred("Feedback", retorno, true);
@@ -102,6 +104,10 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Tipo_item_selected(int index)
 		{
+			AtualizarCampoPreenchimento(index);
+		}
+		private void AtualizarCampoPreenchimento(int index)
+		{
 			ObterDadosExtensao(Tipo.GetItemText(index));
 			AlternarVisibulidadeCampoConteudo();
 		}
@@ -114,8 +120,41 @@ namespace BibliotecaViva.CTRL
 			ConteudoBIN.Visible = TipoSelecionado.Binario;
 			ConteudoASCII.Visible = !TipoSelecionado.Binario;
 		}
+		public void PopularPreenchiento(RegistroDTO registro)
+		{
+			CodigoRegistro = registro.Codigo;
+			Nome.Text = registro.Nome;
+			Apelido.Text = registro.Apelido;
+			LatLong.Text = registro.Latitude + ", " + registro.Longitude;
+			Descricao.Text = registro.Descricao;
+			if (!ObterDetalhesTipo(registro.Tipo).Binario)
+				ConteudoASCII.Text = registro.Conteudo;
+			Idioma.Select(BuscarOpcao(registro.Idioma, Idioma));
+
+			var tipoIndex = BuscarOpcao(registro.Tipo, Tipo);
+			Tipo.Select(tipoIndex);
+			AtualizarCampoPreenchimento(tipoIndex);
+		}
+		private int BuscarOpcao(string nome, OptionButton dropdown)
+		{
+			for (int i = 0; i < dropdown.GetItemCount(); i++)
+			{
+				if (dropdown.GetItemText(i) == nome)
+					return i;
+			}
+			return 0;
+		}
+		public TipoDTO ObterDetalhesTipo(string nomeTipo)
+		{
+			return (from tipo in Tipos
+				where
+					tipo.Nome == nomeTipo
+				select 
+					tipo).FirstOrDefault();
+		}
 		private void LimparPreenchimento()
 		{
+			CodigoRegistro = 0;
 			Nome.Text = string.Empty;
 			Apelido.Text = string.Empty; 
 			LatLong.Text = string.Empty; 
