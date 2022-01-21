@@ -4,7 +4,7 @@ namespace BibliotecaViva.BLL.Interface
 {
     public interface ICadastrarPessoaBLL
     {
-        PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong);
+        PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong, int codigoPessoa);
         string CadastrarPessoa(PessoaDTO pessoa);
         
         void Dispose();

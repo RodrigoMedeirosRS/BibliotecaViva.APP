@@ -11,6 +11,7 @@ namespace BibliotecaViva.CTRL
 {
 	public class TabCadastrarPessoaCTRL : Tabs, IDisposableCTRL
 	{
+		public int CodigoPessoa { get; set; }
 		private ICadastrarPessoaBLL BLL { get; set; }
 		private LineEdit Nome { get; set; }
 		private LineEdit Sobrenome { get; set; }
@@ -43,6 +44,7 @@ namespace BibliotecaViva.CTRL
 			LatLong = GetNode<LineEdit>("./Inputs/Latitude");
 			Sucesso = GetNode<Label>("./Sucesso");
 			Erro = GetNode<Label>("./Erro");
+			CodigoPessoa = 0;
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
@@ -52,7 +54,7 @@ namespace BibliotecaViva.CTRL
 		{
 			try
 			{
-				var pessoa = BLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.Text, Apelido.Text, LatLong.Text);
+				var pessoa = BLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.Text, Apelido.Text, LatLong.Text, CodigoPessoa);
 				LimparPreenchimento();
 				var retorno = BLL.CadastrarPessoa(pessoa);
 				CallDeferred("Feedback", retorno, true);
@@ -67,8 +69,18 @@ namespace BibliotecaViva.CTRL
 			Sucesso.Text = sucesso ? mensagem : string.Empty;
 			Erro.Text = sucesso ? string.Empty : mensagem;
 		}
+		public void PopularPreenchiento(PessoaDTO pessoa)
+		{
+			CodigoPessoa = pessoa.Codigo;
+			Nome.Text = pessoa.Nome;
+			Sobrenome.Text = pessoa.Sobrenome;
+			Genero.Text = pessoa.Genero;
+			Apelido.Text = pessoa.Apelido;
+			LatLong.Text = pessoa.Latitude + ", " + pessoa.Longitude;
+		}
 		private void LimparPreenchimento()
 		{
+			CodigoPessoa = 0;
 			Nome.Text = string.Empty;
 			Sobrenome.Text = string.Empty;
 			Genero.Text = string.Empty;

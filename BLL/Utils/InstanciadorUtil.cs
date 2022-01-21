@@ -25,15 +25,17 @@ namespace BibliotecaViva.BLL.Utils
             if (container.GetChildCount() > 0)
                 container.GetChild(0).QueueFree();
         }
-        public static void InstanciarTab(TabContainer container, string nomeTab, string caminhoTab, bool permitirDuplicada)
+        public static Node InstanciarTab(TabContainer container, string nomeTab, string caminhoTab, bool permitirDuplicada)
         {
             var cena = InstanciadorUtil.CarregarCena(caminhoTab);
             if (!VerificarTabDuplicada(container, nomeTab, permitirDuplicada) || permitirDuplicada)
             {
                 var tab = InstanciadorUtil.InstanciarObjeto(container, cena, null);
                 tab.Name = nomeTab;
-                container.CurrentTab = container.GetChildCount() -1;   
-            }             
+                container.CurrentTab = container.GetChildCount() -1;
+                return tab;
+            }
+            return null;             
         }
         private static bool VerificarTabDuplicada(TabContainer container, string nomeTab, bool permitirDuplicada)
         {

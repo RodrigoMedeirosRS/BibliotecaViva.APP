@@ -35,7 +35,7 @@ namespace BibliotecaViva.BLL
                     throw new Exception("Por favor preencher um valor de Latitude e Longitude com valores válidos.");
                 }
         }
-        public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong)
+        public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong, int codigoPessoa)
         {
             ValidarPreenchimento(nome, sobrenome, genero, latlong);
 
@@ -47,6 +47,9 @@ namespace BibliotecaViva.BLL
                 NomeSocial = string.Empty,
                 Genero = genero
             };
+
+            if (codigoPessoa != 0)
+                pessoa.Codigo = codigoPessoa;
 
             return string.IsNullOrEmpty(latlong) ? pessoa : PopularCoordenadas(pessoa, latlong);
         }
