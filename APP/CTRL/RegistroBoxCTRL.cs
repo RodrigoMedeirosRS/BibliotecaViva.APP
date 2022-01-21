@@ -228,6 +228,7 @@ namespace BibliotecaViva.CTRL
 		{
 			Nome.QueueFree();
 			Apelido.QueueFree();
+			PopupDeDownload.QueueFree();
 		
 			ConteudoDescricao.QueueFree();
 			ConteudoTextual.QueueFree();
@@ -238,6 +239,7 @@ namespace BibliotecaViva.CTRL
 			CampoImagem.QueueFree();
 			CampoTextual.QueueFree();
 			CampoAudio.QueueFree();
+			CampoDownload.QueueFree();
 
 			foreach (var tipo in Tipos)
 				tipo.Dispose();
