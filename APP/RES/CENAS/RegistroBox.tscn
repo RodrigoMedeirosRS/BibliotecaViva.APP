@@ -1,27 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
 [ext_resource path="res://RES/ICONES/AumentarDiminuir.png" type="Texture" id=3]
+[ext_resource path="res://RES/ICONES/Play.png" type="Texture" id=4]
+[ext_resource path="res://RES/ICONES/Stop.png" type="Texture" id=5]
+[ext_resource path="res://RES/ICONES/Download.png" type="Texture" id=6]
+[ext_resource path="res://RES/ICONES/URL.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="AudioStreamSample" id=2]
 
 [node name="RegistroBox" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.054902 )
 margin_right = 400.0
-margin_bottom = 303.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 400, 303 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupDeDownload" type="FileDialog" parent="."]
+margin_left = 439.0
+margin_top = 32.0
+margin_right = 835.0
+margin_bottom = 431.0
+window_title = "Salvar um Arquivo"
+access = 2
+current_dir = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP"
+current_path = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="Controladores"]
-margin_right = 400.0
-margin_bottom = 303.0
-color = Color( 1, 1, 1, 0.196078 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,7 +80,7 @@ __meta__ = {
 margin_left = 15.0
 margin_top = 60.0
 margin_right = 376.0
-margin_bottom = 257.0
+margin_bottom = 195.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -132,9 +148,9 @@ __meta__ = {
 
 [node name="TextureRect" type="ColorRect" parent="VBoxContainer/Descricao"]
 margin_top = 18.0
-margin_right = 361.0
+margin_right = 357.0
 margin_bottom = 156.0
-rect_min_size = Vector2( 361, 135 )
+rect_min_size = Vector2( 357, 135 )
 color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,6 +171,205 @@ margin_right = 345.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 345, 0 )
 fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Imagem" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 0, 380 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Imagem"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Imagem:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Imagem" type="TextureRect" parent="VBoxContainer/Imagem"]
+margin_top = 17.0
+margin_right = 357.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 357, 357 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="ColorRect" parent="VBoxContainer/Imagem"]
+margin_top = 17.0
+margin_right = 357.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 357, 357 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texto" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 357, 380 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Texto"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Texto:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Texto"]
+margin_top = 20.0
+margin_right = 357.0
+margin_bottom = 365.0
+rect_min_size = Vector2( 357, 345 )
+color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Texto"]
+margin_top = 20.0
+margin_right = 357.0
+margin_bottom = 365.0
+rect_min_size = Vector2( 357, 345 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conteudo" type="RichTextLabel" parent="VBoxContainer/Texto/ScrollContainer"]
+margin_right = 345.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 345, 0 )
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 357, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Audio"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Audio:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Play" type="Button" parent="VBoxContainer/Audio"]
+margin_top = 22.0
+margin_right = 62.0
+margin_bottom = 46.0
+text = "Play"
+icon = ExtResource( 4 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stop" type="Button" parent="VBoxContainer/Audio"]
+margin_left = 71.0
+margin_top = 22.0
+margin_right = 134.0
+margin_bottom = 46.0
+text = "Stop"
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="VBoxContainer/Audio"]
+stream = SubResource( 2 )
+
+[node name="Arquivo" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 357, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Arquivo"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "Arquivo:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Download" type="Button" parent="VBoxContainer/Arquivo"]
+margin_top = 19.0
+margin_right = 109.0
+margin_bottom = 43.0
+text = "Download"
+icon = ExtResource( 6 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="URL" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 204.0
+margin_right = 361.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 357, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/URL"]
+anchor_top = 0.00970694
+anchor_right = 0.0277008
+anchor_bottom = 0.00970694
+margin_right = 53.0
+margin_bottom = 14.0
+text = "URL:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Acessar URL" type="Button" parent="VBoxContainer/URL"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 43.0
+text = "Acessar"
+icon = ExtResource( 7 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -199,7 +414,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="file_selected" from="PopupDeDownload" to="." method="_on_PopupDeDownload_file_selected"]
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Audio/Play" to="." method="_on_Play_button_up"]
+[connection signal="button_up" from="VBoxContainer/Audio/Stop" to="." method="_on_Stop_button_up"]
+[connection signal="button_up" from="VBoxContainer/Arquivo/Download" to="." method="_on_Download_button_up"]
+[connection signal="button_up" from="VBoxContainer/URL/Acessar URL" to="." method="_on_Acessar_URL_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Exibir" to="." method="_on_Exibir_button_up"]
 [connection signal="button_up" from="VBoxContainer/Botoes/Maximizar" to="." method="_on_Maximizar_button_up"]
