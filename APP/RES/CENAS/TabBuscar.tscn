@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/TabBuscarCTRL.cs" type="Script" id=2]
 [ext_resource path="res://CTRL/PesquisaCTRL.cs" type="Script" id=3]
 [ext_resource path="res://RES/CENAS/PessoaBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RES/CENAS/RegistroBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=6]
 
 [node name="TabBuscar" type="Tabs"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
@@ -37,6 +39,7 @@ margin_left = 808.045
 margin_top = -1.7818
 margin_right = 828.045
 margin_bottom = 18.2182
+hint_tooltip = "Clique aqui para fechar esta tab."
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,10 +56,11 @@ __meta__ = {
 }
 
 [node name="Nome" type="LineEdit" parent="Pesquisa"]
-margin_left = -199.633
-margin_top = 7.0406
-margin_right = -19.633
-margin_bottom = 31.0406
+margin_left = -207.633
+margin_top = 10.0406
+margin_right = -27.633
+margin_bottom = 34.0406
+hint_tooltip = "Digite aqui o nome do Registro ou Pista Viva que você está buscando."
 placeholder_text = "Nome"
 
 [node name="Label" type="Label" parent="Pesquisa/Nome"]
@@ -66,10 +70,11 @@ margin_bottom = -4.0
 text = "Nome"
 
 [node name="Sobrenome" type="LineEdit" parent="Pesquisa"]
-margin_left = -11.633
-margin_top = 7.0406
-margin_right = 204.367
-margin_bottom = 31.0406
+margin_left = -19.633
+margin_top = 10.0406
+margin_right = 196.367
+margin_bottom = 34.0406
+hint_tooltip = "Digite aqui o sobrenome da Pista Viva que você está buscando."
 placeholder_text = "Sobrenome"
 
 [node name="Label" type="Label" parent="Pesquisa/Sobrenome"]
@@ -79,10 +84,11 @@ margin_bottom = -4.0
 text = "Sobrenome"
 
 [node name="Idioma" type="OptionButton" parent="Pesquisa"]
-margin_left = -11.633
-margin_top = 7.0406
-margin_right = 204.367
-margin_bottom = 31.0406
+margin_left = -19.633
+margin_top = 10.0406
+margin_right = 196.367
+margin_bottom = 34.0406
+hint_tooltip = "Selecione aqui o idioma do registro que você está buscando."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,10 +100,11 @@ margin_bottom = -4.0
 text = "Idioma"
 
 [node name="Apelido" type="LineEdit" parent="Pesquisa"]
-margin_left = 215.367
-margin_top = 7.0406
-margin_right = 395.367
-margin_bottom = 31.0406
+margin_left = 207.367
+margin_top = 10.0406
+margin_right = 387.367
+margin_bottom = 34.0406
+hint_tooltip = "Digite aqui o Apelido do Registro ou Pista Viva que você está buscando."
 placeholder_text = "Nome"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,10 +117,11 @@ margin_bottom = -4.0
 text = "Apelido"
 
 [node name="Tipo" type="OptionButton" parent="Pesquisa"]
-margin_left = 404.0
-margin_top = 7.0
-margin_right = 528.0
-margin_bottom = 31.0
+margin_left = 396.0
+margin_top = 10.0
+margin_right = 520.0
+margin_bottom = 34.0
+hint_tooltip = "Selecione aqui se você deseja buscar uma Pista Viva ou Registro."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -125,11 +133,14 @@ margin_bottom = -4.0
 text = "Tipo"
 
 [node name="Pesquisar" type="Button" parent="Pesquisa"]
-margin_left = 536.287
-margin_top = 8.62731
-margin_right = 610.287
-margin_bottom = 28.6273
-text = "Pesquisar"
+margin_left = 528.287
+margin_top = 11.6273
+margin_right = 602.287
+margin_bottom = 31.6273
+hint_tooltip = "Clique aqui para realizar a sua pesquisa."
+text = "Buscar"
+icon = ExtResource( 6 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -166,9 +177,10 @@ __meta__ = {
 }
 
 [node name="Colunas" type="HBoxContainer" parent="Dados/ScrollContainer"]
-margin_right = 406.0
-rect_min_size = Vector2( 406, 0 )
+margin_right = 1066.0
+rect_min_size = Vector2( 1066, 0 )
 custom_constants/separation = 20
+alignment = 1
 
 [node name="PopErro" type="AcceptDialog" parent="."]
 margin_left = 311.0

@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CTRL/MainCTRL.cs" type="Script" id=1]
+[ext_resource path="res://RES/ICONES/Rastros.png" type="Texture" id=2]
+[ext_resource path="res://RES/ICONES/CadastrarRegistro.png" type="Texture" id=3]
+[ext_resource path="res://RES/ICONES/Sonar.png" type="Texture" id=4]
+[ext_resource path="res://RES/ICONES/CadastrarPessoa.png" type="Texture" id=5]
+[ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=6]
 
 [node name="Main" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -41,41 +47,57 @@ __meta__ = {
 }
 
 [node name="CadastrarPessoa" type="Button" parent="VBoxContainer"]
-margin_top = 124.0
+margin_top = 136.0
 margin_right = 141.0
-margin_bottom = 144.0
-text = "Cadastrar Pessoa"
+margin_bottom = 156.0
+hint_tooltip = "Clique aqui para cadastra uma nova livro pista viva."
+text = "Nova Pista Viva"
+icon = ExtResource( 5 )
+expand_icon = true
 
 [node name="CadatrarRegistro" type="Button" parent="VBoxContainer"]
-margin_top = 148.0
+margin_top = 160.0
 margin_right = 141.0
-margin_bottom = 168.0
-text = "Cadastrar Registro"
+margin_bottom = 180.0
+hint_tooltip = "Clique aqui para cadastra um novo registro."
+text = "Novo Registro"
+icon = ExtResource( 3 )
+expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 172.0
+margin_top = 184.0
 margin_right = 141.0
-margin_bottom = 176.0
+margin_bottom = 188.0
 
 [node name="Buscar" type="Button" parent="VBoxContainer"]
-margin_top = 180.0
+margin_top = 192.0
 margin_right = 141.0
-margin_bottom = 200.0
+margin_bottom = 212.0
+hint_tooltip = "Clique aqui para consultar registros ou pistas vivas."
 text = "Buscar"
+icon = ExtResource( 6 )
+expand_icon = true
 
 [node name="Sonar" type="Button" parent="VBoxContainer"]
-margin_top = 204.0
+margin_top = 216.0
 margin_right = 141.0
-margin_bottom = 224.0
+margin_bottom = 236.0
+hint_tooltip = "Clique aqui para ativa o modo de exploração geolocalizado."
 text = "Sonar"
+icon = ExtResource( 4 )
+expand_icon = true
 
 [node name="Rastros" type="Button" parent="VBoxContainer"]
-margin_top = 228.0
+margin_top = 240.0
 margin_right = 141.0
-margin_bottom = 248.0
+margin_bottom = 260.0
+hint_tooltip = "Clique aqui para ver a densidade de registros por região."
 text = "Rastros"
+icon = ExtResource( 2 )
+expand_icon = true
 
 [node name="Ping" type="Button" parent="VBoxContainer"]
+visible = false
 margin_top = 252.0
 margin_right = 141.0
 margin_bottom = 272.0

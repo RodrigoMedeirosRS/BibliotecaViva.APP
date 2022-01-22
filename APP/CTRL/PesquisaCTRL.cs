@@ -42,7 +42,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void PoularTipoDropDown()
 		{
-			Tipo.AddItem("Pessoa");
+			Tipo.AddItem("Pista Viva");
 			Tipo.AddItem("Registro");
 			Tipo.Select(0);
 			AlternarOpcoesDeBusca(0);
@@ -54,7 +54,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void AlternarOpcoesDeBusca(int index)
 		{
-			Sobrenome.Visible = Tipo.GetItemText(index) == "Pessoa";
+			Sobrenome.Visible = Tipo.GetItemText(index) == "Pista Viva";
 			Idioma.Visible = Tipo.GetItemText(index) == "Registro";
 		}
 		private void _on_Tipo_item_selected(int index)
