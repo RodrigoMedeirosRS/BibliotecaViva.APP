@@ -113,7 +113,10 @@ namespace BibliotecaViva.CTRL
 		}
 		private List<RegistroDTO> RealizarConsultaDeRegistrosJaRelacionados()
 		{
-			return ConsultarPessoaBLL.RealizarConsultaDeRegistrosRelacionados(CodigoPessoa.ToString());
+			return ConsultarPessoaBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta ()
+			{
+				CodRegistro = CodigoPessoa
+			});
 		}
 		private void InstanciarPessoaBox(RegistroObject registro)
 		{

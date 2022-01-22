@@ -45,9 +45,9 @@ namespace BibliotecaViva.BLL
             var retorno = SAL.ExecutarPost<PessoaConsulta, List<PessoaDTO>>(URLConsultarPessoa, pessoaConsulta);
             return ValidarConsulta(retorno);
         }
-        public List<RegistroDTO> RealizarConsultaDeRegistrosRelacionados(string codigoRegistro)
+        public List<RegistroDTO> RealizarConsultaDeRegistrosRelacionados(RelacaoConsulta relacaoConsulta)
         {
-            var retorno = SAL.ExecutarPost<string, List<RegistroDTO>>(URLConsultarRelacao, codigoRegistro);
+            var retorno = SAL.ExecutarPost<RelacaoConsulta, List<RegistroDTO>>(URLConsultarRelacao, relacaoConsulta);
             return ValidarConsulta(retorno);
         }
         public Node InstanciarPessoaBox(Node Container, Vector2? posicao)
