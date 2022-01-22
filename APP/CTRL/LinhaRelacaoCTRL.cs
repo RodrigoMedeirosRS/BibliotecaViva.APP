@@ -87,7 +87,8 @@ namespace BibliotecaViva.CTRL
 		}
 		public void SelecionarTipoRelecao(string nomeTipoRelacao)
 		{
-			DropdownTipoRelacao.Select(BustarIndicePorNome(nomeTipoRelacao));
+			if (Tipos.Count > 0)
+				DropdownTipoRelacao.Select(BustarIndicePorNome(nomeTipoRelacao));
 		}
 		private int BustarIndicePorNome(string nomeTipoRelacao)
 		{

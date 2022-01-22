@@ -254,6 +254,7 @@ namespace BibliotecaViva.CTRL
 			Tipo.Select(tipoIndex);
 
 			AtualizarCampoPreenchimento(tipoIndex);
+			Task.Run(async () => await BuscarRegistros(false, registro));
 		}
 		private int BuscarOpcao(string nome, OptionButton dropdown)
 		{
