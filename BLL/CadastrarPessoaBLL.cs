@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using BibliotecaViva.BLL.Utils;
 using BibliotecaViva.BLL.Interface;
@@ -35,7 +36,7 @@ namespace BibliotecaViva.BLL
                     throw new Exception("Por favor preencher um valor de Latitude e Longitude com valores válidos.");
                 }
         }
-        public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong, int codigoPessoa)
+        public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong, int codigoPessoa, List<RelacaoDTO> relacoes)
         {
             ValidarPreenchimento(nome, sobrenome, genero, latlong);
 
@@ -45,7 +46,8 @@ namespace BibliotecaViva.BLL
                 Sobrenome = sobrenome,
                 Apelido = apelido,
                 NomeSocial = string.Empty,
-                Genero = genero
+                Genero = genero,
+                Relacoes = relacoes
             };
 
             if (codigoPessoa != 0)

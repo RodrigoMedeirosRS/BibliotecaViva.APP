@@ -16,10 +16,10 @@
             "request": "launch",
             "mode": "executable",
             "preLaunchTask": "build",
-            "executable": "C:\\godot\\Godot.exe",
+            "executable": "/usr/local/myapps/Godot/Godot.3.64",
             "executableArguments": [
                 "--path",
-                "${workspaceRoot}"
+                "${workspaceRoot}/APP"
             ]
         },
         {
@@ -28,10 +28,10 @@
             "request": "launch",
             "mode": "executable",
             "preLaunchTask": "build",
-            "executable": "C:\\godot\\Godot.exe",
+            "executable": "/usr/local/myapps/Godot/Godot.3.64",
             "executableArguments": [
                 "--path",
-                "${workspaceRoot}",
+                "${workspaceRoot}/APP",
                 "${command:SelectLaunchScene}"
             ]
         },

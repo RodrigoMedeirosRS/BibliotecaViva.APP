@@ -15,10 +15,12 @@ namespace BibliotecaViva.BLL
     {
         private IRequisicao SAL { get; set; }
         private string URLConsultarPessoa { get; set; }
+        private string URLConsultarRelacao { get; set; }
         public ConsultarPessoaBLL()
         {
             SAL = new Requisicao();
             URLConsultarPessoa = Apontamentos.URLApi + "/Pessoa/Consultar";
+            URLConsultarRelacao = Apontamentos.URLApi + "/Pessoa/ObterRelacoes";
         }
         public void ValidarPreenchimento(PessoaConsulta pessoaConsulta)
         {
@@ -31,10 +33,21 @@ namespace BibliotecaViva.BLL
                 throw new Exception("Consulta não Retornou Dados");
             return retorno;
         }
+        public List<RegistroDTO> ValidarConsulta(List<RegistroDTO> retorno)
+        {
+            if (retorno.Count == 0)
+                throw new Exception("Consulta não Retornou Dados");
+            return retorno;
+        }
         public List<PessoaDTO> RealizarConsulta(PessoaConsulta pessoaConsulta)
         {
             ValidarPreenchimento(pessoaConsulta);
             var retorno = SAL.ExecutarPost<PessoaConsulta, List<PessoaDTO>>(URLConsultarPessoa, pessoaConsulta);
+            return ValidarConsulta(retorno);
+        }
+        public List<RegistroDTO> RealizarConsultaDeRegistrosRelacionados(RelacaoConsulta relacaoConsulta)
+        {
+            var retorno = SAL.ExecutarPost<RelacaoConsulta, List<RegistroDTO>>(URLConsultarRelacao, relacaoConsulta);
             return ValidarConsulta(retorno);
         }
         public Node InstanciarPessoaBox(Node Container, Vector2? posicao)

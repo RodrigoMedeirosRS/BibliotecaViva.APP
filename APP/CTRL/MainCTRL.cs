@@ -48,11 +48,11 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_CadastrarPessoa_button_up()
 		{
-			BLL.IntanciarTab("Cadastrar Pessoa", "res://RES/CENAS/TabCadastrarPessoa.tscn");
+			BLL.IntanciarTab("Nova Pista Viva", "res://RES/CENAS/TabCadastrarPessoa.tscn");
 		}
 		private void _on_CadatrarRegistro_button_up()
 		{
-			BLL.IntanciarTab("Cadastrar Registro", "res://RES/CENAS/TabCadastrarRegistro.tscn");
+			BLL.IntanciarTab("Novo Registro", "res://RES/CENAS/TabCadastrarRegistro.tscn");
 		}
 		private void _on_Buscar_button_up()
 		{

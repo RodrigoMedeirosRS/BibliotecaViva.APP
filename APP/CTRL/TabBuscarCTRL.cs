@@ -88,7 +88,6 @@ namespace BibliotecaViva.CTRL
 		private void InstanciarPessoaBox(PessoaObject pessoaObjct, VBoxContainer container, Vector2 posicao)
 		{
 			var pessoaBox = PessoaBox.Duplicate();
-			RemoveChild(PessoaBox);
 			container.AddChild(pessoaBox);
 			pessoaBox._Ready();
 			(pessoaBox as PessoaBoxCTRL).Preencher(pessoaObjct.Pessoa, posicao);
@@ -104,7 +103,7 @@ namespace BibliotecaViva.CTRL
 			var posicao = new Vector2(0, 0);
 			foreach (var registro in resultado)
 			{
-				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro), ObterColuna(coluna), posicao);
+				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro, null), ObterColuna(coluna), posicao);
 				posicao.y += 610;
 			}
 		}

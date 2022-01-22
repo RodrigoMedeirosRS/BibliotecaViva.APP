@@ -10,6 +10,7 @@ using BibliotecaViva.CTRL.Interface;
 using BibliotecaViva.DTO;
 using BibliotecaViva.DTO.Utils;
 using BibliotecaViva.BLL.Utils;
+using BibliotecaViva.DTO.Dominio;
 
 namespace BibliotecaViva.CTRL
 {
@@ -17,7 +18,8 @@ namespace BibliotecaViva.CTRL
 	{
 		public int CodigoRegistro { get; set; }
 		private IConsultarTipoBLL BLLTipo { get; set; }
-		private ICadastrarRegistroBLL BLL { get; set; }
+		private ICadastrarRegistroBLL CadastrarRegistroBLL { get; set; }
+		private IConsultarRegistroBLL ConsultarRegistroBLL { get; set; }
 		private LineEdit Nome { get; set; }
 		private LineEdit Apelido { get; set; }
 		private LineEdit LatLong { get ; set; }
@@ -32,6 +34,10 @@ namespace BibliotecaViva.CTRL
 		private Button ConteudoBIN { get; set; }
 		private LineEdit CaminhoBIN { get; set; }
 		private FileDialog ModalDeBusca { get; set; }
+		private LineEdit NomeBusca { get; set; }
+		private LinhaRelacaoCTRL LinhaRelacao { get; set; }
+		private OptionButton IdiomaBusca { get; set; }
+		private VBoxContainer ContainerRelacao { get; set; }
 		public override void _Ready()
 		{
 			RealizarInjecaoDeDependencias();
@@ -41,7 +47,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
-			BLL = new CadastrarRegistroBLL();
+			CadastrarRegistroBLL = new CadastrarRegistroBLL();
+			ConsultarRegistroBLL = new ConsultarRegistroBLL();
 			BLLTipo = new ConsultarTipoBLL();
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
@@ -63,6 +70,10 @@ namespace BibliotecaViva.CTRL
 			ConteudoBIN = GetNode<Button>("./Inputs/Conteudo/ConteudoBIN");
 			CaminhoBIN = GetNode<LineEdit>("./Inputs/Conteudo/ConteudoBIN/CaminhoBIN");
 			ModalDeBusca = GetNode<FileDialog>("./ModalDeBusca");
+			LinhaRelacao = GetNode<LinhaRelacaoCTRL>("./LinhaRelacao");
+			NomeBusca = GetNode<LineEdit>("./BuscaRelacoes/Nome");
+			IdiomaBusca = GetNode<OptionButton>("./BuscaRelacoes/Idioma");
+			ContainerRelacao = GetNode<VBoxContainer>("./Inputs/ScrollContainer/VBoxContainer");
 			CodigoRegistro = 0;
 		}
 		private void _on_SalvarAlteracoes_button_up()
@@ -75,17 +86,35 @@ namespace BibliotecaViva.CTRL
 			{
 				var registro = new RegistroDTO();
 				if (TipoSelecionado.Binario)
-					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma, CodigoRegistro);
+					registro = CadastrarRegistroBLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma, CodigoRegistro, ObterListaDeRelacoes());
 				else
-					registro = BLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma, CodigoRegistro);
+					registro = CadastrarRegistroBLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma, CodigoRegistro, ObterListaDeRelacoes());
 				LimparPreenchimento();
-				var retorno = BLL.CadastrarRegistro(registro);
+				LimparItensNaoRelacionados(true);
+				var retorno = CadastrarRegistroBLL.CadastrarRegistro(registro);
 				CallDeferred("Feedback", retorno, true);
 			}
 			catch(Exception ex)
 			{
 				CallDeferred("Feedback", ex.Message, false);
 			}
+		}
+		private List<RelacaoDTO> ObterListaDeRelacoes()
+		{
+			var lista = new List<RelacaoDTO>();
+
+			foreach(var relacao in ContainerRelacao.GetChildren())
+				if ((relacao as LinhaRelacaoCTRL).ObterRelacao())
+				{
+					var tipoRelacao = (relacao as LinhaRelacaoCTRL).ObterTipoRelacao();
+					lista.Add(new RelacaoDTO()
+					{
+						RelacaoID = (relacao as LinhaRelacaoCTRL).CodigoRelacao,
+						TipoRelacao = tipoRelacao != null ? tipoRelacao.Nome : string.Empty
+					});
+				}
+		
+			return lista;
 		}
 		private string CarregarArquivoBinario()
 		{
@@ -99,12 +128,96 @@ namespace BibliotecaViva.CTRL
 		public void PopularDropDowns()
 		{
 			BLLTipo.PopularDropDownIdioma(Idioma);
+			BLLTipo.PopularDropDownIdioma(IdiomaBusca);
 			Tipos = BLLTipo.PopularDropDownTipo(Tipo);
 			ObterDadosExtensao(Tipo.GetItemText(0));
 		}
 		private void _on_Tipo_item_selected(int index)
 		{
 			AtualizarCampoPreenchimento(index);
+		}
+		private void _on_Buscar_button_up()
+		{
+			Task.Run(async () => await BuscarRegistros(true));
+		}
+		private void _on_Limpar_button_up()
+		{
+			LimparItensNaoRelacionados(false);
+		}
+		private async Task BuscarRegistros(bool novaConsulta, RegistroDTO registro = null)
+		{
+			try
+			{
+				LimparItensNaoRelacionados(false);
+				var resultado = novaConsulta ? RealizarConsultaDeRegistros() : RealizarConsultaDeRegistrosJaRelacionados(registro);
+				foreach (var registroRelacionado in resultado)
+				{
+					CallDeferred("InstanciarRelacao", registroRelacionado);
+				}
+			}
+			catch(Exception ex)
+			{
+				Feedback(ex.Message, false);
+			}
+		}
+		private List<RegistroObject> RealizarConsultaDeRegistros()
+		{
+			var resultado = new List<RegistroObject>();
+
+			var consulta = ConsultarRegistroBLL.RealizarConsulta(new RegistroConsulta()
+			{
+					Nome = NomeBusca.Text,
+					Apelido = string.Empty,
+					Idioma = IdiomaBusca.GetItemText(IdiomaBusca.Selected)
+			});
+
+			foreach (var registro in consulta)
+			{
+				resultado.Add(new RegistroObject(registro, null));
+			}
+			
+			return resultado;
+		}
+		private List<RegistroObject> RealizarConsultaDeRegistrosJaRelacionados(RegistroDTO registro)
+		{
+			var resultado = new List<RegistroObject>();
+
+			var consulta = ConsultarRegistroBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta ()
+			{
+				CodRegistro = CodigoRegistro
+			});
+
+			consulta = consulta.OrderBy(x => x.Codigo).ToList();
+			var relacoes = registro.Referencias.OrderBy(x => x.RelacaoID).ToList();
+
+			for (int i = 0; i < consulta.Count; i ++)
+			{
+				resultado.Add(new RegistroObject(consulta[i], relacoes[i]));
+			}
+
+			return resultado;
+		}
+		private void InstanciarRelacao(RegistroObject registro)
+		{
+			var linhaRelacao = LinhaRelacao.Duplicate();
+			ContainerRelacao.AddChild(linhaRelacao);
+			linhaRelacao._Ready();
+			(linhaRelacao as LinhaRelacaoCTRL).PopularRelacoes(new List<TipoRelacaoDTO>());
+			(linhaRelacao as LinhaRelacaoCTRL).Nome.Text = registro.Registro.Nome;
+			(linhaRelacao as LinhaRelacaoCTRL).CodigoRelacao = registro.Registro.Codigo;
+			if (registro.Relacao != null)
+			{
+				(linhaRelacao as LinhaRelacaoCTRL).SelecionarTipoRelecao(registro.Relacao.TipoRelacao);
+				(linhaRelacao as LinhaRelacaoCTRL).BotaoRelacionar.Disabled = false;
+				(linhaRelacao as LinhaRelacaoCTRL).BotaoRelacionar.Pressed = true;
+				(linhaRelacao as LinhaRelacaoCTRL).DefinirRelacao(true);
+			}
+		}
+		private void LimparItensNaoRelacionados(bool limparTudo)
+		{
+			foreach(var relacao in ContainerRelacao.GetChildren())
+				if (!(relacao as LinhaRelacaoCTRL).ObterRelacao() || limparTudo)
+					(relacao as LinhaRelacaoCTRL).RemoverLinha();
 		}
 		private void AtualizarCampoPreenchimento(int index)
 		{
@@ -141,6 +254,7 @@ namespace BibliotecaViva.CTRL
 			Tipo.Select(tipoIndex);
 
 			AtualizarCampoPreenchimento(tipoIndex);
+			Task.Run(async () => await BuscarRegistros(false, registro));
 		}
 		private int BuscarOpcao(string nome, OptionButton dropdown)
 		{
@@ -184,7 +298,7 @@ namespace BibliotecaViva.CTRL
 		{
 			try
 			{
-				BLL.ValidarConteudoBinario(new_text, TipoSelecionado.Extensao);
+				CadastrarRegistroBLL.ValidarConteudoBinario(new_text, TipoSelecionado.Extensao);
 				Erro.Text = string.Empty;
 			}
 			catch (Exception ex)
@@ -200,7 +314,8 @@ namespace BibliotecaViva.CTRL
 		{
 			if (CaminhoBIN.Text.Contains("./TEMP/"))
 				ImportadorDeBinariosUtil.DeletarBinario(CaminhoBIN.Text);
-			BLL.Dispose();
+			CadastrarRegistroBLL.Dispose();
+			ConsultarRegistroBLL.Dispose();
 			BLLTipo.Dispose();
 			TipoSelecionado.Dispose();
 			Nome.QueueFree();
@@ -216,6 +331,11 @@ namespace BibliotecaViva.CTRL
 			CaminhoBIN.QueueFree();
 			ModalDeBusca.QueueFree();
 			Desalocador.DesalocarLista<TipoDTO>(Tipos);
+			foreach(var linha in ContainerRelacao.GetChildren())
+				(linha as LinhaRelacaoCTRL).RemoverLinha();
+			LinhaRelacao.RemoverLinha();
+			NomeBusca.QueueFree();
+			IdiomaBusca.QueueFree();
 			QueueFree();
 		}
 	}

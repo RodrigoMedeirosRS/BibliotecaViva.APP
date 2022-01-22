@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/RegistroBoxCTRL.cs" type="Script" id=2]
@@ -7,12 +7,15 @@
 [ext_resource path="res://RES/ICONES/Stop.png" type="Texture" id=5]
 [ext_resource path="res://RES/ICONES/Download.png" type="Texture" id=6]
 [ext_resource path="res://RES/ICONES/URL.png" type="Texture" id=7]
+[ext_resource path="res://RES/ICONES/Edit.png" type="Texture" id=8]
+[ext_resource path="res://RES/ICONES/Relacoes.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
 [sub_resource type="AudioStreamSample" id=2]
 
 [node name="RegistroBox" type="Panel"]
+pause_mode = 2
 self_modulate = Color( 1, 1, 1, 0.054902 )
 margin_right = 400.0
 margin_bottom = 207.0
@@ -48,6 +51,7 @@ margin_top = 18.0
 margin_right = 362.0
 margin_bottom = 38.0
 rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Fecha Modal"
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -69,6 +73,7 @@ margin_left = 16.0
 margin_top = 15.0
 margin_right = 329.0
 margin_bottom = 51.0
+hint_tooltip = "Nome do Registro"
 text = "Nome"
 align = 1
 valign = 1
@@ -109,6 +114,7 @@ margin_top = 17.6667
 margin_right = 361.0
 margin_bottom = 39.6667
 rect_min_size = Vector2( 361, 14 )
+hint_tooltip = "Apelido do Registro"
 color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,6 +168,7 @@ margin_top = 20.0
 margin_right = 360.0
 margin_bottom = 153.0
 rect_min_size = Vector2( 357, 133 )
+hint_tooltip = "Descrição do Registro"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -286,6 +293,7 @@ __meta__ = {
 margin_top = 22.0
 margin_right = 62.0
 margin_bottom = 46.0
+hint_tooltip = "Clique aqui para reproduzir o registro."
 text = "Play"
 icon = ExtResource( 4 )
 expand_icon = true
@@ -298,6 +306,7 @@ margin_left = 71.0
 margin_top = 22.0
 margin_right = 134.0
 margin_bottom = 46.0
+hint_tooltip = "Clique aqui para parar a reprodução do registro."
 text = "Stop"
 icon = ExtResource( 5 )
 expand_icon = true
@@ -334,6 +343,7 @@ __meta__ = {
 margin_top = 19.0
 margin_right = 109.0
 margin_bottom = 43.0
+hint_tooltip = "Clique aqui para baixar o registro."
 text = "Download"
 icon = ExtResource( 6 )
 expand_icon = true
@@ -367,6 +377,7 @@ __meta__ = {
 margin_top = 19.0
 margin_right = 97.0
 margin_bottom = 43.0
+hint_tooltip = "Clique aqui para acessar o registro no seu navegador."
 text = "Acessar"
 icon = ExtResource( 7 )
 expand_icon = true
@@ -388,7 +399,10 @@ margin_left = 1.0
 margin_top = 7.0
 margin_right = 131.0
 margin_bottom = 31.0
+hint_tooltip = "Clique aqui para abrir a tela de edição deste registro."
 text = "Editar"
+icon = ExtResource( 8 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -398,7 +412,10 @@ margin_left = 162.0
 margin_top = 7.0
 margin_right = 292.0
 margin_bottom = 31.0
+hint_tooltip = "Clique aqui para exibir as pistas vivas e registros relacionados com esse registro."
 text = "Exibir Relações"
+icon = ExtResource( 9 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -408,6 +425,7 @@ margin_left = 327.0
 margin_top = 7.0
 margin_right = 359.0
 margin_bottom = 31.0
+hint_tooltip = "Clique aqui para ver o conteúdo do registro."
 icon = ExtResource( 3 )
 expand_icon = true
 __meta__ = {
