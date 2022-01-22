@@ -86,9 +86,9 @@ namespace BibliotecaViva.CTRL
 			{
 				var registro = new RegistroDTO();
 				if (TipoSelecionado.Binario)
-					registro = CadastrarRegistroBLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma, CodigoRegistro);
+					registro = CadastrarRegistroBLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, CarregarArquivoBinario(), TipoSelecionado, Idioma, CodigoRegistro, ObterListaDeRelacoes());
 				else
-					registro = CadastrarRegistroBLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma, CodigoRegistro);
+					registro = CadastrarRegistroBLL.PopularRegistro(Nome.Text, Apelido.Text, LatLong.Text, Descricao.Text, ConteudoASCII.Text, TipoSelecionado, Idioma, CodigoRegistro, ObterListaDeRelacoes());
 				LimparPreenchimento();
 				LimparItensNaoRelacionados(true);
 				var retorno = CadastrarRegistroBLL.CadastrarRegistro(registro);
@@ -98,6 +98,23 @@ namespace BibliotecaViva.CTRL
 			{
 				CallDeferred("Feedback", ex.Message, false);
 			}
+		}
+		private List<RelacaoDTO> ObterListaDeRelacoes()
+		{
+			var lista = new List<RelacaoDTO>();
+
+			foreach(var relacao in ContainerRelacao.GetChildren())
+				if ((relacao as LinhaRelacaoCTRL).ObterRelacao())
+				{
+					var tipoRelacao = (relacao as LinhaRelacaoCTRL).ObterTipoRelacao();
+					lista.Add(new RelacaoDTO()
+					{
+						RelacaoID = (relacao as LinhaRelacaoCTRL).CodigoRelacao,
+						TipoRelacao = tipoRelacao != null ? tipoRelacao.Nome : string.Empty
+					});
+				}
+		
+			return lista;
 		}
 		private string CarregarArquivoBinario()
 		{

@@ -50,7 +50,7 @@ namespace BibliotecaViva.CTRL
 		}
 		public TipoRelacaoDTO ObterTipoRelacao()
 		{
-			return Tipos[DropdownTipoRelacao.Selected -1];
+			return Tipos.Count > 0 ? Tipos[DropdownTipoRelacao.Selected -1] : null;
 		}
 		public void DefinirRelacao(bool relacionado)
 		{
