@@ -88,7 +88,6 @@ namespace BibliotecaViva.CTRL
 		private void InstanciarPessoaBox(PessoaObject pessoaObjct, VBoxContainer container, Vector2 posicao)
 		{
 			var pessoaBox = PessoaBox.Duplicate();
-			RemoveChild(PessoaBox);
 			container.AddChild(pessoaBox);
 			pessoaBox._Ready();
 			(pessoaBox as PessoaBoxCTRL).Preencher(pessoaObjct.Pessoa, posicao);
