@@ -39,7 +39,8 @@ texture_pressed = ExtResource( 1 )
 texture_disabled = ExtResource( 2 )
 expand = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Clique aqui para relacionar ou quebrar a relação com este registro."
 }
 
 [node name="TipoRelacao" type="OptionButton" parent="."]
@@ -47,6 +48,7 @@ margin_left = 234.0
 margin_top = 3.0
 margin_right = 376.0
 margin_bottom = 23.0
+hint_tooltip = "Clique aqui para selecionar o tipo relação existente entre a Pista Viva e o Registro."
 
 [connection signal="toggled" from="TextureButton" to="." method="_on_TextureButton_toggled"]
 [connection signal="item_selected" from="TipoRelacao" to="." method="_on_TipoRelacao_item_selected"]
