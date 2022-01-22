@@ -95,12 +95,12 @@ namespace BibliotecaViva.CTRL
 				var resultado = novaConsulta ? RealizarConsultaDeRegistros() : RealizarConsultaDeRegistrosJaRelacionados(pessoa);
 				foreach (var registro in resultado)
 				{
-					CallDeferred("InstanciarPessoaBox", registro);
+					CallDeferred("InstanciarRelacao", registro);
 				}
 			}
 			catch(Exception ex)
 			{
-				GD.Print(ex.Message);
+				Feedback(ex.Message, false);
 			}
 		}
 		private List<RegistroObject> RealizarConsultaDeRegistros()
@@ -140,7 +140,7 @@ namespace BibliotecaViva.CTRL
 
 			return resultado;
 		}
-		private void InstanciarPessoaBox(RegistroObject registro)
+		private void InstanciarRelacao(RegistroObject registro)
 		{
 			var linhaRelacao = LinhaRelacao.Duplicate();
 			ContainerRelacao.AddChild(linhaRelacao);

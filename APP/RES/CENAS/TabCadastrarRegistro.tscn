@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://CTRL/TabCadastrarRegistroCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://RES/ICONES/Save.png" type="Texture" id=4]
 [ext_resource path="res://RES/ICONES/BuscarArquivo.png" type="Texture" id=5]
 [ext_resource path="res://RES/ICONES/Limpar.png" type="Texture" id=6]
+[ext_resource path="res://RES/CENAS/LinhaRelacao.tscn" type="PackedScene" id=7]
 
 [node name="TabCadastrarRegistro" type="Tabs"]
 pause_mode = 2
@@ -335,9 +336,9 @@ margin_bottom = -4.0
 text = "Idioma da Busca"
 
 [node name="Buscar" type="Button" parent="BuscaRelacoes"]
-margin_left = -37.0
+margin_left = -51.0
 margin_top = 42.0
-margin_right = 76.0
+margin_right = 62.0
 margin_bottom = 68.0
 hint_tooltip = "Clique aqui para buscar os Registros ou Pistavas que você quer relacionar ao seu Registro."
 text = "Buscar"
@@ -360,9 +361,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LinhaRelacao" parent="." instance=ExtResource( 7 )]
+margin_left = 20000.0
+margin_right = 19571.0
+margin_bottom = -547.0
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="item_selected" from="Inputs/Tipo" to="." method="_on_Tipo_item_selected"]
 [connection signal="button_up" from="Inputs/Conteudo/ConteudoBIN" to="." method="_on_ConteudoBIN_button_up"]
 [connection signal="text_changed" from="Inputs/Conteudo/ConteudoBIN/CaminhoBIN" to="." method="_on_CaminhoBIN_text_changed"]
 [connection signal="button_up" from="Inputs/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
 [connection signal="file_selected" from="ModalDeBusca" to="." method="_on_ModalDeBusca_file_selected"]
+[connection signal="button_up" from="BuscaRelacoes/Buscar" to="." method="_on_Buscar_button_up"]
+[connection signal="button_up" from="BuscaRelacoes/Limpar" to="." method="_on_Limpar_button_up"]

@@ -41,7 +41,8 @@ namespace BibliotecaViva.CTRL
 		public void PopularRelacoes(List<TipoRelacaoDTO> tipos)
 		{
 			Tipos = tipos;
-			DropdownTipoRelacao.AddItem("");
+			if (tipos.Count > 0)
+				DropdownTipoRelacao.AddItem("");
 			foreach(var tipo in Tipos)
 				DropdownTipoRelacao.AddItem(tipo.Nome);
 			ExibirDropdownRelacoes();
