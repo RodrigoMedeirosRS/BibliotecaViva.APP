@@ -1,35 +1,88 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
+using BibliotecaViva.DTO.Utils;
 
 namespace BibliotecaViva.CTRL
 {
-	public class LinhaRelacaoCTRL : Control
+	public class LinhaRelacaoCTRL : Control, IDisposable
 	{
-		public RegistroDTO Registro { get; set; }
-		public PessoaDTO Pessoa { get; set; }
+		public int CodigoRelacao { get; set; }
+		public Label Nome { get; set; }
 		private bool Relacionado { get; set; }
+		private List<TipoRelacaoDTO> Tipos { get; set; }
+		private TextureButton BotaoRelacionar { get; set; }
+		private OptionButton DropdownTipoRelacao { get; set; }
 		public override void _Ready()
 		{
+			PopularNodes();
 			DesativarFuncoesDeAltoProcessamento();
+			ExibirDropdownRelacoes();
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
 		{
 			SetPhysicsProcess(false);
 			SetProcess(false);
 		}
+		private void PopularNodes()
+		{
+			Relacionado = false;
+			Tipos = new List<TipoRelacaoDTO>();
+			Nome = GetNode<Label>("./Nome");
+			DropdownTipoRelacao = GetNode<OptionButton>("./TipoRelacao");
+			BotaoRelacionar = GetNode<TextureButton>("./TextureButton");
+		}
 		public bool ObterRelacao()
 		{
 			return Relacionado;
 		}
+		public void PopularRelacoes(List<TipoRelacaoDTO> tipos)
+		{
+			Tipos = tipos;
+			DropdownTipoRelacao.AddItem("");
+			foreach(var tipo in Tipos)
+				DropdownTipoRelacao.AddItem(tipo.Nome);
+			ExibirDropdownRelacoes();
+			PodeRelacionar();
+		}
+		public TipoRelacaoDTO ObterTipoRelacao()
+		{
+			return Tipos[DropdownTipoRelacao.Selected -1];
+		}
 		public void DefinirRelacao(bool relacionado)
 		{
-			Relacionado = relacionado;
+			Relacionado = relacionado && !BotaoRelacionar.Disabled;
+		}
+		private void _on_TipoRelacao_item_selected(int index)
+		{
+			PodeRelacionar();
 		}
 		private void _on_TextureButton_toggled(bool button_pressed)
 		{
-			Relacionado = button_pressed;
+			Relacionado = button_pressed && !BotaoRelacionar.Disabled;
+		}
+		private void ExibirDropdownRelacoes()
+		{
+			DropdownTipoRelacao.Visible = Tipos.Count > 0;
+		}
+		private void PodeRelacionar()
+		{
+			if (Tipos.Count > 0)
+			{
+				BotaoRelacionar.Disabled = DropdownTipoRelacao.Selected == 0;
+				DefinirRelacao(Relacionado);
+			}
+			else
+				BotaoRelacionar.Disabled = false;
+
+		}
+		public void RemoverLinha()
+		{
+			DropdownTipoRelacao.QueueFree();
+			BotaoRelacionar.QueueFree();
+			QueueFree();
 		}
 	}
 }

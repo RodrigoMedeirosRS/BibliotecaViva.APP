@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CTRL/TabCadastrarPessoaCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
 [ext_resource path="res://RES/ICONES/Save.png" type="Texture" id=3]
 [ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=4]
 [ext_resource path="res://RES/ICONES/Limpar.png" type="Texture" id=5]
+[ext_resource path="res://RES/CENAS/LinhaRelacao.tscn" type="PackedScene" id=6]
 
 [node name="TabCadastrarPessoa" type="Tabs"]
 pause_mode = 2
@@ -288,5 +289,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LinhaRelacao" parent="." instance=ExtResource( 6 )]
+margin_left = 20000.0
+margin_top = 311.0
+margin_right = 19571.0
+margin_bottom = -236.0
+
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="button_up" from="Inputs/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
+[connection signal="button_up" from="BuscaRelacoes/Buscar" to="." method="_on_Buscar_button_up"]
+[connection signal="button_up" from="BuscaRelacoes/Limpar" to="." method="_on_Limpar_button_up"]
