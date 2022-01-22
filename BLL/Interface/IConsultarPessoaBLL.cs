@@ -11,6 +11,7 @@ namespace BibliotecaViva.BLL.Interface
         void ValidarPreenchimento(PessoaConsulta pessoaConsulta);
         List<PessoaDTO> ValidarConsulta(List<PessoaDTO> retorno);
         List<PessoaDTO> RealizarConsulta(PessoaConsulta pessoaConsulta);
+        List<RegistroDTO> RealizarConsultaDeRegistrosRelacionados(string codigoRegistro);
         Node InstanciarPessoaBox(Node Container, Vector2? posicao);
 
         void Dispose();

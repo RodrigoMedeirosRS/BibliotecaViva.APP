@@ -15,9 +15,11 @@ namespace BibliotecaViva.BLL
     {
         private IRequisicao SAL { get; set; }
         private string URLConsultarRegistro { get; set; }
+        private string URLConsultarRelacao { get; set; }
         public ConsultarRegistroBLL()
         {
             URLConsultarRegistro = Apontamentos.URLApi + "/Registro/Consultar";
+            URLConsultarRelacao = Apontamentos.URLApi + "/Registro/ObterReferencias";
             SAL = new Requisicao();
         }
         public void ValidarPreenchimento(RegistroConsulta registroConsulta)
@@ -35,6 +37,11 @@ namespace BibliotecaViva.BLL
         {
             ValidarPreenchimento(registroCosnulta);
             var retorno = SAL.ExecutarPost<RegistroConsulta, List<RegistroDTO>>(URLConsultarRegistro, registroCosnulta);
+            return ValidarConsulta(retorno);
+        }
+        public List<RegistroDTO> RealizarConsultaDeRegistrosRelacionados(string codigoRegistro)
+        {
+            var retorno = SAL.ExecutarPost<string, List<RegistroDTO>>(URLConsultarRelacao, codigoRegistro);
             return ValidarConsulta(retorno);
         }
         public Node InstanciarRegistroBox(Node Container, Vector2? posicao)

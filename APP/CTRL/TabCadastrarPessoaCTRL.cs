@@ -15,7 +15,8 @@ namespace BibliotecaViva.CTRL
 	public class TabCadastrarPessoaCTRL : Tabs, IDisposableCTRL
 	{
 		public int CodigoPessoa { get; set; }
-		private ICadastrarPessoaBLL BLL { get; set; }
+		private ICadastrarPessoaBLL CadastroPessoaBLL { get; set; }
+		private IConsultarPessoaBLL ConsultarPessoaBLL { get; set; }
 		private IConsultarTipoBLL TipoBLL { get; set; }
 		private IConsultarRegistroBLL RegistroBLL { get; set; }
 		private LineEdit Nome { get; set; }
@@ -39,7 +40,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
-			BLL = new CadastrarPessoaBLL();
+			CadastroPessoaBLL = new CadastrarPessoaBLL();
+			ConsultarPessoaBLL = new ConsultarPessoaBLL();
 			TipoBLL = new ConsultarTipoBLL();
 			RegistroBLL = new ConsultarRegistroBLL();
 		}
@@ -71,7 +73,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Buscar_button_up()
 		{
-			Task.Run(async () => await BuscarRegistros());
+			Task.Run(async () => await BuscarRegistros(true));
 		}
 		private void _on_Limpar_button_up()
 		{
@@ -84,19 +86,34 @@ namespace BibliotecaViva.CTRL
 				if (!(relacao as LinhaRelacaoCTRL).ObterRelacao() || limparTudo)
 					(relacao as LinhaRelacaoCTRL).RemoverLinha();
 		}
-		private async Task BuscarRegistros()
+		private async Task BuscarRegistros(bool novaConsulta)
 		{
-			LimparItensNaoRelacionados(false);
-			var resultado = RegistroBLL.RealizarConsulta(new RegistroConsulta()
+			try
+			{
+				LimparItensNaoRelacionados(false);
+				var resultado = novaConsulta ? RealizarConsultaDeRegistros() : RealizarConsultaDeRegistrosJaRelacionados();
+				foreach (var registro in resultado)
+				{
+					CallDeferred("InstanciarPessoaBox", new RegistroObject(registro));
+				}
+			}
+			catch(Exception ex)
+			{
+				GD.Print(ex.Message);
+			}
+		}
+		private List<RegistroDTO> RealizarConsultaDeRegistros()
+		{
+			return RegistroBLL.RealizarConsulta(new RegistroConsulta()
 			{
 				Nome = NomeBusca.Text,
 				Apelido = string.Empty,
 				Idioma = DropdownIdioma.GetItemText(DropdownIdioma.Selected)
 			});
-			foreach (var registro in resultado)
-			{
-				CallDeferred("InstanciarPessoaBox", new RegistroObject(registro));
-			}
+		}
+		private List<RegistroDTO> RealizarConsultaDeRegistrosJaRelacionados()
+		{
+			return ConsultarPessoaBLL.RealizarConsultaDeRegistrosRelacionados(CodigoPessoa.ToString());
 		}
 		private void InstanciarPessoaBox(RegistroObject registro)
 		{
@@ -112,10 +129,10 @@ namespace BibliotecaViva.CTRL
 		{
 			try
 			{
-				var pessoa = BLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.Text, Apelido.Text, LatLong.Text, CodigoPessoa, ObterListaDeRelacoes());
+				var pessoa = CadastroPessoaBLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.Text, Apelido.Text, LatLong.Text, CodigoPessoa, ObterListaDeRelacoes());
 				LimparPreenchimento();
 				LimparItensNaoRelacionados(true);
-				var retorno = BLL.CadastrarPessoa(pessoa);
+				var retorno = CadastroPessoaBLL.CadastrarPessoa(pessoa);
 				CallDeferred("Feedback", retorno, true);
 			}
 			catch(Exception ex)
@@ -150,6 +167,7 @@ namespace BibliotecaViva.CTRL
 			Genero.Text = pessoa.Genero;
 			Apelido.Text = pessoa.Apelido;
 			LatLong.Text = pessoa.Latitude + ", " + pessoa.Longitude;
+			Task.Run(async () => await BuscarRegistros(false));
 		}
 		private void LimparPreenchimento()
 		{
@@ -163,8 +181,9 @@ namespace BibliotecaViva.CTRL
 		}
 		public void FecharCTRL()
 		{
-			BLL.Dispose();
+			CadastroPessoaBLL.Dispose();
 			RegistroBLL.Dispose();
+			ConsultarPessoaBLL.Dispose();
 			TipoBLL.Dispose();
 			Nome.QueueFree();
 			NomeBusca.QueueFree();
