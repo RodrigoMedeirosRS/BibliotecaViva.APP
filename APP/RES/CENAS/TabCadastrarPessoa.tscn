@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://CTRL/TabCadastrarPessoaCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
 [ext_resource path="res://RES/ICONES/Save.png" type="Texture" id=3]
 [ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=4]
+[ext_resource path="res://RES/ICONES/Limpar.png" type="Texture" id=5]
 
 [node name="TabCadastrarPessoa" type="Tabs"]
 pause_mode = 2
@@ -234,13 +235,26 @@ margin_bottom = -4.0
 text = "Idioma da Busca"
 
 [node name="Buscar" type="Button" parent="BuscaRelacoes"]
-margin_left = -68.0
+margin_left = -37.0
 margin_top = 42.0
-margin_right = 45.0
+margin_right = 76.0
 margin_bottom = 68.0
 hint_tooltip = "Clique aqui para buscar os registros que você quer relacionar a sua Pista Viva."
 text = "Buscar"
 icon = ExtResource( 4 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Limpar" type="Button" parent="BuscaRelacoes"]
+margin_left = 91.0
+margin_top = 42.0
+margin_right = 204.0
+margin_bottom = 68.0
+hint_tooltip = "Limpa resultados da pesquisa e exibe realações estabelicidas."
+text = "Limpar"
+icon = ExtResource( 5 )
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false

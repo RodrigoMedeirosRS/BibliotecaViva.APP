@@ -16,12 +16,7 @@ config/icon="res://icon.png"
 
 [display]
 
-window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
-
-[gui]
-
-theme/use_hidpi=true
 
 [input]
 

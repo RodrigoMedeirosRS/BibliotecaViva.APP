@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CTRL/TabCadastrarRegistroCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
 [ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=3]
 [ext_resource path="res://RES/ICONES/Save.png" type="Texture" id=4]
 [ext_resource path="res://RES/ICONES/BuscarArquivo.png" type="Texture" id=5]
+[ext_resource path="res://RES/ICONES/Limpar.png" type="Texture" id=6]
 
 [node name="TabCadastrarRegistro" type="Tabs"]
 pause_mode = 2
@@ -334,13 +335,26 @@ margin_bottom = -4.0
 text = "Idioma da Busca"
 
 [node name="Buscar" type="Button" parent="BuscaRelacoes"]
-margin_left = -68.0
+margin_left = -37.0
 margin_top = 42.0
-margin_right = 45.0
+margin_right = 76.0
 margin_bottom = 68.0
 hint_tooltip = "Clique aqui para buscar os Registros ou Pistavas que você quer relacionar ao seu Registro."
 text = "Buscar"
 icon = ExtResource( 3 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Limpar" type="Button" parent="BuscaRelacoes"]
+margin_left = 91.0
+margin_top = 42.0
+margin_right = 204.0
+margin_bottom = 68.0
+hint_tooltip = "Limpa resultados da pesquisa e exibe realações estabelicidas."
+text = "Limpar"
+icon = ExtResource( 6 )
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
