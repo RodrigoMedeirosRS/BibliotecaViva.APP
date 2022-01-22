@@ -9,11 +9,11 @@ namespace BibliotecaViva.CTRL
 {
 	public class LinhaRelacaoCTRL : Control, IDisposable
 	{
-		public int CodigoRelacao { get; set; }
 		public Label Nome { get; set; }
+		public int CodigoRelacao { get; set; }
+		public TextureButton BotaoRelacionar { get; set; }
 		private bool Relacionado { get; set; }
 		private List<TipoRelacaoDTO> Tipos { get; set; }
-		private TextureButton BotaoRelacionar { get; set; }
 		private OptionButton DropdownTipoRelacao { get; set; }
 		public override void _Ready()
 		{
@@ -83,6 +83,19 @@ namespace BibliotecaViva.CTRL
 			DropdownTipoRelacao.QueueFree();
 			BotaoRelacionar.QueueFree();
 			QueueFree();
+		}
+		public void SelecionarTipoRelecao(string nomeTipoRelacao)
+		{
+			DropdownTipoRelacao.Select(BustarIndicePorNome(nomeTipoRelacao));
+		}
+		private int BustarIndicePorNome(string nomeTipoRelacao)
+		{
+			for(int i = 0; i < DropdownTipoRelacao.Items.Count; i ++)
+			{
+				if(DropdownTipoRelacao.GetItemText(i) == nomeTipoRelacao)
+					return i;
+			}
+			throw new Exception("Tipo de relação não encontrado");
 		}
 	}
 }

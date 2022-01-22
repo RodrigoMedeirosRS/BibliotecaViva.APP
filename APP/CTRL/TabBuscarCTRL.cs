@@ -103,7 +103,7 @@ namespace BibliotecaViva.CTRL
 			var posicao = new Vector2(0, 0);
 			foreach (var registro in resultado)
 			{
-				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro), ObterColuna(coluna), posicao);
+				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro, null), ObterColuna(coluna), posicao);
 				posicao.y += 610;
 			}
 		}

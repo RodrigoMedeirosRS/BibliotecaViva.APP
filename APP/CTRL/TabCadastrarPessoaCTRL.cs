@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -86,15 +87,15 @@ namespace BibliotecaViva.CTRL
 				if (!(relacao as LinhaRelacaoCTRL).ObterRelacao() || limparTudo)
 					(relacao as LinhaRelacaoCTRL).RemoverLinha();
 		}
-		private async Task BuscarRegistros(bool novaConsulta)
+		private async Task BuscarRegistros(bool novaConsulta, PessoaDTO pessoa = null)
 		{
 			try
 			{
 				LimparItensNaoRelacionados(false);
-				var resultado = novaConsulta ? RealizarConsultaDeRegistros() : RealizarConsultaDeRegistrosJaRelacionados();
+				var resultado = novaConsulta ? RealizarConsultaDeRegistros() : RealizarConsultaDeRegistrosJaRelacionados(pessoa);
 				foreach (var registro in resultado)
 				{
-					CallDeferred("InstanciarPessoaBox", new RegistroObject(registro));
+					CallDeferred("InstanciarPessoaBox", registro);
 				}
 			}
 			catch(Exception ex)
@@ -102,21 +103,42 @@ namespace BibliotecaViva.CTRL
 				GD.Print(ex.Message);
 			}
 		}
-		private List<RegistroDTO> RealizarConsultaDeRegistros()
+		private List<RegistroObject> RealizarConsultaDeRegistros()
 		{
-			return RegistroBLL.RealizarConsulta(new RegistroConsulta()
+			var resultado = new List<RegistroObject>();
+
+			var consulta = RegistroBLL.RealizarConsulta(new RegistroConsulta()
 			{
-				Nome = NomeBusca.Text,
-				Apelido = string.Empty,
-				Idioma = DropdownIdioma.GetItemText(DropdownIdioma.Selected)
+					Nome = NomeBusca.Text,
+					Apelido = string.Empty,
+					Idioma = DropdownIdioma.GetItemText(DropdownIdioma.Selected)
 			});
+
+			foreach (var registro in consulta)
+			{
+				resultado.Add(new RegistroObject(registro, null));
+			}
+			
+			return resultado;
 		}
-		private List<RegistroDTO> RealizarConsultaDeRegistrosJaRelacionados()
+		private List<RegistroObject> RealizarConsultaDeRegistrosJaRelacionados(PessoaDTO pessoa)
 		{
-			return ConsultarPessoaBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta ()
+			var resultado = new List<RegistroObject>();
+
+			var consulta = ConsultarPessoaBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta ()
 			{
 				CodRegistro = CodigoPessoa
 			});
+
+			consulta = consulta.OrderBy(x => x.Codigo).ToList();
+			var relacoes = pessoa.Relacoes.OrderBy(x => x.RelacaoID).ToList();
+
+			for (int i = 0; i < consulta.Count; i ++)
+			{
+				resultado.Add(new RegistroObject(consulta[i], relacoes[i]));
+			}
+
+			return resultado;
 		}
 		private void InstanciarPessoaBox(RegistroObject registro)
 		{
@@ -126,7 +148,13 @@ namespace BibliotecaViva.CTRL
 			(linhaRelacao as LinhaRelacaoCTRL).PopularRelacoes(TiposRelacao);
 			(linhaRelacao as LinhaRelacaoCTRL).Nome.Text = registro.Registro.Nome;
 			(linhaRelacao as LinhaRelacaoCTRL).CodigoRelacao = registro.Registro.Codigo;
-
+			if (registro.Relacao != null)
+			{
+				(linhaRelacao as LinhaRelacaoCTRL).SelecionarTipoRelecao(registro.Relacao.TipoRelacao);
+				(linhaRelacao as LinhaRelacaoCTRL).BotaoRelacionar.Disabled = false;
+				(linhaRelacao as LinhaRelacaoCTRL).BotaoRelacionar.Pressed = true;
+				(linhaRelacao as LinhaRelacaoCTRL).DefinirRelacao(true);
+			}
 		}
 		public async Task RelizarEnvioRegistro()
 		{
@@ -170,7 +198,7 @@ namespace BibliotecaViva.CTRL
 			Genero.Text = pessoa.Genero;
 			Apelido.Text = pessoa.Apelido;
 			LatLong.Text = pessoa.Latitude + ", " + pessoa.Longitude;
-			Task.Run(async () => await BuscarRegistros(false));
+			Task.Run(async () => await BuscarRegistros(false, pessoa));
 		}
 		private void LimparPreenchimento()
 		{
