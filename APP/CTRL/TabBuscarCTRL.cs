@@ -121,7 +121,10 @@ namespace BibliotecaViva.CTRL
 		private VBoxContainer ObterColuna(int coluna)
 		{
 			if (BuscarBLL.ValidarColuna(coluna))
+			{
 				BuscarBLL.InstanciarColuna();
+				System.Threading.Thread.Sleep(100);
+			}
 			return Coluna.GetChild(coluna).GetChild<VBoxContainer>(0);
 		}
 		public async Task BuscarRelacoes(PessoaDTO pessoa, int coluna, Node box)

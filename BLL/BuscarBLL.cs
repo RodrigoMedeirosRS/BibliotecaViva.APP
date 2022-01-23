@@ -16,7 +16,8 @@ namespace BibliotecaViva.BLL
         public void InstanciarColuna()
         {
             var cena = InstanciadorUtil.CarregarCena("res://RES/CENAS/Linha.tscn");
-            InstanciadorUtil.InstanciarObjeto(Container, cena, null);
+            var coluna = InstanciadorUtil.InstanciarObjeto(Container, cena, null);
+            coluna._Ready();
         }
         public void RemoverColuna(Node linha)
         {
@@ -25,7 +26,6 @@ namespace BibliotecaViva.BLL
         }
         public bool ValidarColuna(int coluna)
         {
-            var a = Container.GetChildCount();
             return Container.GetChildCount() <= coluna; 
         }
         
