@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://CTRL/MainCTRL.cs" type="Script" id=1]
 [ext_resource path="res://RES/ICONES/Rastros.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://RES/ICONES/CadastrarPessoa.png" type="Texture" id=5]
 [ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=6]
 [ext_resource path="res://RES/LogoVoando.png" type="Texture" id=7]
+[ext_resource path="res://RES/FONTES/FoglihtenNo04-070.otf" type="DynamicFontData" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -39,6 +40,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
 }
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+outline_color = Color( 0.6, 0.6, 0.6, 0.0588235 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
 
 [node name="Main" type="Node2D"]
 pause_mode = 2
@@ -83,6 +91,17 @@ hframes = 28
 autoplay = "Voar"
 anims/RESET = SubResource( 1 )
 anims/Voar = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Control/Logo"]
+margin_left = 11.0
+margin_top = 104.0
+margin_right = 177.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 3 )
+text = "Bilioteca Viva"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = -0.091
