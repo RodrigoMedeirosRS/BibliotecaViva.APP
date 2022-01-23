@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://CTRL/MainCTRL.cs" type="Script" id=1]
 [ext_resource path="res://RES/ICONES/Rastros.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://RES/ICONES/Buscar.png" type="Texture" id=6]
 [ext_resource path="res://RES/LogoVoando.png" type="Texture" id=7]
 [ext_resource path="res://RES/FONTES/FoglihtenNo04-070.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://RES/ICONES/Sobre.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -92,7 +93,7 @@ autoplay = "Voar"
 anims/RESET = SubResource( 1 )
 anims/Voar = SubResource( 2 )
 
-[node name="Label" type="Label" parent="Control/Logo"]
+[node name="Titulo" type="Label" parent="Control/Logo"]
 margin_left = 11.0
 margin_top = 104.0
 margin_right = 177.0
@@ -103,13 +104,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Versao" type="Label" parent="Control/Logo"]
+margin_left = 50.0
+margin_top = 546.0
+margin_right = 133.0
+margin_bottom = 560.0
+text = "Versão Alpha"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = -0.091
 anchor_right = -0.091
-margin_left = 8.36359
-margin_top = 60.6359
-margin_right = 149.364
-margin_bottom = 456.636
+margin_left = 10.0
+margin_top = 164.0
+margin_right = 151.0
+margin_bottom = 402.0
 rect_scale = Vector2( 1.2, 1.2 )
 alignment = 1
 __meta__ = {
@@ -117,50 +128,50 @@ __meta__ = {
 }
 
 [node name="CadastrarPessoa" type="Button" parent="VBoxContainer"]
-margin_top = 136.0
+margin_top = 41.0
 margin_right = 141.0
-margin_bottom = 156.0
+margin_bottom = 61.0
 hint_tooltip = "Clique aqui para cadastra uma nova livro pista viva."
 text = "Nova Pista Viva"
 icon = ExtResource( 5 )
 expand_icon = true
 
 [node name="CadatrarRegistro" type="Button" parent="VBoxContainer"]
-margin_top = 160.0
+margin_top = 65.0
 margin_right = 141.0
-margin_bottom = 180.0
+margin_bottom = 85.0
 hint_tooltip = "Clique aqui para cadastra um novo registro."
 text = "Novo Registro"
 icon = ExtResource( 3 )
 expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 184.0
+margin_top = 89.0
 margin_right = 141.0
-margin_bottom = 188.0
+margin_bottom = 93.0
 
 [node name="Buscar" type="Button" parent="VBoxContainer"]
-margin_top = 192.0
+margin_top = 97.0
 margin_right = 141.0
-margin_bottom = 212.0
+margin_bottom = 117.0
 hint_tooltip = "Clique aqui para consultar registros ou pistas vivas."
 text = "Buscar"
 icon = ExtResource( 6 )
 expand_icon = true
 
 [node name="Sonar" type="Button" parent="VBoxContainer"]
-margin_top = 216.0
+margin_top = 121.0
 margin_right = 141.0
-margin_bottom = 236.0
+margin_bottom = 141.0
 hint_tooltip = "Clique aqui para ativa o modo de exploração geolocalizado."
 text = "Sonar"
 icon = ExtResource( 4 )
 expand_icon = true
 
 [node name="Rastros" type="Button" parent="VBoxContainer"]
-margin_top = 240.0
+margin_top = 145.0
 margin_right = 141.0
-margin_bottom = 260.0
+margin_bottom = 165.0
 hint_tooltip = "Clique aqui para ver a densidade de registros por região."
 text = "Rastros"
 icon = ExtResource( 2 )
@@ -173,9 +184,23 @@ margin_right = 141.0
 margin_bottom = 272.0
 text = "Ping"
 
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 169.0
+margin_right = 141.0
+margin_bottom = 173.0
+
+[node name="Sobre" type="Button" parent="VBoxContainer"]
+margin_top = 177.0
+margin_right = 141.0
+margin_bottom = 197.0
+text = "Sobre"
+icon = ExtResource( 9 )
+expand_icon = true
+
 [connection signal="button_up" from="VBoxContainer/CadastrarPessoa" to="." method="_on_CadastrarPessoa_button_up"]
 [connection signal="button_up" from="VBoxContainer/CadatrarRegistro" to="." method="_on_CadatrarRegistro_button_up"]
 [connection signal="button_up" from="VBoxContainer/Buscar" to="." method="_on_Buscar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Sonar" to="." method="_on_Sonar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Rastros" to="." method="_on_Rastros_button_up"]
 [connection signal="button_up" from="VBoxContainer/Ping" to="." method="_on_Ping_button_up"]
+[connection signal="button_up" from="VBoxContainer/Sobre" to="." method="_on_Sobre_button_up"]
