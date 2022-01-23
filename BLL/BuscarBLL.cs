@@ -25,7 +25,8 @@ namespace BibliotecaViva.BLL
         }
         public bool ValidarColuna(int coluna)
         {
-            return Container.GetChildCount() -1 <= coluna; 
+            var a = Container.GetChildCount();
+            return Container.GetChildCount() <= coluna; 
         }
         
         public void Dispose()

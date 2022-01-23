@@ -120,6 +120,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private VBoxContainer ObterColuna(int coluna)
 		{
+			if (BuscarBLL.ValidarColuna(coluna))
+				BuscarBLL.InstanciarColuna();
 			return Coluna.GetChild(coluna).GetChild<VBoxContainer>(0);
 		}
 		public async Task BuscarRelacoes(PessoaDTO pessoa, int coluna, Node box)
@@ -127,12 +129,10 @@ namespace BibliotecaViva.CTRL
 			try
 			{
 				var resultado = PessoaBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta(pessoa.Codigo));
-				if (BuscarBLL.ValidarColuna(coluna))
-					CallDeferred("InstanciarColuna");
 				var novaColuna = coluna + 1;			
 				foreach (var relacao in resultado)
 				{
-					CallDeferred("InstanciarPessoaBox", new PessoaObject(pessoa), ObterColuna(novaColuna), coluna);
+					CallDeferred("InstanciarRegistroBox", new RegistroObject(relacao, null), ObterColuna(novaColuna), novaColuna);
 				}
 			}
 			catch(Exception ex)
@@ -140,9 +140,21 @@ namespace BibliotecaViva.CTRL
 				CallDeferred("ExibirErro", ex.Message);
 			}
 		}
-		public async Task BuscarRelacoes(RegistroDTO pessoa, int coluna, Node box)
+		public async Task BuscarRelacoes(RegistroDTO registro, int coluna, Node box)
 		{
-			GD.Print(coluna);
+			try
+			{
+				var resultado = RegistroBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta(registro.Codigo));
+				var novaColuna = coluna + 1;			
+				foreach (var relacao in resultado)
+				{
+					CallDeferred("InstanciarRegistroBox", new RegistroObject(relacao, null), ObterColuna(novaColuna), novaColuna);
+				}
+			}
+			catch(Exception ex)
+			{
+				CallDeferred("ExibirErro", ex.Message);
+			}
 		}
 		public void FecharCTRL()
 		{
