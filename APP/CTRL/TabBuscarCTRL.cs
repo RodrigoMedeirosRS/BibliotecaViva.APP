@@ -85,6 +85,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private void InstanciarPessoaBox(PessoaObject pessoaObjct, VBoxContainer container, int coluna)
 		{
+			if (ValidarPessoaJaInstanciadaNaColuna(pessoaObjct.Pessoa, coluna))
+				return;
 			var pessoaBox = PessoaBox.Duplicate();
 			container.AddChild(pessoaBox);
 			pessoaBox._Ready();
@@ -107,6 +109,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private void InstanciarRegistroBox(RegistroObject registroObjct, VBoxContainer container, int coluna)
 		{
+			if (ValidarRegistroJaInstanciadoNaColuna(registroObjct.Registro, coluna))
+				return;
 			var registroBox = RegistroBox.Duplicate();
 			container.AddChild(registroBox);
 			registroBox._Ready();
@@ -117,6 +121,26 @@ namespace BibliotecaViva.CTRL
 		private void InstanciarColuna()
 		{
 			BuscarBLL.InstanciarColuna();
+		}
+		private bool ValidarPessoaJaInstanciadaNaColuna(PessoaDTO pessoa, int coluna)
+		{
+			var pessoas = ObterColuna(coluna).GetChildren();
+			foreach (var pessoaBox in pessoas)
+			{
+				if ((pessoaBox as PessoaBoxCTRL).Pessoa.Codigo == pessoa.Codigo)
+					return true;
+			}
+			return false;
+		}
+		private bool ValidarRegistroJaInstanciadoNaColuna(RegistroDTO registro, int coluna)
+		{
+			var registros = ObterColuna(coluna).GetChildren();
+			foreach (var registroBox in registros)
+			{
+				if ((registroBox as RegistroBoxCTRL).Registro.Codigo == registro.Codigo)
+					return true;
+			}
+			return false;
 		}
 		private VBoxContainer ObterColuna(int coluna)
 		{

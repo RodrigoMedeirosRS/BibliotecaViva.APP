@@ -35,7 +35,7 @@ namespace BibliotecaViva.CTRL
 		private Control CampoDownload { get; set; }
 		private Control CampoURL { get; set; }
 		
-		private RegistroDTO Registro { get; set; }
+		public RegistroDTO Registro { get; set; }
 		private List<TipoDTO> Tipos { get; set; }
 		private IConsultarTipoBLL ConsultarTipoBLL { get; set; }
 		public override void _Ready()

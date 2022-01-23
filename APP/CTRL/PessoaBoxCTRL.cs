@@ -11,7 +11,7 @@ namespace BibliotecaViva.CTRL
 	{
 		public int Coluna { get; set; }
 		public TabBuscarCTRL TabBuscar { get; set; }
-		private PessoaDTO Pessoa { get; set; }
+		public PessoaDTO Pessoa { get; set; }
 		private Label NomeCompleto { get; set; }
 		private Label NomeSocial { get; set; }
 		private Label Genero { get; set; }
