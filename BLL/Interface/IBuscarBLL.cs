@@ -6,6 +6,7 @@ namespace BibliotecaViva.BLL.Interface
     {
         void InstanciarColuna();
         void RemoverColuna(Node linha);
+        bool ValidarColuna(int coluna);
         void Dispose();
     }
 }

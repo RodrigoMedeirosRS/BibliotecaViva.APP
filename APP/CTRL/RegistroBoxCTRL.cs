@@ -15,6 +15,9 @@ namespace BibliotecaViva.CTRL
 {
 	public class RegistroBoxCTRL : Panel, IDisposableCTRL
 	{
+		public int Coluna { get; set; }
+		public TabBuscarCTRL TabBuscar { get; set; }
+
 		private bool Maximizado { get; set; }
 		private Label Nome { get; set; }
 		private Label Apelido { get; set; }
@@ -97,7 +100,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Exibir_button_up()
 		{
-			
+			Task.Run(async () => await TabBuscar.BuscarRelacoes(Registro, Coluna, this));
 		}
 		private void _on_Maximizar_button_up()
 		{

@@ -70,6 +70,10 @@ namespace BibliotecaViva.CTRL
 		{
 			BLL.IntanciarTab("Ping", "res://RES/CENAS/TabPing.tscn");
 		}
+		private void _on_Sobre_button_up()
+		{
+			BLL.IntanciarTab("Sobre", "res://RES/CENAS/TabSobre.tscn");
+		}
 		public void FecharCTRL()
 		{
 			BLL.Dispose();

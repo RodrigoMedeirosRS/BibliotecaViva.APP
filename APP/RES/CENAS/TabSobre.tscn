@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://CTRL/TabSobreCTRL.cs" type="Script" id=2]
+[ext_resource path="res://RES/LOGOS/Cnpq.png" type="Texture" id=3]
+[ext_resource path="res://RES/LOGOS/GPe-dU.png" type="Texture" id=4]
+[ext_resource path="res://RES/LOGOS/Aberta.png" type="Texture" id=5]
+[ext_resource path="res://RES/LOGOS/Unisinos.png" type="Texture" id=6]
+[ext_resource path="res://RES/LOGOS/Capes.png" type="Texture" id=7]
+
+[node name="TabSobre" type="Tabs"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 28.0
+margin_right = -187.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controladores" type="Control" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Controladores"]
+visible = false
+margin_left = -3.0
+margin_top = -8.0
+margin_right = 834.0
+margin_bottom = 572.0
+color = Color( 1, 1, 1, 0.0823529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Controladores"]
+margin_left = 251.0
+margin_top = 68.0
+margin_right = 567.0
+margin_bottom = 82.0
+text = "Produção Colaborativoa Desenvolvida com Apoio:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logos" type="Control" parent="Controladores"]
+modulate = Color( 0.733333, 0.733333, 0.733333, 0.796078 )
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Aberta" type="TextureRect" parent="Controladores/Logos"]
+margin_left = 190.0
+margin_top = 309.0
+margin_right = 385.0
+margin_bottom = 504.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Capes" type="TextureRect" parent="Controladores/Logos"]
+margin_left = 333.0
+margin_top = 111.0
+margin_right = 493.0
+margin_bottom = 271.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="CNPQ" type="TextureRect" parent="Controladores/Logos"]
+margin_left = 53.0
+margin_top = 98.0
+margin_right = 302.0
+margin_bottom = 296.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GPe-dU" type="TextureRect" parent="Controladores/Logos"]
+margin_left = 461.0
+margin_top = 290.0
+margin_right = 675.0
+margin_bottom = 504.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Unisinos" type="TextureRect" parent="Controladores/Logos"]
+margin_left = 544.0
+margin_top = 127.0
+margin_right = 792.0
+margin_bottom = 272.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 808.045
+margin_top = -1.7818
+margin_right = 828.045
+margin_bottom = 18.2182
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Button" to="Controladores" method="_on_Button_button_up"]
