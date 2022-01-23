@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
+
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
 using BibliotecaViva.DTO.Dominio;
@@ -19,6 +20,7 @@ namespace BibliotecaViva.CTRL
 		private RegistroBoxCTRL RegistroBox { get; set; }
 		private AcceptDialog PopErro { get; set; }
 		private HBoxContainer Coluna { get; set; }
+		private double Alcance { get; set; }
 		public override void _Ready()
 		{	
 			PopularNodes();
@@ -39,11 +41,25 @@ namespace BibliotecaViva.CTRL
 		}
 		private void PopularNodes()
 		{
+			Alcance = 0.0001;
 			PopErro = GetNode<AcceptDialog>("./PopErro");
 			Coluna = GetNode<HBoxContainer>("./Dados/ScrollContainer/Colunas");
 			PessoaBox = GetNode<PessoaBoxCTRL>("./Dados/Boxes/PessoaBox");
 			RegistroBox = GetNode<RegistroBoxCTRL>("./Dados/Boxes/RegistroBox");
 		}
+		private void _on_HSlider_value_changed(float value)
+		{
+			AjustarAlcance(value);
+		}
+		private void AjustarAlcance(float value)
+		{
+			Alcance = (double)value * 0.0001;
+		}
+
+
+
+
+
 		private void InstanciarColuna()
 		{
 			BuscarBLL.InstanciarColuna();
