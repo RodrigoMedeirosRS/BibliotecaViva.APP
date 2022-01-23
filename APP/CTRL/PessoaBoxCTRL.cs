@@ -11,6 +11,7 @@ namespace BibliotecaViva.CTRL
 	{
 		public int Coluna { get; set; }
 		public TabBuscarCTRL TabBuscar { get; set; }
+		public TabSonarCTRL TabSonar { get; set; }
 		public PessoaDTO Pessoa { get; set; }
 		private Label NomeCompleto { get; set; }
 		private Label NomeSocial { get; set; }
@@ -56,7 +57,10 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Button_button_up()
 		{
-			Task.Run(async () => await TabBuscar.BuscarRelacoes(Pessoa, Coluna, this));
+			if (TabBuscar != null)
+				Task.Run(async () => await TabBuscar.BuscarRelacoes(Pessoa, Coluna, this));
+			else
+				Task.Run(async () => await TabSonar.BuscarRelacoes(Pessoa, Coluna, this));
 		}
 		public void FecharCTRL()
 		{

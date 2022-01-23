@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://RES/CENAS/Emissao.tscn" type="PackedScene" id=1]
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=2]
 [ext_resource path="res://CTRL/TabSonarCTRL.cs" type="Script" id=3]
+[ext_resource path="res://RES/CENAS/PessoaBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://RES/CENAS/RegistroBox.tscn" type="PackedScene" id=5]
 
 [node name="TabSonar" type="Tabs"]
 pause_mode = 2
@@ -75,6 +77,24 @@ margin_right = 1066.0
 rect_min_size = Vector2( 1066, 0 )
 custom_constants/separation = 20
 alignment = 1
+
+[node name="Boxes" type="Control" parent="Dados"]
+margin_left = -18.6667
+margin_top = -36.0
+margin_right = 21.3333
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PessoaBox" parent="Dados/Boxes" instance=ExtResource( 4 )]
+margin_left = 2e+06
+margin_right = 2.0004e+06
+
+[node name="RegistroBox" parent="Dados/Boxes" instance=ExtResource( 5 )]
+margin_left = 2e+06
+margin_right = 2.0004e+06
+margin_bottom = 303.0
 
 [node name="Button" type="Button" parent="."]
 margin_left = 808.045

@@ -183,10 +183,10 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="PopErro" type="AcceptDialog" parent="."]
-margin_left = 311.0
-margin_top = 198.0
-margin_right = 524.0
-margin_bottom = 296.0
+margin_left = 536.0
+margin_top = 298.0
+margin_right = 749.0
+margin_bottom = 396.0
 window_title = "Alerta!"
 
 [node name="PessoaBox" parent="." instance=ExtResource( 4 )]
