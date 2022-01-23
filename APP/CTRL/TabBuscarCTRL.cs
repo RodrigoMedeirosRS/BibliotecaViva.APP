@@ -78,19 +78,19 @@ namespace BibliotecaViva.CTRL
 				Sobrenome = Pesquisa.Sobrenome.Text,
 				Apelido = Pesquisa.Apelido.Text
 			});
-			var posicao = new Vector2(0, 0);
 			foreach (var pessoa in resultado)
 			{
-				CallDeferred("InstanciarPessoaBox", new PessoaObject(pessoa), ObterColuna(coluna), posicao);
-				posicao.y += 290;
+				CallDeferred("InstanciarPessoaBox", new PessoaObject(pessoa), ObterColuna(coluna), coluna);
 			}
 		}
-		private void InstanciarPessoaBox(PessoaObject pessoaObjct, VBoxContainer container, Vector2 posicao)
+		private void InstanciarPessoaBox(PessoaObject pessoaObjct, VBoxContainer container, int coluna)
 		{
 			var pessoaBox = PessoaBox.Duplicate();
 			container.AddChild(pessoaBox);
 			pessoaBox._Ready();
-			(pessoaBox as PessoaBoxCTRL).Preencher(pessoaObjct.Pessoa, posicao);
+			(pessoaBox as PessoaBoxCTRL).Preencher(pessoaObjct.Pessoa, new Vector2(0, 0));
+			(pessoaBox as PessoaBoxCTRL).TabBuscar = this;
+			(pessoaBox as PessoaBoxCTRL).Coluna = coluna;
 		}
 		private void RealizarConsultaRegistro(int coluna)
 		{
@@ -100,19 +100,19 @@ namespace BibliotecaViva.CTRL
 				Apelido = Pesquisa.Apelido.Text,
 				Idioma = Pesquisa.Idioma.GetItemText(Pesquisa.Idioma.GetSelectedId())
 			});
-			var posicao = new Vector2(0, 0);
 			foreach (var registro in resultado)
 			{
-				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro, null), ObterColuna(coluna), posicao);
-				posicao.y += 610;
+				CallDeferred("InstanciarRegistroBox", new RegistroObject(registro, null), ObterColuna(coluna), coluna);
 			}
 		}
-		private void InstanciarRegistroBox(RegistroObject registroObjct, VBoxContainer container, Vector2 posicao)
+		private void InstanciarRegistroBox(RegistroObject registroObjct, VBoxContainer container, int coluna)
 		{
 			var registroBox = RegistroBox.Duplicate();
 			container.AddChild(registroBox);
 			registroBox._Ready();
-			(registroBox as RegistroBoxCTRL).Preencher(registroObjct.Registro, posicao);
+			(registroBox as RegistroBoxCTRL).Preencher(registroObjct.Registro, new Vector2(0, 0));
+			(registroBox as RegistroBoxCTRL).TabBuscar = this;
+			(registroBox as RegistroBoxCTRL).Coluna = coluna;
 		}
 		private void InstanciarColuna()
 		{
@@ -121,6 +121,28 @@ namespace BibliotecaViva.CTRL
 		private VBoxContainer ObterColuna(int coluna)
 		{
 			return Coluna.GetChild(coluna).GetChild<VBoxContainer>(0);
+		}
+		public async Task BuscarRelacoes(PessoaDTO pessoa, int coluna, Node box)
+		{
+			try
+			{
+				var resultado = PessoaBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta(pessoa.Codigo));
+				if (BuscarBLL.ValidarColuna(coluna))
+					CallDeferred("InstanciarColuna");
+				var novaColuna = coluna + 1;			
+				foreach (var relacao in resultado)
+				{
+					CallDeferred("InstanciarPessoaBox", new PessoaObject(pessoa), ObterColuna(novaColuna), coluna);
+				}
+			}
+			catch(Exception ex)
+			{
+				CallDeferred("ExibirErro", ex.Message);
+			}
+		}
+		public async Task BuscarRelacoes(RegistroDTO pessoa, int coluna, Node box)
+		{
+			GD.Print(coluna);
 		}
 		public void FecharCTRL()
 		{

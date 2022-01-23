@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://CTRL/MainCTRL.cs" type="Script" id=1]
 [ext_resource path="res://RES/ICONES/Rastros.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://RES/LogoVoando.png" type="Texture" id=7]
 [ext_resource path="res://RES/FONTES/FoglihtenNo04-070.otf" type="DynamicFontData" id=8]
 [ext_resource path="res://RES/ICONES/Sobre.png" type="Texture" id=9]
+[ext_resource path="res://RES/AvoreBRanca.png" type="Texture" id=10]
+[ext_resource path="res://CTRL/ArvoreBrancaCTRL.cs" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -196,6 +198,19 @@ margin_bottom = 197.0
 text = "Sobre"
 icon = ExtResource( 9 )
 expand_icon = true
+
+[node name="ArvoreBranca" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.831373 )
+margin_left = 338.0
+margin_top = 50.0
+margin_right = 867.0
+margin_bottom = 558.0
+texture = ExtResource( 10 )
+expand = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="button_up" from="VBoxContainer/CadastrarPessoa" to="." method="_on_CadastrarPessoa_button_up"]
 [connection signal="button_up" from="VBoxContainer/CadatrarRegistro" to="." method="_on_CadatrarRegistro_button_up"]

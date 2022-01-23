@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 using BibliotecaViva.DTO;
 using BibliotecaViva.CTRL.Interface;
@@ -8,6 +9,8 @@ namespace BibliotecaViva.CTRL
 {
 	public class PessoaBoxCTRL : Panel, IDisposableCTRL
 	{
+		public int Coluna { get; set; }
+		public TabBuscarCTRL TabBuscar { get; set; }
 		private PessoaDTO Pessoa { get; set; }
 		private Label NomeCompleto { get; set; }
 		private Label NomeSocial { get; set; }
@@ -53,7 +56,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Button_button_up()
 		{
-			
+			Task.Run(async () => await TabBuscar.BuscarRelacoes(Pessoa, Coluna, this));
 		}
 		public void FecharCTRL()
 		{

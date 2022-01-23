@@ -23,6 +23,10 @@ namespace BibliotecaViva.BLL
             if (Container.GetChildCount() > 0 && linha.GetChild(0).GetChildCount() == 0)
                 linha.QueueFree();
         }
+        public bool ValidarColuna(int coluna)
+        {
+            return Container.GetChildCount() -1 <= coluna; 
+        }
         
         public void Dispose()
         {
