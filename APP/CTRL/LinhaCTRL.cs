@@ -1,11 +1,9 @@
 using Godot;
 
-using BibliotecaViva.CTRL.Interface;
-
 namespace BibliotecaViva.CTRL
 {
-	public class TabSobreCTRL : Tabs, IDisposableCTRL
-	{
+	public class LinhaCTRL : ScrollContainer
+	{		
 		public override void _Ready()
 		{
 			DesativarFuncoesDeAltoProcessamento();
@@ -13,7 +11,10 @@ namespace BibliotecaViva.CTRL
 		private void DesativarFuncoesDeAltoProcessamento()
 		{
 			SetPhysicsProcess(false);
-			SetProcess(false);
+		}
+		public override void _Process(float delta)
+		{
+			Visible = GetChild(0).GetChildCount() > 0;
 		}
 		public void FecharCTRL()
 		{
