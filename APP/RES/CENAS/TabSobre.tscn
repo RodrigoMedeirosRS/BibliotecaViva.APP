@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://CTRL/ControladorTabCTRL.cs" type="Script" id=1]
 [ext_resource path="res://CTRL/TabSobreCTRL.cs" type="Script" id=2]
@@ -10,19 +10,33 @@
 [ext_resource path="res://RES/Selo.png" type="Texture" id=8]
 [ext_resource path="res://RES/ICONES/APP.png" type="Texture" id=9]
 [ext_resource path="res://RES/ICONES/API.png" type="Texture" id=10]
+[ext_resource path="res://RES/CC-BY-SA.png" type="Texture" id=11]
 
 [node name="TabSobre" type="Tabs"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 28.0
-margin_right = -187.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -272.0
+margin_right = 324.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 836, 580 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,6 +96,9 @@ margin_right = 1283.0
 margin_bottom = 300.154
 texture = ExtResource( 5 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Capes" type="TextureRect" parent="Controladores/Logos"]
 margin_left = 333.0
@@ -143,12 +160,12 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Controladores/Livre"]
 margin_left = 31.0
-margin_top = 260.0
+margin_top = 242.0
 margin_right = 546.0
-margin_bottom = 291.0
+margin_bottom = 290.0
 rect_scale = Vector2( 1.5, 1.5 )
-text = "Este é um software OpenSource distribuído sob a licença permissiva MIT. Clique nos botões abaixo para acessar o código fonte."
-align = 1
+text = "Este é um software OpenSource seu código fonte é distribuído sob a licença permissiva MIT, já os seus assets e funcionalidades são distribuídos pela licença CC BY-SA. Clique nos botões abaixo para acessar o código fonte."
+align = 3
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -156,9 +173,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="Controladores/Livre"]
 self_modulate = Color( 1, 1, 1, 0.780392 )
-margin_left = 126.0
+margin_left = 69.0
 margin_top = 357.0
-margin_right = 227.0
+margin_right = 170.0
 margin_bottom = 458.0
 texture = ExtResource( 8 )
 expand = true
@@ -167,9 +184,9 @@ __meta__ = {
 }
 
 [node name="RepoAPI" type="Button" parent="Controladores/Livre"]
-margin_left = 278.0
+margin_left = 221.0
 margin_top = 362.0
-margin_right = 534.0
+margin_right = 477.0
 margin_bottom = 382.0
 rect_scale = Vector2( 1.5, 1.5 )
 text = "Acessar Código fon da Aplicação"
@@ -177,20 +194,33 @@ icon = ExtResource( 9 )
 expand_icon = true
 
 [node name="RepoAPP" type="Button" parent="Controladores/Livre"]
-margin_left = 278.0
+margin_left = 221.0
 margin_top = 410.0
-margin_right = 534.0
+margin_right = 477.0
 margin_bottom = 430.0
 rect_scale = Vector2( 1.5, 1.5 )
 text = "Acessar Código fon da API"
 icon = ExtResource( 10 )
 expand_icon = true
 
+[node name="TextureRect3" type="TextureRect" parent="Controladores/Livre"]
+modulate = Color( 1, 1, 1, 0.717647 )
+margin_left = 653.0
+margin_top = 381.0
+margin_right = 760.0
+margin_bottom = 422.0
+texture = ExtResource( 11 )
+expand = true
+
 [node name="Button" type="Button" parent="."]
-margin_left = 808.045
-margin_top = -1.7818
-margin_right = 828.045
-margin_bottom = 18.2182
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 390.0
+margin_top = -291.782
+margin_right = 410.0
+margin_bottom = -271.782
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false

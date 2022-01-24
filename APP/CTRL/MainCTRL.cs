@@ -7,7 +7,7 @@ using BibliotecaViva.CTRL.Interface;
 
 namespace BibliotecaViva.CTRL
 {
-	public class MainCTRL : Node2D, IDisposableCTRL
+	public class MainCTRL : Control, IDisposableCTRL
 	{ 
 		private static IMainBLL BLL { get ; set; }
 		private int Busca { get; set; }
@@ -20,7 +20,7 @@ namespace BibliotecaViva.CTRL
 		private void RealizarInjecaoDeDependencias()
 		{
 			Busca = 0;
-			BLL = new MainBLL(GetNode<TabContainer>("./TabContainer"));
+			BLL = new MainBLL(GetNode<TabContainer>("./Container/TabContainer"));
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
 		{
