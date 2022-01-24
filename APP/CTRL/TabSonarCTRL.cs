@@ -158,10 +158,10 @@ namespace BibliotecaViva.CTRL
 			{
 				var resultado = RegistroBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta(registro.Codigo));
 				var novaColuna = coluna + 1;			
-				foreach (var relacao in resultado)
-				{
+				foreach (var relacao in resultado.Registros)
 					CallDeferred("InstanciarRegistroBox", new RegistroObject(relacao, null), ObterColuna(novaColuna), novaColuna);
-				}
+				foreach (var pessoa in resultado.Pessoas)
+					CallDeferred("InstanciarPessoaBox", new PessoaObject(pessoa), ObterColuna(novaColuna), novaColuna);
 			}
 			catch(Exception ex)
 			{

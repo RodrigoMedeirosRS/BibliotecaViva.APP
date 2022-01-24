@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://CTRL/MainCTRL.cs" type="Script" id=1]
 [ext_resource path="res://RES/ICONES/Rastros.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://RES/ICONES/Sobre.png" type="Texture" id=9]
 [ext_resource path="res://RES/AvoreBRanca.png" type="Texture" id=10]
 [ext_resource path="res://CTRL/ArvoreBrancaCTRL.cs" type="Script" id=11]
+[ext_resource path="res://RES/FallingPetals.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -50,6 +51,38 @@ outline_color = Color( 0.6, 0.6, 0.6, 0.0588235 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Folhas Caindo"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [node name="Main" type="Node2D"]
 pause_mode = 2
@@ -165,7 +198,7 @@ expand_icon = true
 margin_top = 121.0
 margin_right = 141.0
 margin_bottom = 141.0
-hint_tooltip = "Clique aqui para ativa o modo de exploração geolocalizado."
+hint_tooltip = "Clique aqui para ativar o modo de exploração geolocalizado."
 text = "Sonar"
 icon = ExtResource( 4 )
 expand_icon = true
@@ -178,13 +211,6 @@ hint_tooltip = "Clique aqui para ver a densidade de registros por região."
 text = "Rastros"
 icon = ExtResource( 2 )
 expand_icon = true
-
-[node name="Ping" type="Button" parent="VBoxContainer"]
-visible = false
-margin_top = 252.0
-margin_right = 141.0
-margin_bottom = 272.0
-text = "Ping"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 margin_top = 169.0
@@ -201,9 +227,9 @@ expand_icon = true
 
 [node name="ArvoreBranca" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.831373 )
-margin_left = 338.0
+margin_left = 337.0
 margin_top = 50.0
-margin_right = 867.0
+margin_right = 866.0
 margin_bottom = 558.0
 texture = ExtResource( 10 )
 expand = true
@@ -212,10 +238,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="ArvoreBranca"]
+position = Vector2( 121, 339 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+hframes = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ArvoreBranca"]
+autoplay = "Folhas Caindo"
+playback_speed = 0.85
+"anims/Folhas Caindo" = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
 [connection signal="button_up" from="VBoxContainer/CadastrarPessoa" to="." method="_on_CadastrarPessoa_button_up"]
 [connection signal="button_up" from="VBoxContainer/CadatrarRegistro" to="." method="_on_CadatrarRegistro_button_up"]
 [connection signal="button_up" from="VBoxContainer/Buscar" to="." method="_on_Buscar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Sonar" to="." method="_on_Sonar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Rastros" to="." method="_on_Rastros_button_up"]
-[connection signal="button_up" from="VBoxContainer/Ping" to="." method="_on_Ping_button_up"]
 [connection signal="button_up" from="VBoxContainer/Sobre" to="." method="_on_Sobre_button_up"]

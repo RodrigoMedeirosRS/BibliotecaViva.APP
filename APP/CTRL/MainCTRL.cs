@@ -8,8 +8,9 @@ using BibliotecaViva.CTRL.Interface;
 namespace BibliotecaViva.CTRL
 {
 	public class MainCTRL : Node2D, IDisposableCTRL
-	{
+	{ 
 		private static IMainBLL BLL { get ; set; }
+		private int Busca { get; set; }
 		public override void _Ready()
 		{
 			RealizarInjecaoDeDependencias();
@@ -18,6 +19,7 @@ namespace BibliotecaViva.CTRL
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
+			Busca = 0;
 			BLL = new MainBLL(GetNode<TabContainer>("./TabContainer"));
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
@@ -56,7 +58,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private void _on_Buscar_button_up()
 		{
-			BLL.IntanciarTab("Buscar", "res://RES/CENAS/TabBuscar.tscn");
+			Busca += 1;
+			BLL.IntanciarTab("Buscar N°" + Busca, "res://RES/CENAS/TabBuscar.tscn");
 		}
 		private void _on_Sonar_button_up()
 		{
@@ -65,10 +68,6 @@ namespace BibliotecaViva.CTRL
 		private void _on_Rastros_button_up()
 		{
 			BLL.IntanciarTab("Rastros", "res://RES/CENAS/TabRastros.tscn");
-		}
-		private void _on_Ping_button_up()
-		{
-			BLL.IntanciarTab("Ping", "res://RES/CENAS/TabPing.tscn");
 		}
 		private void _on_Sobre_button_up()
 		{

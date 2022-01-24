@@ -185,7 +185,7 @@ namespace BibliotecaViva.CTRL
 			var consulta = ConsultarRegistroBLL.RealizarConsultaDeRegistrosRelacionados(new RelacaoConsulta ()
 			{
 				CodRegistro = CodigoRegistro
-			});
+			})?.Registros;
 
 			consulta = consulta.OrderBy(x => x.Codigo).ToList();
 			var relacoes = registro.Referencias.OrderBy(x => x.RelacaoID).ToList();
