@@ -12,12 +12,19 @@
 [ext_resource path="res://RES/ICONES/Registro.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.282353, 0.270588, 0.317647, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 0.462745 )
+shadow_size = 2
+shadow_offset = Vector2( 2, 2 )
 
 [sub_resource type="AudioStreamSample" id=2]
 
 [node name="RegistroBox" type="Panel"]
 pause_mode = 2
-self_modulate = Color( 1, 1, 1, 0.054902 )
 margin_right = 400.0
 margin_bottom = 207.0
 rect_min_size = Vector2( 400, 303 )
@@ -211,22 +218,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Imagem" type="TextureRect" parent="VBoxContainer/Imagem"]
-margin_top = 17.0
-margin_right = 357.0
-margin_bottom = 374.0
-rect_min_size = Vector2( 357, 357 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TextureRect2" type="ColorRect" parent="VBoxContainer/Imagem"]
 margin_top = 17.0
 margin_right = 357.0
 margin_bottom = 374.0
 rect_min_size = Vector2( 357, 357 )
 color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Imagem" type="TextureRect" parent="VBoxContainer/Imagem"]
+margin_top = 17.0
+margin_right = 357.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 357, 357 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

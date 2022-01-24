@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
@@ -127,7 +126,7 @@ namespace BibliotecaViva.CTRL
 			var pessoas = ObterColuna(coluna).GetChildren();
 			foreach (var pessoaBox in pessoas)
 			{
-				if ((pessoaBox as PessoaBoxCTRL).Pessoa.Codigo == pessoa.Codigo)
+				if ((pessoaBox as PessoaBoxCTRL)?.Pessoa.Codigo == pessoa.Codigo)
 					return true;
 			}
 			return false;
@@ -137,7 +136,7 @@ namespace BibliotecaViva.CTRL
 			var registros = ObterColuna(coluna).GetChildren();
 			foreach (var registroBox in registros)
 			{
-				if ((registroBox as RegistroBoxCTRL).Registro.Codigo == registro.Codigo)
+				if ((registroBox as RegistroBoxCTRL)?.Registro.Codigo == registro.Codigo)
 					return true;
 			}
 			return false;
