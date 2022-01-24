@@ -198,7 +198,7 @@ expand_icon = true
 margin_top = 121.0
 margin_right = 141.0
 margin_bottom = 141.0
-hint_tooltip = "Clique aqui para ativa o modo de exploração geolocalizado."
+hint_tooltip = "Clique aqui para ativar o modo de exploração geolocalizado."
 text = "Sonar"
 icon = ExtResource( 4 )
 expand_icon = true
@@ -211,13 +211,6 @@ hint_tooltip = "Clique aqui para ver a densidade de registros por região."
 text = "Rastros"
 icon = ExtResource( 2 )
 expand_icon = true
-
-[node name="Ping" type="Button" parent="VBoxContainer"]
-visible = false
-margin_top = 252.0
-margin_right = 141.0
-margin_bottom = 272.0
-text = "Ping"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 margin_top = 169.0
@@ -262,5 +255,4 @@ anims/RESET = SubResource( 5 )
 [connection signal="button_up" from="VBoxContainer/Buscar" to="." method="_on_Buscar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Sonar" to="." method="_on_Sonar_button_up"]
 [connection signal="button_up" from="VBoxContainer/Rastros" to="." method="_on_Rastros_button_up"]
-[connection signal="button_up" from="VBoxContainer/Ping" to="." method="_on_Ping_button_up"]
 [connection signal="button_up" from="VBoxContainer/Sobre" to="." method="_on_Sobre_button_up"]
