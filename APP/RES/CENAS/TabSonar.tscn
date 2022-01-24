@@ -8,16 +8,27 @@
 
 [node name="TabSonar" type="Tabs"]
 pause_mode = 2
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 28.0
-margin_right = -187.0
+anchor_bottom = 0.5
+margin_top = -272.0
+margin_right = -188.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 836, 580 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -318.0
+margin_right = -418.0
+margin_bottom = -318.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,56 +36,71 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="Controladores"]
 visible = false
-margin_left = -3.0
-margin_top = -8.0
-margin_right = 834.0
-margin_bottom = 572.0
+margin_top = 19.0
+margin_right = 837.0
+margin_bottom = 599.0
 color = Color( 1, 1, 1, 0.0823529 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AreaSonar" type="Control" parent="."]
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = -7.0
-margin_right = -5.0
+anchor_bottom = 0.5
+margin_top = -285.0
+margin_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 836, 580 )
 rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Posicionamento" type="Node2D" parent="AreaSonar"]
-position = Vector2( 209.54, 143.469 )
+[node name="Posicionamento" type="Control" parent="AreaSonar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Emissao" parent="AreaSonar/Posicionamento" instance=ExtResource( 1 )]
-position = Vector2( 208.652, 145.469 )
+position = Vector2( 416, 279 )
 scale = Vector2( 0.55, 0.55 )
 
 [node name="Dados" type="Control" parent="."]
-margin_left = 14.0
-margin_top = 27.0
-margin_right = 1081.0
-margin_bottom = 668.0
-rect_min_size = Vector2( 1067, 641 )
-rect_scale = Vector2( 0.75, 0.75 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -262.0
+margin_bottom = 283.0
+rect_min_size = Vector2( 836, 545 )
 rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Dados"]
-margin_right = 800.0
-margin_bottom = 482.0
-rect_min_size = Vector2( 1067, 641 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -272.5
+margin_bottom = 272.5
+rect_min_size = Vector2( 836, 545 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Colunas" type="HBoxContainer" parent="Dados/ScrollContainer"]
-margin_right = 1066.0
-rect_min_size = Vector2( 1066, 0 )
+margin_right = 836.0
+rect_min_size = Vector2( 836, 0 )
 custom_constants/separation = 20
 alignment = 1
 
@@ -97,15 +123,25 @@ margin_right = 2.0004e+06
 margin_bottom = 303.0
 
 [node name="PopErro" type="AcceptDialog" parent="."]
-margin_left = 536.0
-margin_top = 298.0
-margin_right = 749.0
-margin_bottom = 396.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -82.0
+margin_top = -66.72
+margin_right = 131.0
+margin_bottom = 22.0
 window_title = "Alerta!"
 
 [node name="Controles" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

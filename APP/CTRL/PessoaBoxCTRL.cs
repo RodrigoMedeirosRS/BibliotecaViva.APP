@@ -30,11 +30,11 @@ namespace BibliotecaViva.CTRL
 		}
 		private void PopularNodes()
 		{
-			NomeCompleto = GetNode<Label>("./NomeCompleto/Conteudo");
-			NomeSocial = GetNode<Label>("./VBoxContainer/NomeSocial/Conteudo");
-			Genero = GetNode<Label>("./VBoxContainer/Genero/Conteudo");
-			Apelido = GetNode<Label>("./VBoxContainer/Apelido/Conteudo");
-			Localizacao = GetNode<Label>("./VBoxContainer/GeoLocalizacao/Conteudo");
+			NomeCompleto = GetNode<Label>("./Conteudo/NomeCompleto/Conteudo");
+			NomeSocial = GetNode<Label>("./Conteudo/VBoxContainer/NomeSocial/Conteudo");
+			Genero = GetNode<Label>("./Conteudo/VBoxContainer/Genero/Conteudo");
+			Apelido = GetNode<Label>("./Conteudo/VBoxContainer/Apelido/Conteudo");
+			Localizacao = GetNode<Label>("./Conteudo/VBoxContainer/GeoLocalizacao/Conteudo");
 		}
 		public void Preencher(PessoaDTO pessoaDTO, Vector2 posicao)
 		{

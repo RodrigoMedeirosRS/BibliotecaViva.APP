@@ -18,9 +18,9 @@ shadow_offset = Vector2( 2, 2 )
 
 [node name="PessoaBox" type="Panel"]
 pause_mode = 2
-margin_right = 400.0
-margin_bottom = 279.0
-rect_min_size = Vector2( 400, 279 )
+margin_right = 293.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 293, 179 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -28,6 +28,7 @@ __meta__ = {
 }
 
 [node name="Controladores" type="Control" parent="."]
+rect_scale = Vector2( 0.75, 0.75 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,7 +46,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NomeCompleto" type="ColorRect" parent="."]
+[node name="Conteudo" type="Control" parent="."]
+rect_scale = Vector2( 0.75, 0.75 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NomeCompleto" type="ColorRect" parent="Conteudo"]
 margin_left = 16.0
 margin_top = 15.0
 margin_right = 329.0
@@ -56,7 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conteudo" type="Label" parent="NomeCompleto"]
+[node name="Conteudo" type="Label" parent="Conteudo/NomeCompleto"]
 margin_left = 38.0
 margin_right = 313.0
 margin_bottom = 36.0
@@ -69,7 +76,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icone" type="TextureRect" parent="NomeCompleto"]
+[node name="Icone" type="TextureRect" parent="Conteudo/NomeCompleto"]
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 31.0
@@ -80,7 +87,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo"]
 margin_left = 15.0
 margin_top = 59.0
 margin_right = 376.0
@@ -89,12 +96,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NomeSocial" type="Control" parent="VBoxContainer"]
+[node name="NomeSocial" type="Control" parent="Conteudo/VBoxContainer"]
+visible = false
 margin_right = 361.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 361, 40 )
 
-[node name="Label" type="Label" parent="VBoxContainer/NomeSocial"]
+[node name="Label" type="Label" parent="Conteudo/VBoxContainer/NomeSocial"]
 anchor_top = 0.0738095
 anchor_bottom = 0.0738095
 margin_right = 53.0
@@ -105,7 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="TextureRect" type="ColorRect" parent="VBoxContainer/NomeSocial"]
+[node name="TextureRect" type="ColorRect" parent="Conteudo/VBoxContainer/NomeSocial"]
 margin_top = 17.6667
 margin_right = 361.0
 margin_bottom = 39.6667
@@ -115,7 +123,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conteudo" type="Label" parent="VBoxContainer/NomeSocial"]
+[node name="Conteudo" type="Label" parent="Conteudo/VBoxContainer/NomeSocial"]
 anchor_top = 0.141667
 anchor_bottom = 0.141667
 margin_top = 16.0
@@ -128,13 +136,12 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Genero" type="Control" parent="VBoxContainer"]
-margin_top = 44.0
+[node name="Genero" type="Control" parent="Conteudo/VBoxContainer"]
 margin_right = 361.0
-margin_bottom = 84.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 361, 40 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Genero"]
+[node name="Label" type="Label" parent="Conteudo/VBoxContainer/Genero"]
 anchor_top = 0.0738095
 anchor_bottom = 0.0738095
 margin_right = 53.0
@@ -145,7 +152,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Genero"]
+[node name="TextureRect" type="ColorRect" parent="Conteudo/VBoxContainer/Genero"]
 margin_top = 17.6667
 margin_right = 361.0
 margin_bottom = 39.6667
@@ -155,7 +162,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conteudo" type="Label" parent="VBoxContainer/Genero"]
+[node name="Conteudo" type="Label" parent="Conteudo/VBoxContainer/Genero"]
 anchor_top = 0.141667
 anchor_bottom = 0.141667
 margin_top = 16.0
@@ -168,13 +175,13 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Apelido" type="Control" parent="VBoxContainer"]
-margin_top = 88.0
+[node name="Apelido" type="Control" parent="Conteudo/VBoxContainer"]
+margin_top = 44.0
 margin_right = 361.0
-margin_bottom = 128.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 361, 40 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Apelido"]
+[node name="Label" type="Label" parent="Conteudo/VBoxContainer/Apelido"]
 anchor_top = 0.0738095
 anchor_bottom = 0.0738095
 margin_right = 53.0
@@ -185,7 +192,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="TextureRect" type="ColorRect" parent="VBoxContainer/Apelido"]
+[node name="TextureRect" type="ColorRect" parent="Conteudo/VBoxContainer/Apelido"]
 margin_top = 17.6667
 margin_right = 361.0
 margin_bottom = 39.6667
@@ -195,7 +202,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conteudo" type="Label" parent="VBoxContainer/Apelido"]
+[node name="Conteudo" type="Label" parent="Conteudo/VBoxContainer/Apelido"]
 anchor_top = 0.141667
 anchor_bottom = 0.141667
 margin_top = 16.0
@@ -208,13 +215,13 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="GeoLocalizacao" type="Control" parent="VBoxContainer"]
-margin_top = 132.0
+[node name="GeoLocalizacao" type="Control" parent="Conteudo/VBoxContainer"]
+margin_top = 88.0
 margin_right = 361.0
-margin_bottom = 172.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 361, 40 )
 
-[node name="Label" type="Label" parent="VBoxContainer/GeoLocalizacao"]
+[node name="Label" type="Label" parent="Conteudo/VBoxContainer/GeoLocalizacao"]
 anchor_top = 0.0738095
 anchor_bottom = 0.0738095
 margin_right = 53.0
@@ -225,7 +232,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="TextureRect" type="ColorRect" parent="VBoxContainer/GeoLocalizacao"]
+[node name="TextureRect" type="ColorRect" parent="Conteudo/VBoxContainer/GeoLocalizacao"]
 margin_top = 17.6667
 margin_right = 361.0
 margin_bottom = 39.6667
@@ -235,7 +242,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conteudo" type="Label" parent="VBoxContainer/GeoLocalizacao"]
+[node name="Conteudo" type="Label" parent="Conteudo/VBoxContainer/GeoLocalizacao"]
 anchor_top = 0.141667
 anchor_bottom = 0.141667
 margin_top = 16.0
@@ -248,13 +255,13 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Botoes" type="Control" parent="VBoxContainer"]
-margin_top = 176.0
+[node name="Botoes" type="Control" parent="Conteudo/VBoxContainer"]
+margin_top = 132.0
 margin_right = 361.0
-margin_bottom = 211.0
+margin_bottom = 167.0
 rect_min_size = Vector2( 0, 35 )
 
-[node name="Editar" type="Button" parent="VBoxContainer/Botoes"]
+[node name="Editar" type="Button" parent="Conteudo/VBoxContainer/Botoes"]
 margin_left = 40.0
 margin_top = 7.0
 margin_right = 170.0
@@ -267,7 +274,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="VBoxContainer/Botoes"]
+[node name="Button" type="Button" parent="Conteudo/VBoxContainer/Botoes"]
 margin_left = 196.0
 margin_top = 7.0
 margin_right = 326.0
@@ -281,5 +288,5 @@ __meta__ = {
 }
 
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
-[connection signal="button_up" from="VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
-[connection signal="button_up" from="VBoxContainer/Botoes/Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="Conteudo/VBoxContainer/Botoes/Editar" to="." method="_on_Editar_button_up"]
+[connection signal="button_up" from="Conteudo/VBoxContainer/Botoes/Button" to="." method="_on_Button_button_up"]

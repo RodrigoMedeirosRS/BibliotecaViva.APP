@@ -9,16 +9,27 @@
 
 [node name="TabBuscar" type="Tabs"]
 pause_mode = 2
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 28.0
-margin_right = -187.0
+anchor_bottom = 0.5
+margin_top = -272.0
+margin_right = -188.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 836, 580 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,10 +58,14 @@ __meta__ = {
 }
 
 [node name="Pesquisa" type="Control" parent="."]
-margin_left = 216.0
-margin_top = 22.0
-margin_right = 216.0
-margin_bottom = 22.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -202.0
+margin_top = -268.0
+margin_right = -202.0
+margin_bottom = -268.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,7 +104,7 @@ margin_left = -19.633
 margin_top = 10.0406
 margin_right = 196.367
 margin_bottom = 34.0406
-hint_tooltip = "Selecione aqui o idioma do registro que você está buscando."
+hint_tooltip = "Selecione aqui o idioma do Registro que você está buscando."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,57 +162,71 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
 margin_left = 14.0
-margin_top = 67.0
-margin_right = 814.0
-margin_bottom = 549.0
+margin_top = -223.0
+margin_right = -22.0
+margin_bottom = 259.0
+rect_min_size = Vector2( 800, 482 )
 color = Color( 0.172549, 0.164706, 0.196078, 0.388235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Dados" type="Control" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
 margin_left = 14.0
-margin_top = 67.0
-margin_right = 1081.0
-margin_bottom = 708.0
-rect_min_size = Vector2( 1067, 641 )
-rect_scale = Vector2( 0.75, 0.75 )
+margin_top = -223.0
+margin_right = -22.0
+margin_bottom = 259.0
+rect_min_size = Vector2( 800, 482 )
 rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Dados"]
-margin_right = 800.0
-margin_bottom = 482.0
-rect_min_size = Vector2( 1067, 641 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -241.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 800, 482 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Colunas" type="HBoxContainer" parent="Dados/ScrollContainer"]
-margin_right = 1066.0
-rect_min_size = Vector2( 1066, 0 )
+margin_right = 800.0
+rect_min_size = Vector2( 800, 0 )
 custom_constants/separation = 20
 alignment = 1
 
 [node name="PopErro" type="AcceptDialog" parent="."]
-margin_left = 536.0
-margin_top = 298.0
-margin_right = 749.0
-margin_bottom = 396.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -106.0
+margin_top = -70.0
+margin_right = 107.0
+margin_bottom = 28.0
 window_title = "Alerta!"
 
 [node name="PessoaBox" parent="." instance=ExtResource( 4 )]
-margin_left = 5000.0
+margin_left = 50000.0
 margin_top = 92.0
-margin_right = 5400.0
+margin_right = 50400.0
 margin_bottom = 371.0
 
 [node name="RegistroBox" parent="." instance=ExtResource( 5 )]
-margin_left = 5000.0
-margin_right = 5400.0
+margin_left = 50000.0
+margin_right = 50400.0
+margin_bottom = 303.0
 
 [connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="item_selected" from="Pesquisa/Tipo" to="Pesquisa" method="_on_Tipo_item_selected"]

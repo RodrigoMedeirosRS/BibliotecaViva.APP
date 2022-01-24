@@ -13,6 +13,38 @@
 [ext_resource path="res://CTRL/ArvoreBrancaCTRL.cs" type="Script" id=11]
 [ext_resource path="res://RES/FallingPetals.png" type="Texture" id=12]
 
+[sub_resource type="Animation" id=4]
+resource_name = "Folhas Caindo"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
@@ -52,52 +84,65 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 8 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Folhas Caindo"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
-}
-
-[sub_resource type="Animation" id=5]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[node name="Main" type="Node2D"]
+[node name="Main" type="Control"]
 pause_mode = 2
+anchor_right = 1.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
 script = ExtResource( 1 )
-
-[node name="TabContainer" type="TabContainer" parent="."]
-margin_left = 187.622
-margin_top = -1.18921
-margin_right = 1024.62
-margin_bottom = 602.811
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Container" type="Control" parent="."]
+anchor_right = 1.0
+margin_left = 189.0
+margin_right = 2.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 836.998, 600 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Container"]
+anchor_right = 1.0
+margin_top = -1.0
+margin_bottom = 603.0
+rect_min_size = Vector2( 836.998, 604 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArvoreBranca" type="TextureRect" parent="Container"]
+modulate = Color( 1, 1, 1, 0.831373 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.5
+margin_top = 50.0
+margin_right = 258.5
+margin_bottom = 558.0
+texture = ExtResource( 10 )
+expand = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Container/ArvoreBranca"]
+position = Vector2( 121, 339 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+hframes = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container/ArvoreBranca"]
+autoplay = "Folhas Caindo"
+playback_speed = 0.85
+"anims/Folhas Caindo" = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
 [node name="Control" type="Control" parent="."]
+margin_right = 189.0
+margin_bottom = 604.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -149,12 +194,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 anchor_left = -0.091
 anchor_right = -0.091
-margin_left = 10.0
+margin_left = 28.0
 margin_top = 164.0
-margin_right = 151.0
+margin_right = 169.0
 margin_bottom = 402.0
 rect_scale = Vector2( 1.2, 1.2 )
 alignment = 1
@@ -162,39 +207,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CadastrarPessoa" type="Button" parent="VBoxContainer"]
+[node name="CadastrarPessoa" type="Button" parent="Control/VBoxContainer"]
 margin_top = 41.0
 margin_right = 141.0
 margin_bottom = 61.0
-hint_tooltip = "Clique aqui para cadastra uma nova livro pista viva."
+hint_tooltip = "Clique aqui para cadastrar uma nova Pista Viva."
 text = "Nova Pista Viva"
 icon = ExtResource( 5 )
 expand_icon = true
 
-[node name="CadatrarRegistro" type="Button" parent="VBoxContainer"]
+[node name="CadatrarRegistro" type="Button" parent="Control/VBoxContainer"]
 margin_top = 65.0
 margin_right = 141.0
 margin_bottom = 85.0
-hint_tooltip = "Clique aqui para cadastra um novo registro."
+hint_tooltip = "Clique aqui para cadastrar um novo Registro."
 text = "Novo Registro"
 icon = ExtResource( 3 )
 expand_icon = true
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
 margin_top = 89.0
 margin_right = 141.0
 margin_bottom = 93.0
 
-[node name="Buscar" type="Button" parent="VBoxContainer"]
+[node name="Buscar" type="Button" parent="Control/VBoxContainer"]
 margin_top = 97.0
 margin_right = 141.0
 margin_bottom = 117.0
-hint_tooltip = "Clique aqui para consultar registros ou pistas vivas."
+hint_tooltip = "Clique aqui para explorar os Registros ou Pistas Vivas cadastradas."
 text = "Buscar"
 icon = ExtResource( 6 )
 expand_icon = true
 
-[node name="Sonar" type="Button" parent="VBoxContainer"]
+[node name="Sonar" type="Button" parent="Control/VBoxContainer"]
 margin_top = 121.0
 margin_right = 141.0
 margin_bottom = 141.0
@@ -203,56 +248,32 @@ text = "Sonar"
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="Rastros" type="Button" parent="VBoxContainer"]
+[node name="Rastros" type="Button" parent="Control/VBoxContainer"]
 margin_top = 145.0
 margin_right = 141.0
 margin_bottom = 165.0
-hint_tooltip = "Clique aqui para ver a densidade de registros por região."
+hint_tooltip = "Clique aqui para ver a densidade de Registros por região."
 text = "Rastros"
 icon = ExtResource( 2 )
 expand_icon = true
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
 margin_top = 169.0
 margin_right = 141.0
 margin_bottom = 173.0
 
-[node name="Sobre" type="Button" parent="VBoxContainer"]
+[node name="Sobre" type="Button" parent="Control/VBoxContainer"]
 margin_top = 177.0
 margin_right = 141.0
 margin_bottom = 197.0
+hint_tooltip = "Clique aqui para ver os apoiadores e informações sobre licença de uso e acesso ao código fonte."
 text = "Sobre"
 icon = ExtResource( 9 )
 expand_icon = true
 
-[node name="ArvoreBranca" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.831373 )
-margin_left = 337.0
-margin_top = 50.0
-margin_right = 866.0
-margin_bottom = 558.0
-texture = ExtResource( 10 )
-expand = true
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="ArvoreBranca"]
-position = Vector2( 121, 339 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 12 )
-hframes = 20
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ArvoreBranca"]
-autoplay = "Folhas Caindo"
-playback_speed = 0.85
-"anims/Folhas Caindo" = SubResource( 4 )
-anims/RESET = SubResource( 5 )
-
-[connection signal="button_up" from="VBoxContainer/CadastrarPessoa" to="." method="_on_CadastrarPessoa_button_up"]
-[connection signal="button_up" from="VBoxContainer/CadatrarRegistro" to="." method="_on_CadatrarRegistro_button_up"]
-[connection signal="button_up" from="VBoxContainer/Buscar" to="." method="_on_Buscar_button_up"]
-[connection signal="button_up" from="VBoxContainer/Sonar" to="." method="_on_Sonar_button_up"]
-[connection signal="button_up" from="VBoxContainer/Rastros" to="." method="_on_Rastros_button_up"]
-[connection signal="button_up" from="VBoxContainer/Sobre" to="." method="_on_Sobre_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/CadastrarPessoa" to="." method="_on_CadastrarPessoa_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/CadatrarRegistro" to="." method="_on_CadatrarRegistro_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Buscar" to="." method="_on_Buscar_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Sonar" to="." method="_on_Sonar_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Rastros" to="." method="_on_Rastros_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Sobre" to="." method="_on_Sobre_button_up"]

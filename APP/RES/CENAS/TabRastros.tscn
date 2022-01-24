@@ -8,16 +8,47 @@
 
 [node name="TabRastros" type="Tabs"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 28.0
-margin_right = -187.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -272.0
+margin_right = 324.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 836, 580 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AreaDoMapa" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mapa" type="Sprite" parent="AreaDoMapa"]
+modulate = Color( 1, 1, 1, 0.792157 )
+show_behind_parent = true
+position = Vector2( 438.453, 287.284 )
+texture = ExtResource( 1 )
+
+[node name="Container" type="Node2D" parent="AreaDoMapa/Mapa"]
+position = Vector2( -35, 85 )
+scale = Vector2( 2.6, -2.85 )
+
 [node name="Controladores" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,31 +65,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AreaDoMapa" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = -7.0
-margin_right = -5.0
-rect_clip_content = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Mapa" type="Sprite" parent="AreaDoMapa"]
-modulate = Color( 1, 1, 1, 0.792157 )
-show_behind_parent = true
-position = Vector2( 438.453, 287.284 )
-texture = ExtResource( 1 )
-
-[node name="Container" type="Node2D" parent="AreaDoMapa/Mapa"]
-position = Vector2( -35, 85 )
-scale = Vector2( 2.6, -2.85 )
-
-[node name="Ponto" parent="." instance=ExtResource( 4 )]
+[node name="Ponto" parent="Controladores" instance=ExtResource( 4 )]
 position = Vector2( 20, 10 )
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Controladores"]
 process_priority = 1
 margin_left = 808.045
 margin_top = -1.0
@@ -69,7 +79,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Atualizar" type="Button" parent="."]
+[node name="Atualizar" type="Button" parent="Controladores"]
 margin_left = 7.0
 margin_top = -1.0
 margin_right = 112.0
@@ -82,5 +92,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_up" from="Button" to="Controladores" method="_on_Button_button_up"]
-[connection signal="button_up" from="Atualizar" to="." method="_on_Atualizar_button_up"]
+[connection signal="button_up" from="Controladores/Button" to="Controladores" method="_on_Button_button_up"]
+[connection signal="button_up" from="Controladores/Atualizar" to="." method="_on_Atualizar_button_up"]
