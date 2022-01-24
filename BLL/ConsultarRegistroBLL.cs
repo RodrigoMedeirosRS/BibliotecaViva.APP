@@ -33,15 +33,21 @@ namespace BibliotecaViva.BLL
                 throw new Exception("Consulta não Retornou Dados");
             return retorno;
         }
+        public ReferenciaRetorno ValidarConsulta(ReferenciaRetorno retorno)
+        {
+            if (retorno.Pessoas.Count == 0 && retorno.Registros.Count == 0)
+                throw new Exception("Consulta não Retornou Dados");
+            return retorno;
+        }
         public List<RegistroDTO> RealizarConsulta(RegistroConsulta registroCosnulta)
         {
             ValidarPreenchimento(registroCosnulta);
             var retorno = SAL.ExecutarPost<RegistroConsulta, List<RegistroDTO>>(URLConsultarRegistro, registroCosnulta);
             return ValidarConsulta(retorno);
         }
-        public List<RegistroDTO> RealizarConsultaDeRegistrosRelacionados(RelacaoConsulta relacaoConsulta)
+        public ReferenciaRetorno RealizarConsultaDeRegistrosRelacionados(RelacaoConsulta relacaoConsulta)
         {
-            var retorno = SAL.ExecutarPost<RelacaoConsulta, List<RegistroDTO>>(URLConsultarRelacao, relacaoConsulta);
+            var retorno = SAL.ExecutarPost<RelacaoConsulta, ReferenciaRetorno>(URLConsultarRelacao, relacaoConsulta);
             return ValidarConsulta(retorno);
         }
         public Node InstanciarRegistroBox(Node Container, Vector2? posicao)
