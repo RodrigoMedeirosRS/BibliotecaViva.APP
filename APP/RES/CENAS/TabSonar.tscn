@@ -106,6 +106,9 @@ window_title = "Alerta!"
 [node name="Controles" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="Controles"]
 margin_left = 808.045
@@ -137,5 +140,10 @@ margin_right = 55.0
 margin_bottom = -7.0
 text = "Alcance:"
 
-[connection signal="button_up" from="Controles/Button" to="." method="_on_Button_button_up"]
+[node name="Timer" type="Timer" parent="Controles"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="button_up" from="Controles/Button" to="Controladores" method="_on_Button_button_up"]
 [connection signal="value_changed" from="Controles/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="timeout" from="Controles/Timer" to="." method="_on_Timer_timeout"]

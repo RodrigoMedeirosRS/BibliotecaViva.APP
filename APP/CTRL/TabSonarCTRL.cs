@@ -1,8 +1,6 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
-
-
 using BibliotecaViva.DTO;
 using BibliotecaViva.BLL;
 using BibliotecaViva.DTO.Dominio;
@@ -13,6 +11,7 @@ namespace BibliotecaViva.CTRL
 {
 	public class TabSonarCTRL : Tabs, IDisposableCTRL
 	{
+		private ISonarBLL SonarBLL { get; set; }
 		private IBuscarBLL BuscarBLL { get; set; }
 		private IConsultarRegistroBLL RegistroBLL { get; set; }
 		private IConsultarPessoaBLL PessoaBLL { get; set; }
@@ -30,6 +29,8 @@ namespace BibliotecaViva.CTRL
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
+			
+			SonarBLL = new SonarBLL();
 			BuscarBLL = new BuscarBLL(Coluna);
 			RegistroBLL = new ConsultarRegistroBLL();
 			PessoaBLL = new ConsultarPessoaBLL();
@@ -55,11 +56,26 @@ namespace BibliotecaViva.CTRL
 		{
 			Alcance = (double)value * 0.0001;
 		}
-
-
-
-
-
+		private void _on_Timer_timeout()
+		{
+			Task.Run(async () => await ExecutarSonar());
+		}
+		private async Task ExecutarSonar()
+		{
+			var sonar = SonarBLL.ObterDadosSonar(-29.9902427008141, -50.126489165424786, Alcance);
+			var resultado = SonarBLL.ExecutarSonar(sonar);
+			if (resultado != null)
+			{
+				foreach (var pessoa in resultado.Pessoas)
+				{
+					CallDeferred("InstanciarPessoaBox", new PessoaObject(pessoa), ObterColuna(0), 0);
+				}
+				foreach (var relacao in resultado.Registros)
+				{
+					CallDeferred("InstanciarRegistroBox", new RegistroObject(relacao, null), ObterColuna(0), 0);
+				}
+			}
+		}
 		private void InstanciarColuna()
 		{
 			BuscarBLL.InstanciarColuna();
@@ -96,7 +112,7 @@ namespace BibliotecaViva.CTRL
 			var pessoas = ObterColuna(coluna).GetChildren();
 			foreach (var pessoaBox in pessoas)
 			{
-				if ((pessoaBox as PessoaBoxCTRL).Pessoa.Codigo == pessoa.Codigo)
+				if ((pessoaBox as PessoaBoxCTRL)?.Pessoa.Codigo == pessoa.Codigo)
 					return true;
 			}
 			return false;
@@ -106,7 +122,7 @@ namespace BibliotecaViva.CTRL
 			var registros = ObterColuna(coluna).GetChildren();
 			foreach (var registroBox in registros)
 			{
-				if ((registroBox as RegistroBoxCTRL).Registro.Codigo == registro.Codigo)
+				if ((registroBox as RegistroBoxCTRL)?.Registro.Codigo == registro.Codigo)
 					return true;
 			}
 			return false;
@@ -155,6 +171,7 @@ namespace BibliotecaViva.CTRL
 		public void FecharCTRL()
 		{
 			PopErro.QueueFree();
+			SonarBLL.Dispose();
 			RegistroBLL.Dispose();
 			PessoaBLL.Dispose();
 			foreach(var coluna in Coluna.GetChildren())
