@@ -16,6 +16,14 @@ namespace BibliotecaViva.CTRL
 			SetPhysicsProcess(false);
 			SetProcess(false);
 		}
+		private void _on_RepoAPI_button_up()
+		{
+			OS.ShellOpen("https://github.com/RodrigoMedeirosRS/BibliotecaViva.API");
+		}
+		private void _on_RepoAPP_button_up()
+		{
+			OS.ShellOpen("https://github.com/RodrigoMedeirosRS/BibliotecaViva.APP");
+		}
 		public void FecharCTRL()
 		{
 			QueueFree();
