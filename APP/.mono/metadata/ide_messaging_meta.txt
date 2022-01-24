@@ -1,2 +1,0 @@
-﻿45485
-/usr/local/myapps/Godot/Godot.3.64
