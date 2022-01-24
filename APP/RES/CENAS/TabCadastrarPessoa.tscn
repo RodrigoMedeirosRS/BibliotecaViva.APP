@@ -9,16 +9,29 @@
 
 [node name="TabCadastrarPessoa" type="Tabs"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 28.0
-margin_right = -187.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -272.0
+margin_right = 324.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 836, 580 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,10 +60,14 @@ __meta__ = {
 }
 
 [node name="Inputs" type="Control" parent="."]
-margin_left = 19.0
-margin_top = 29.0
-margin_right = 19.0
-margin_bottom = 29.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -399.0
+margin_top = -261.0
+margin_right = -399.0
+margin_bottom = -261.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -198,10 +215,14 @@ __meta__ = {
 }
 
 [node name="BuscaRelacoes" type="Control" parent="."]
-margin_left = 606.0
-margin_top = 488.0
-margin_right = 606.0
-margin_bottom = 488.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 190.0
+margin_top = 198.0
+margin_right = 190.0
+margin_bottom = 198.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -263,10 +284,14 @@ __meta__ = {
 }
 
 [node name="Sucesso" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 384.0
-margin_right = 386.0
-margin_bottom = 527.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -402.0
+margin_top = 94.0
+margin_right = -32.0
+margin_bottom = 237.0
 custom_colors/font_color = Color( 0.137255, 0.764706, 0.129412, 1 )
 align = 1
 valign = 1
@@ -277,10 +302,14 @@ __meta__ = {
 }
 
 [node name="Erro" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 384.0
-margin_right = 386.0
-margin_bottom = 527.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -402.0
+margin_top = 94.0
+margin_right = -32.0
+margin_bottom = 237.0
 custom_colors/font_color = Color( 0.941176, 0.133333, 0.133333, 1 )
 align = 1
 valign = 1

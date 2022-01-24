@@ -10,16 +10,29 @@
 
 [node name="TabCadastrarRegistro" type="Tabs"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 28.0
-margin_right = -187.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -272.0
+margin_right = 324.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 836, 580 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controladores" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -290.0
+margin_right = -418.0
+margin_bottom = -290.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,10 +61,14 @@ __meta__ = {
 }
 
 [node name="Inputs" type="Control" parent="."]
-margin_left = 19.0
-margin_top = 29.0
-margin_right = 19.0
-margin_bottom = 29.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -399.0
+margin_top = -261.0
+margin_right = -399.0
+margin_bottom = -261.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -287,10 +304,15 @@ __meta__ = {
 }
 
 [node name="ModalDeBusca" type="FileDialog" parent="."]
-margin_left = 446.0
-margin_top = 36.0
-margin_right = 771.0
-margin_bottom = 404.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -308.0
+margin_top = -196.0
+margin_right = 338.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 646, 368 )
 window_title = "Abrir um Arquivo"
 mode = 0
 access = 2
@@ -298,10 +320,14 @@ current_dir = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP"
 current_path = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP/"
 
 [node name="BuscaRelacoes" type="Control" parent="."]
-margin_left = 606.0
-margin_top = 488.0
-margin_right = 606.0
-margin_bottom = 488.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 190.0
+margin_top = 198.0
+margin_right = 190.0
+margin_bottom = 198.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

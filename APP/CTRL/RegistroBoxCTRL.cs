@@ -52,21 +52,21 @@ namespace BibliotecaViva.CTRL
 		private void PopularNodes()
 		{
 			Maximizado = false;
-			Nome = GetNode<Label>("./Nome");
-			Apelido = GetNode<Label>("./VBoxContainer/Apelido/Conteudo");
-			
-			ConteudoDescricao = GetNode<RichTextLabel>("./VBoxContainer/Descricao/ScrollContainer/Conteudo");
-			ConteudoTextual = GetNode<RichTextLabel>("./VBoxContainer/Texto/ScrollContainer/Conteudo");
-			ConteudoImagem = GetNode<TextureRect>("./VBoxContainer/Imagem/Imagem");
-			ConteudoAudio = GetNode<AudioStreamPlayer>("./VBoxContainer/Audio/AudioPlayer");
 			PopupDeDownload = GetNode<FileDialog>("./PopupDeDownload");
+
+			Nome = GetNode<Label>("./Conteudo/Nome");
+			Apelido = GetNode<Label>("./Conteudo/VBoxContainer/Apelido/Conteudo");
+			ConteudoDescricao = GetNode<RichTextLabel>("./Conteudo/VBoxContainer/Descricao/ScrollContainer/Conteudo");
+			ConteudoTextual = GetNode<RichTextLabel>("./Conteudo/VBoxContainer/Texto/ScrollContainer/Conteudo");
+			ConteudoImagem = GetNode<TextureRect>("./Conteudo/VBoxContainer/Imagem/Imagem");
+			ConteudoAudio = GetNode<AudioStreamPlayer>("./Conteudo/VBoxContainer/Audio/AudioPlayer");
 			
-			CampoTextual = GetNode<Control>("./VBoxContainer/Texto");
-			CampoImagem = GetNode<Control>("./VBoxContainer/Imagem");
-			CampoDescricao = GetNode<Control>("./VBoxContainer/Descricao");
-			CampoAudio = GetNode<Control>("./VBoxContainer/Audio");
-			CampoDownload = GetNode<Control>("./VBoxContainer/Arquivo");
-			CampoURL = GetNode<Control>("./VBoxContainer/URL");
+			CampoTextual = GetNode<Control>("./Conteudo/VBoxContainer/Texto");
+			CampoImagem = GetNode<Control>("./Conteudo/VBoxContainer/Imagem");
+			CampoDescricao = GetNode<Control>("./Conteudo/VBoxContainer/Descricao");
+			CampoAudio = GetNode<Control>("./Conteudo/VBoxContainer/Audio");
+			CampoDownload = GetNode<Control>("./Conteudo/VBoxContainer/Arquivo");
+			CampoURL = GetNode<Control>("./Conteudo/VBoxContainer/URL");
 
 			Tipos = ConsultarTipoBLL.ConsultarTipos();
 		}
@@ -172,8 +172,8 @@ namespace BibliotecaViva.CTRL
 			CampoDownload.Visible = false;
 			CampoURL.Visible = false;
 
-			RectMinSize = new Vector2(400, 303);
-			RectSize = new Vector2(400, 303);
+			RectMinSize = new Vector2(293, 234);
+			RectSize = new Vector2(293, 234);
 		}
 		private void ExibirRegistroDeArquivo()
 		{
@@ -184,8 +184,8 @@ namespace BibliotecaViva.CTRL
 			CampoDownload.Visible = true;
 			CampoURL.Visible = false;
 			
-			RectMinSize = new Vector2(400, 206);
-			RectSize = new Vector2(400, 206);
+			RectMinSize = new Vector2(293, 158);
+			RectSize = new Vector2(293, 158);
 		}
 		private void ExibirRegistroTextual()
 		{
@@ -196,8 +196,8 @@ namespace BibliotecaViva.CTRL
 			CampoDownload.Visible = false;
 			CampoURL.Visible = false;
 
-			RectMinSize = new Vector2(400, 535);
-			RectSize = new Vector2(400, 535);
+			RectMinSize = new Vector2(293, 401);
+			RectSize = new Vector2(293, 401);
 			
 			ConteudoTextual.Text = Registro.Conteudo;
 		}
@@ -213,8 +213,8 @@ namespace BibliotecaViva.CTRL
 			var audio = ImportadorDeBinariosUtil.GerarAudio(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoAudio.Stream = audio;
 
-			RectMinSize = new Vector2(400, 206);
-			RectSize = new Vector2(400, 206);
+			RectMinSize = new Vector2(293, 158);
+			RectSize = new Vector2(293, 158);
 		}
 		private void ExibirRegistroImagem()
 		{
@@ -228,8 +228,8 @@ namespace BibliotecaViva.CTRL
 			var imagem = ImportadorDeBinariosUtil.GerarImagem(Registro.Nome, ObterDetalhesTipo(Registro.Tipo).Extensao, Registro.Conteudo);
 			ConteudoImagem.Texture = imagem;
 
-			RectMinSize = new Vector2(400, 530);
-			RectSize = new Vector2(400, 530);
+			RectMinSize = new Vector2(293, 401);
+			RectSize = new Vector2(293, 401);
 		}
 		private void ExibirRegistroURL()
 		{
@@ -240,8 +240,8 @@ namespace BibliotecaViva.CTRL
 			CampoDownload.Visible = false;
 			CampoURL.Visible = true;
 
-			RectMinSize = new Vector2(400, 206);
-			RectSize = new Vector2(400, 206);
+			RectMinSize = new Vector2(293, 158);
+			RectSize = new Vector2(293, 158);
 		}
 		public TipoDTO ObterDetalhesTipo(string nomeTipo)
 		{

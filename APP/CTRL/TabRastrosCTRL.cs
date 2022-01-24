@@ -33,7 +33,7 @@ namespace BibliotecaViva.CTRL
 		{
 			MouseMovementAtual = new Vector2(0,0);
 			MouseMovementAnterior = new Vector2(0,0);
-			Ponto = GetNode<Sprite>("./Ponto");
+			Ponto = GetNode<Sprite>("./Controladores/Ponto");
 			Mapa = GetNode<Sprite>("./AreaDoMapa/Mapa");
 			Container = GetNode<Node2D>("./AreaDoMapa/Mapa/Container");
 		}
