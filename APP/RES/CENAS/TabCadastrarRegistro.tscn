@@ -117,6 +117,7 @@ margin_left = 4.0
 margin_top = 120.0
 margin_right = 171.0
 margin_bottom = 140.0
+hint_tooltip = "Selecione aqui o idioma do seu Registro."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -132,6 +133,7 @@ margin_left = 183.0
 margin_top = 120.0
 margin_right = 359.0
 margin_bottom = 140.0
+hint_tooltip = "Selecione aqui o tipo e formato do seu Registro."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -176,7 +178,7 @@ margin_top = 218.0
 margin_right = 361.0
 margin_bottom = 341.0
 rect_pivot_offset = Vector2( -44.3874, 55 )
-hint_tooltip = "Digite aqui uma breve descrição para o seu registro."
+hint_tooltip = "Digite aqui uma breve descrição para o seu Registro."
 wrap_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -351,7 +353,7 @@ margin_left = -11.633
 margin_top = 7.0406
 margin_right = 204.367
 margin_bottom = 31.0406
-hint_tooltip = "Selecione o idioma dos registros que você quer relacionar ao seu Registro."
+hint_tooltip = "Selecione o idioma dos Registros que você quer relacionar ao seu Registro."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -367,7 +369,7 @@ margin_left = -51.0
 margin_top = 42.0
 margin_right = 62.0
 margin_bottom = 68.0
-hint_tooltip = "Clique aqui para buscar os Registros ou Pistavas que você quer relacionar ao seu Registro."
+hint_tooltip = "Clique aqui para buscar os Registros ou Pista Vivas que você quer relacionar ao seu Registro."
 text = "Buscar"
 icon = ExtResource( 3 )
 expand_icon = true

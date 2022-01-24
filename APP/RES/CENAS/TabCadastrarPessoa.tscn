@@ -232,7 +232,7 @@ margin_left = -199.633
 margin_top = 7.0406
 margin_right = -19.633
 margin_bottom = 31.0406
-hint_tooltip = "Digite aqui o nome do registro que você quer relacionar a sua pista viva."
+hint_tooltip = "Digite aqui o nome do Registro que você quer relacionar a sua Pista Viva."
 placeholder_text = "Nome"
 
 [node name="Label" type="Label" parent="BuscaRelacoes/Nome"]
@@ -246,7 +246,7 @@ margin_left = -11.633
 margin_top = 7.0406
 margin_right = 204.367
 margin_bottom = 31.0406
-hint_tooltip = "Selecione o idioma dos registros que você quer relacionar a sua Pista Viva."
+hint_tooltip = "Selecione o idioma dos Registros que você quer Relacionar a sua Pista Viva."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,7 +262,7 @@ margin_left = -37.0
 margin_top = 42.0
 margin_right = 76.0
 margin_bottom = 68.0
-hint_tooltip = "Clique aqui para buscar os registros que você quer relacionar a sua Pista Viva."
+hint_tooltip = "Clique aqui para buscar os Registros que você quer relacionar a sua Pista Viva."
 text = "Buscar"
 icon = ExtResource( 4 )
 expand_icon = true
