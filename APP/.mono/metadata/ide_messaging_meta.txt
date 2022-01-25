@@ -1,0 +1,2 @@
+﻿64153
+C:/godot/godot.exe
