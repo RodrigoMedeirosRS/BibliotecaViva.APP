@@ -44,7 +44,10 @@ namespace BibliotecaViva.CTRL
 			PopularCampoOpcional(NomeSocial, Pessoa.NomeSocial);
 			PopularCampoOpcional(Genero, Pessoa.Genero);
 			PopularCampoOpcional(Apelido, Pessoa.Apelido);
-			PopularCampoOpcional(Localizacao, Pessoa.Latitude + " , " + Pessoa.Longitude);
+			if (!string.IsNullOrEmpty(Pessoa.Latitude) && !string.IsNullOrEmpty(Pessoa.Longitude))
+				PopularCampoOpcional(Localizacao, Pessoa.Latitude + " , " + Pessoa.Longitude);
+			else
+				PopularCampoOpcional(Localizacao, string.Empty);
 		}
 		private void PopularCampoOpcional(Label campo, string conteudo)
 		{

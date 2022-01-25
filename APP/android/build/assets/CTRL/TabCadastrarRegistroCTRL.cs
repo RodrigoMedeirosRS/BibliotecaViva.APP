@@ -131,6 +131,7 @@ namespace BibliotecaViva.CTRL
 			BLLTipo.PopularDropDownIdioma(IdiomaBusca);
 			Tipos = BLLTipo.PopularDropDownTipo(Tipo);
 			ObterDadosExtensao(Tipo.GetItemText(0));
+			AtualizarCampoPreenchimento(0);
 		}
 		private void _on_Tipo_item_selected(int index)
 		{

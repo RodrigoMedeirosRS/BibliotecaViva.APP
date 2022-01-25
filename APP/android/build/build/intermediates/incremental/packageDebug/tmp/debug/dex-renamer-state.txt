@@ -1,4 +1,0 @@
-#Tue Jan 25 16:40:22 BRT 2022
-base.0=/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP/android/build/build/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
