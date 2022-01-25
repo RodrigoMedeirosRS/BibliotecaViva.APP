@@ -41,8 +41,8 @@ margin_right = 841.0
 margin_bottom = 439.0
 window_title = "Salvar um Arquivo"
 access = 2
-current_dir = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP"
-current_path = "/home/rmlehnemann/Projetos/BibliotecaViva.APP/APP/"
+current_dir = "/Users/edmundo/Documents/Rodrigo/Projetos/BibliotecaViva.APP/APP"
+current_path = "/Users/edmundo/Documents/Rodrigo/Projetos/BibliotecaViva.APP/APP/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -205,6 +205,7 @@ __meta__ = {
 margin_right = 345.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 345, 0 )
+bbcode_enabled = true
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -290,6 +291,7 @@ __meta__ = {
 margin_right = 345.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 345, 0 )
+bbcode_enabled = true
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false

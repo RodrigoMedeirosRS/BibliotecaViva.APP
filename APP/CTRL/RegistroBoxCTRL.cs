@@ -91,7 +91,7 @@ namespace BibliotecaViva.CTRL
 		private void PopularCampoOpcional(RichTextLabel campo, string conteudo)
 		{
 			(campo.GetParent().GetParent() as Control).Visible = !string.IsNullOrEmpty(conteudo);
-			campo.Text = conteudo;
+			campo.BbcodeText = conteudo;
 		}
 		private void _on_Editar_button_up()
 		{
@@ -199,7 +199,7 @@ namespace BibliotecaViva.CTRL
 			RectMinSize = new Vector2(293, 401);
 			RectSize = new Vector2(293, 401);
 			
-			ConteudoTextual.Text = Registro.Conteudo;
+			ConteudoTextual.BbcodeText = Registro.Conteudo;
 		}
 		private void ExibirRegistroDeAudio()
 		{
