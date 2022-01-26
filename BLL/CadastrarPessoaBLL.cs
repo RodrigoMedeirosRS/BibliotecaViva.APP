@@ -25,7 +25,7 @@ namespace BibliotecaViva.BLL
             if (string.IsNullOrEmpty(sobrenome))
             	throw new Exception("Por favor preencher o Sobrenome.");
             if (string.IsNullOrEmpty(genero))
-            	throw new Exception("Por favor preencher o Genero.");
+            	throw new Exception("Por favor escolha uma opção de Gênero.");
             if (!string.IsNullOrEmpty(latlong))
                 try
                 {
