@@ -160,7 +160,7 @@ namespace BibliotecaViva.CTRL
 		{
 			try
 			{
-				var pessoa = CadastroPessoaBLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.GetItemText(Genero.Selected), Apelido.Text, string.Empty, CodigoPessoa, ObterListaDeRelacoes());
+				var pessoa = CadastroPessoaBLL.PopularPessoa(Nome.Text, Sobrenome.Text, Genero.GetItemText(Genero.Selected), Apelido.Text, CodigoPessoa, ObterListaDeRelacoes());
 				LimparPreenchimento();
 				LimparItensNaoRelacionados(true);
 				var retorno = CadastroPessoaBLL.CadastrarPessoa(pessoa);

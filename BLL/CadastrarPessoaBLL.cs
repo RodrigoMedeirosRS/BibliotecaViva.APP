@@ -18,7 +18,7 @@ namespace BibliotecaViva.BLL
             URLCadastroPessoa = Apontamentos.URLApi + "/Pessoa/Cadastrar";
             SAL = new Requisicao();
         }
-        private void ValidarPreenchimento(string nome, string sobrenome, string genero, string latlong)
+        private void ValidarPreenchimento(string nome, string sobrenome, string genero)
         {
             if (string.IsNullOrEmpty(nome))
             	throw new Exception("Por favor preencher o Nome.");
@@ -26,26 +26,16 @@ namespace BibliotecaViva.BLL
             	throw new Exception("Por favor preencher o Sobrenome.");
             if (string.IsNullOrEmpty(genero))
             	throw new Exception("Por favor escolha uma opção de Gênero.");
-            if (!string.IsNullOrEmpty(latlong))
-                try
-                {
-                    var coordenadas = TratadorUtil.ProcessarLatLong(latlong);
-                }
-                catch(Exception ex)
-                {
-                    throw new Exception("Por favor preencher um valor de Latitude e Longitude com valores válidos.");
-                }
         }
-        public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, string latlong, int codigoPessoa, List<RelacaoDTO> relacoes)
+        public PessoaDTO PopularPessoa(string nome, string sobrenome, string genero, string apelido, int codigoPessoa, List<RelacaoDTO> relacoes)
         {
-            ValidarPreenchimento(nome, sobrenome, genero, latlong);
+            ValidarPreenchimento(nome, sobrenome, genero);
 
             var pessoa = new PessoaDTO()
             {
                 Nome = nome,
                 Sobrenome = sobrenome,
                 Apelido = apelido,
-                NomeSocial = string.Empty,
                 Genero = genero,
                 Relacoes = relacoes
             };
@@ -53,13 +43,6 @@ namespace BibliotecaViva.BLL
             if (codigoPessoa != 0)
                 pessoa.Codigo = codigoPessoa;
 
-            return string.IsNullOrEmpty(latlong) ? pessoa : PopularCoordenadas(pessoa, latlong);
-        }
-        private PessoaDTO PopularCoordenadas(PessoaDTO pessoa, string latlong)
-        {
-            var coordenadas = TratadorUtil.ProcessarLatLong(latlong);
-            pessoa.Latitude = coordenadas[0];
-            pessoa.Longitude = coordenadas[1];
             return pessoa;
         }
         public string CadastrarPessoa(PessoaDTO pessoa)
