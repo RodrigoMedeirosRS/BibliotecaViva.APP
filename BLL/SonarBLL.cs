@@ -1,4 +1,4 @@
-
+using Godot;
 using System;
 using BibliotecaViva.SAL;
 using BibliotecaViva.DTO;
@@ -29,7 +29,7 @@ namespace BibliotecaViva.BLL
         }
         public SonarRetorno ExecutarSonar(SonarConsulta sonar)
         {
-            return SAL.ExecutarPost<SonarConsulta, SonarRetorno>(URLSonar, sonar);
+            return SAL.ExecutarPost<SonarConsulta, SonarRetorno>(URLSonar, sonar, OS.GetName() == "HTML5");
         }
         public void Dispose()
         {
