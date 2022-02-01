@@ -1,26 +1,75 @@
-Política Privacidade    
-                
-A sua privacidade é importante para nós. É política da Biblioteca Viva respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no aplicativo da Biblitoeca Viva, e outros sites que possuímos e operamos.                    
-Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.                                        
+Política de Privacidade
 
-Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado.  Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.  
-                  
-O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.        
-                                
-Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.   
-                
-O uso continuado de nosso aplicativo será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.    
-
-Compromisso do Usuário      
-                          
-O usuário se compromete a fazer uso adequado dos conteúdos e da informação que a Biblioteca Viva oferece no seu aplicativo e com caráter enunciativo, mas não limitativo: 
-                                                               
-1.	Não se envolver em atividades que sejam ilegais ou contrárias à boa fé a à ordem pública;    
-                    
-2.	Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de hoje ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;          
-              
-3.	Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) da Bilioteca Viva, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.       
-                                                               
-Esperemos que esteja esclarecido e, como mencionado anteriormente.
-
-Esta política é efetiva a partir de January/2022.
+A Política de Privacidade e Segurança descrita abaixo constitui parte das Condições de Termos e Uso da presente aplicação, respeitando todas as normas previstas nas legislações vigentes em nosso país, principalmente na Lei Geral de Proteção de Dados.
+A instalação e o uso da aplicação implica-se automaticamente na concordância explicita na política abaixo em todos os seus termos.
+Informações Gerais:
+Esta aplicação realiza os tratamentos de dados pessoais dos usuários do site, desde a fase da sua coleta até a sua eliminação, de acordo com a legislação vigente no Brasil. Atuando como controlador dos dados pessoais coletados por meio desse site, ficamos à disposição das normas trazidas na Lei Federal n. 13.709/2018, Lei Geral de Proteção de dados.
+A aplicação trabalha com todas as medidas necessárias para trazer segurança e proteção à privacidade de seus usuários, trazendo detalhadamente a forma de atuação referente as etapas de coleta, armazenamento, uso, compartilhamento e divulgação dos dados pessoais dos usuários, bem como a forma como é realizada a segurança e proteção dos dados que são coletados na nossa página.
+ Obs.: A aplicação será tratada no decorrer dessa Política de Privacidade e Segurança como “nós “, “nos”, “conosco” e “nosso”.
+ Observação importante
+Realizamos o tratamento dos seus dados pessoais com total responsabilidade e para demonstrar a transparência da nossa coleta e utilização de dados pessoais, disponibilizamos a política de privacidade, que contém informações necessárias esclarecedoras para os usuários da nossa Biblioteca Viva, como:
+- A partir de qual idade é indicado absorver os conteúdos do site;
+- Quais os dados são coletados;
+- O que é feito com os dados coletados?
+- Como ocorre o tratamento dos dados coletados?
+- É possível o compartilhamento ou publicação dos dados por terceiros?
+- Formas de entrar em contato conosco.
+ Sobre o nossa aplicação
+Nossa aplicação tem como principal objetivo informar e levar conhecimento, e atua por meio da publicação de textos, vídeos, áudios e os demais conteúdos aqui vinculados em busca de trazer informações de suma importância a respeito dos assuntos aqui tratados.
+De forma responsável, o site declara assumir compromisso total com a segurança e privacidade dos dados de seus usuários, durante todo o período de navegação. Esta política de privacidade e segurança tem como principal objetivo de esclarecer e demonstrar aos visitantes do nosso site, como todas as informações, aqui coletadas, serão tratadas e quais poderão ser divulgadas ou publicadas com nossos parceiros.
+Qualquer modificação em nossa Política de Privacidade é Segurança serão informadas aos nossos usuários de forma imediata neste espaço.
+Ao instalar a nossa aplicação e executá-la, o usuário concorda, aceita e adere de forma automática todas as informações e condições previstas neste documento, que pode ser denominado como Política de Privacidade e Segurança ou Termos de Uso, que devem ser obrigatoriamente respeitados.
+A aplicação traz abaixo todas as regras e termos referente a privacidade e o uso da nossa página, qualquer comunicado posterior será notificado de forma expressa aos nossos usuários. 
+A equipe da nossa aplicação está à disposição para esclarecer quaisquer dúvidas.
+A nossa aplicação é indicada para pessoas a partir de 18 anos, que possuam interesse ou curiosidade a respeito do conteúdo que trazemos. Caso seja menor que 18 anos, é necessário a permissão do responsável.
+O conteúdo de nossa aplicação não é produzido por nossa equipe, sendo criado colaborativa por todos os usuários, mas nossa equipe se coloca a disposição para remover os conteúdos respeitando os valores éticos e humanos, bem como os princípios morais.
+Dados coletados
+O nosso site coleta alguns dados e informações dos nossos usuários, como será explicado abaixo neste tópico. 
+Dados pessoais do usuário
+Os dados pessoais do usuário coletados pela nossa aplicação, restringem-se a nome e sobrenome, sendo fornecidos exclusiva e expressamente pelo usuário, exceto previsões mencionadas abaixo, contudo, só serão coletados e tratados com o consentimento do usuário.
+Coleta de dados
+ A coleta de dados realizada pela nossa aplicação acontece ou pode acontecer nas páginas de cadastro de Novas Pistas Vivas e Novos Registros.
+Modo de Coleta de Dados
+Só realizamos a coleta de dados do usuário conforme as legislações vigentes no nosso país e respeitando expressamente a Lei Geral de Proteção de Dados.
+Coleta automática de dados pessoais
+Podemos monitorar nossa aplicação informações de geolocalização fornecidas pelo GPS do dispositivo, no entanto essas informações não serão em momento algum persistidas, compartilhadas ou divulgadas, sendo utilizadas apenas na função do Sonar e sendo descartadas logo em seguida.
+Dados que não são coletados
+ O nosso site não trabalha com a coleta de dados sensíveis, pois só utilizamos de fato o que é necessário para a realização dos nossos serviços.
+Os dados sensíveis, como a etnia, religião e genética, como estão estabelecidos na Lei de Proteção Geral de Dados não são coletados ou requeridos pela nossa página.
+Compartilhamento, publicação ou divulgação dos dados dos usuários a terceiros
+Trabalhamos sempre pensando no bem-estar do nosso usuário, por esse motivo, utilizamos a boa-fé como base para divulgação, compartilhamento ou publicação de qualquer dado coleta por nós.
+Não trabalhamos com compartilhamento, publicação ou divulgação de dados que coletamos dos nossos usuários, exceto em casos, onde há previsão de leis, determinação judicial, boletim, cumprimento de alguma determinação de autoridade pública, em que se torne obrigatória alguma dessas condutas, ou alguma hipótese de determinação regulatória.
+É permitido o acesso aos dados coletados por nós, a um terceiro que tenha permissão do titular dos dados.
+Em caso de investigação criminal, deixamos cientes todos os nossos usuários de que cooperaremos da forma que nos for requisitada.
+Não podemos recusar compartilhar dados nos casos acima mencionados.
+Não temos nenhum controle sobre o conteúdo dos links e hiperlinks externos que você pode encontrar por todo nosso site.
+Armazenamento de dados
+Todos os dados que armazenamos tem uma finalidade legitima e que é informada previamente aos nossos usuários, sendo armazenados apenas após o consentimento do usuário e respeitando o que prevê a legislação vigente sobre esse assunto.
+O armazenamento dos dados realizado por nós, não retira qualquer direito do titular dos dados pessoais sobre ele. Além disso, respeitamos todos os direitos do controlador do site e as demais disposições reguladoras ou legais que versem sobre esse assunto.
+Os dados armazenados por nós são tratados com toda segurança para promover a proteção do nosso usuário de qualquer evento danoso.
+Tratamento de dados
+O tratamento dos dados coletados por nossa plataforma respeita todas as normas estabelecidas na Lei Geral de Proteção de Dados, respeitando o direito do usuário de ter acesso aos seus dados e alterá-los a qualquer momento durante nosso armazenamento.
+Os dados tratados por nós estão todos seguros, pois utilizamos técnicas para preservar a privacidade de todos os titulares dos dados coletados.
+Não realizamos nenhum tratamento de dados ilícitos ou que vá contra o que estabelece as normas brasileiras e esta Política de Privacidade e Segurança.
+As etapas dos tratamentos de dados inicia-se desde a sua coleta.
+As atividades referentes ao tratamento de dados realizadas por nós, tem base legal para acontecer, respeitando os limites previstos na legislação.
+Disponibilizamos o nosso canal de contato para responder qualquer dúvida a respeito da base legal que fundamentamos o tratamento dos dados.
+Segurança no tratamento dos dados
+Os nossos sistemas de proteção atendem a todos os requisitos trazidos na Lei 13.709/2018, respeitando as condutas de boa prática, as medidas de segurança técnicas e administrativas para proteção dos dados coletados.
+Temos muito cuidado e preocupação em proporcionar segurança aos dados coletados dos nossos usuários, por esse motivo utilizamos ferramentas específicas para garantir a privacidade dos dados que tratamos.
+As técnicas utilizadas para assegurar a segurança dos dados coletados por nossa aplicação são todas adequadas e aptas a gerar a proteção integral dos dados dos usuários de qualquer possível situação onde possa ser obtido os dados, compartilhados, publicados, destruídos e alterados sem autorização e de maneira irregular.
+Adotamos medidas específicas para cada espécie de dados sendo o modo de segurança direcionado especificadamente para o dado que foi coletado, de acordo com o contexto da sua coleta e sua finalidade.
+O acesso físico aos nossos arquivos só acontece quando é necessário que algum de nossos funcionários tenham acesso a eles para desempenhar sua função profissional.
+Os dados anonimizados não são considerados pelo nosso site como informações pessoais, visto que através deles não é possível criar nenhum vínculo com o titular dos dados, já que não há como identificá-lo.
+Os dados anonimizados são mantidos em nossos arquivos e sistemas com toda a segurança técnica necessária para sua proteção.
+É importante informar que tomamos todos os cuidados para proteger os dados de nossos usuários, mas ainda assim, há algumas situações que acontecem em que há o vazamento de dados. A nossa aplicação não é responsável por qualquer incidente com dados pessoais que aconteça por situação em que não temos o controle, como a culpa exclusiva do usuário, ou ataques de crackers.
+Qualquer incidente que cause danos aos dados pessoais dos usuários, informaremos as autoridades responsáveis, conforme a Lei 13.709/2018.
+Consentimento do usuário
+O usuário permite de livre e espontânea vontade que seus dados sejam coletados por nosso site e armazenados pelo período necessário para realização da finalidade estabelecida.
+O usuário afirma que não sofreu qualquer coação, ou foi induzido a concordar com essa Política de Privacidade e Segurança.
+O usuário pactua que navegará e utilizará adequadamente os conteúdos publicados em nosso site, agindo de boa-fé e respeitando uma conduta digna e respeitosa, sem realizar comentários discriminatórios a respeito de temas religiosos, raciais, terroristas, jogos proibidos e etc.
+O usuário compromete-se a não causar nenhum dano a aplicação, não devendo gerar comentários maldosos na publicação, não disseminar vírus que causem dano aos hardwares e softwares dos nossos parceiros e ao nosso website.
+Futuras alterações neste documento
+Esta Política de Privacidade e Segurança segue todas as regras trazidas na legislação brasileira, especialmente, as presentes na Lei Geral de Proteção de Dados.
+Não há um período específico para ocorrer qualquer modificação neste texto, por esse motivo informamos ser livre o nosso direito de alteração a qualquer momento, principalmente no caso de alterações feitas na legislação brasileira ou no nosso site.
+Nós nos comprometemos a informar aos nossos usuários a respeito de qualquer alteração que aconteça nesta Política de Privacidade e Segurança.
