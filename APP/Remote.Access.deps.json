@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-x64": {
+      "Remote.Access/1.0.0": {
+        "dependencies": {
+          "SAL": "1.0.0"
+        },
+        "runtime": {
+          "Remote.Access.dll": {}
+        }
+      },
+      "RestSharp/1.0.0": {
+        "runtime": {
+          "RestSharp.dll": {}
+        }
+      },
+      "SAL/1.0.0": {
+        "dependencies": {
+          "RestSharp": "1.0.0"
+        },
+        "runtime": {
+          "SAL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Remote.Access/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RestSharp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
