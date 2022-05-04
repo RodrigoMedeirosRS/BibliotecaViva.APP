@@ -42,12 +42,12 @@ namespace BibliotecaViva.BLL
         public List<RegistroDTO> RealizarConsulta(RegistroConsulta registroCosnulta)
         {
             ValidarPreenchimento(registroCosnulta);
-            var retorno = SAL.ExecutarPost<RegistroConsulta, List<RegistroDTO>>(URLConsultarRegistro, registroCosnulta, OS.GetName() == "HTML5");
+            var retorno = SAL.ExecutarPost<RegistroConsulta, List<RegistroDTO>>(URLConsultarRegistro, registroCosnulta);
             return ValidarConsulta(retorno);
         }
         public ReferenciaRetorno RealizarConsultaDeRegistrosRelacionados(RelacaoConsulta relacaoConsulta)
         {
-            var retorno = SAL.ExecutarPost<RelacaoConsulta, ReferenciaRetorno>(URLConsultarRelacao, relacaoConsulta, OS.GetName() == "HTML5");
+            var retorno = SAL.ExecutarPost<RelacaoConsulta, ReferenciaRetorno>(URLConsultarRelacao, relacaoConsulta);
             return ValidarConsulta(retorno);
         }
         public Node InstanciarRegistroBox(Node Container, Vector2? posicao)

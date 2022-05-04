@@ -174,12 +174,12 @@ anims/RESET = SubResource( 1 )
 anims/Voar = SubResource( 2 )
 
 [node name="Titulo" type="Label" parent="Control/Logo"]
-margin_left = 11.0
+margin_left = 4.0
 margin_top = 104.0
-margin_right = 177.0
+margin_right = 186.0
 margin_bottom = 144.0
 custom_fonts/font = SubResource( 3 )
-text = "Bilioteca Viva"
+text = "Biblioteca Viva"
 __meta__ = {
 "_edit_use_anchors_": false
 }

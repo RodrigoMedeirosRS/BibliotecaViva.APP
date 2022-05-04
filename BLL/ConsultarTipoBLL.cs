@@ -26,15 +26,15 @@ namespace BibliotecaViva.BLL
         }
         public List<TipoDTO> ConsultarTipos()
         {
-            return SAL.ExecutarPost<string, List<TipoDTO>>(URLConsultarTipo, "Consultar", OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<string, List<TipoDTO>>(URLConsultarTipo, "Consultar");
         }
         public List<TipoRelacaoDTO> ConsultarTiposRelacao()
         {
-            return SAL.ExecutarPost<string, List<TipoRelacaoDTO>>(URLConsultarTipoRelacao, "Consultar", OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<string, List<TipoRelacaoDTO>>(URLConsultarTipoRelacao, "Consultar");
         }
         public List<IdiomaDTO> ConsultarIdiomas()
         {
-            return SAL.ExecutarPost<string, List<IdiomaDTO>>(URLConsultarIdioma, "Consultar", OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<string, List<IdiomaDTO>>(URLConsultarIdioma, "Consultar");
         }
         public void PopularDropDownGenero(OptionButton dropdown)
         {

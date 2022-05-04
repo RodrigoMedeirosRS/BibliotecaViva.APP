@@ -24,7 +24,7 @@ namespace BibliotecaViva.BLL
         }
         public List<LocalizacaoGeograficaDTO> ObterListaDePontos()
         {
-            return SAL.ExecutarPost<string, List<LocalizacaoGeograficaDTO>>(URLRastros, "ObterListaDePontos", OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<string, List<LocalizacaoGeograficaDTO>>(URLRastros, "ObterListaDePontos");
         }
         public void Dispose()
         {

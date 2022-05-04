@@ -91,7 +91,7 @@ namespace BibliotecaViva.BLL
         }
         public string CadastrarRegistro(RegistroDTO registro)
         {    
-            return SAL.ExecutarPost<RegistroDTO, string>(URLCadastrarRegistro, registro, OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<RegistroDTO, string>(URLCadastrarRegistro, registro);
         }
         public void Dispose()
         {

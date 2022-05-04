@@ -48,7 +48,7 @@ namespace BibliotecaViva.BLL
         }
         public string CadastrarPessoa(PessoaDTO pessoa)
         {    
-            return SAL.ExecutarPost<PessoaDTO, string>(URLCadastroPessoa, pessoa, OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<PessoaDTO, string>(URLCadastroPessoa, pessoa);
         }
         public void Dispose()
         {

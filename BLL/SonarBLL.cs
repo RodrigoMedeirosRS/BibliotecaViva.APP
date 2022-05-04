@@ -29,7 +29,7 @@ namespace BibliotecaViva.BLL
         }
         public SonarRetorno ExecutarSonar(SonarConsulta sonar)
         {
-            return SAL.ExecutarPost<SonarConsulta, SonarRetorno>(URLSonar, sonar, OS.GetName() == "HTML5");
+            return SAL.ExecutarPost<SonarConsulta, SonarRetorno>(URLSonar, sonar);
         }
         public void Dispose()
         {
